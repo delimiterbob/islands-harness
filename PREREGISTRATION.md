@@ -10,11 +10,11 @@ disagree the YAML is what was run and the disagreement is an error in the method
 | Field | Value |
 | --- | --- |
 | Version | r4 (supersedes r3, the prose on the site) |
-| Frozen on | @@FROZEN_ON@@ |
+| Frozen on | 2026-09-26 (lock at commit 79b627f97627) |
 | Deposit DOI | pending: the Zenodo deposit, dated before any snapshot run |
-| Hash of `r4.yaml` | @@PREREG_HASH@@ (rules only; `frozen_on` and `deposit_doi` excluded) |
+| Hash of `r4.yaml` | d52f100b9a77f4c9edf29b3147e2edcb8b63845723377159c79c837c56bbdb12 (rules only; `frozen_on` and `deposit_doi` excluded) |
 | Harness tag | v1.0.0 (local; the public repository follows the deposit, and the lock ties the code to it) |
-| Config hash | @@CONFIG_HASH@@ (`configs/snapshot-1.lock.json`) |
+| Config hash | 6471cd3a4bb2924a02d877c09bb26305e326dc78230fc7345183ecd562f6924c (`configs/snapshot-1.lock.json`) |
 | Author | Robert Encarnação |
 
 ## 1. Propositions
