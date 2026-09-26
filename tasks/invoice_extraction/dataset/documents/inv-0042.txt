@@ -1,0 +1,30 @@
+INVOICE
+
+Invoice to: Hazelquay Community Library
+            204 Marigold Row, Pellwick Cross 56204
+Purchase order: 3242889
+Vendor: Mossbeck Catering Supplies S.A.
+        139 Larkspur Street, Quillinby 33419
+Invoice number: 4953894
+Invoice date: 22/11/2025
+Invoice currency: EUR
+Note: our earlier invoice 4953731 dated 23/10/2025 was paid in full, thank you.
+
+Description                         Qty  Unit price  Disc.
+----------------------------------------------------------
+Stainless steel water jug, 1.5        1       14,60       
+  litre
+Food storage containers with lids,    6       22,14       
+  set of 20
+Napkins, two ply, white, pack of     19        6,17       
+  500
+----------------------------------------------------------
+Freight: 38,41 €
+Each line amount is the quantity times the unit price, less the line's discount,
+rounded half up to the cent.
+VAT at 19% is charged on the sum of the line amounts, rounded
+half up to the cent; freight is not taxed.
+Total due: the sum of the line amounts, plus freight, plus VAT.
+
+Payment terms: 45 days.
+Thank you for your business.

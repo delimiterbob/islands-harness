@@ -1,0 +1,28 @@
+Invoice
+
+Invoice date: 28/09/2026
+Note: our earlier invoice KES-2026-8703 dated 26/08/2026 was paid in full, thank you.
+Customer: Ashquill Veterinary Clinic
+          168 Wicket Lane, Mossmarrow 63764
+Issued by: Kestrelmoor Workshop Tools B.V.
+           173 Marigold Court, Harrowvane 48233
+Invoice #: KES-2026-9444
+Billing currency: EUR
+
+Description                       Qty  Unit price  Disc.
+--------------------------------------------------------
+Cordless drill driver 18 V, body    5       78,14       
+  only
+Safety boots, steel toe, size 42    8       66,28    20%
+Rechargeable work light, 20 W       5       48,51       
+--------------------------------------------------------
+Delivery: 49,40 €
+Each line amount is the quantity times the unit price, less the line's discount,
+rounded half up to the cent.
+VAT at 21% is charged on the sum of the line amounts, rounded
+half up to the cent; delivery is not taxed.
+Total due: the sum of the line amounts, plus delivery, plus VAT.
+
+Previous balance: 2.667,32 € received on 22/06/2026, thank you.
+Payment terms: 45 days.
+Thank you for your business.

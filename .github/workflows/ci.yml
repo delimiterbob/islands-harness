@@ -1,0 +1,67 @@
+# Continuous integration on both platforms the harness supports. No secrets, no GPU, no
+# network beyond package installs: everything below runs on the fake provider.
+#
+# `islands selftest` passes from M0 (ARCHITECTURE.md Section 16). At M0 it writes runs.jsonl
+# and transcripts; snapshot.json joins the artifact at M4, when report lands.
+
+name: ci
+
+on:
+  push:
+    branches: [main]
+    tags: ["v*"]
+  pull_request:
+
+permissions:
+  contents: read
+
+env:
+  UV_LOCKED: "1"          # every uv command refuses a stale lock
+  PYTHONUTF8: "1"         # Windows code pages never touch a transcript
+  PYTHONHASHSEED: "0"     # no harness quantity depends on it; pinned so a leak would show
+  ISLANDS_SIMULATION_SNAPSHOTS: "40"   # reduced coverage-experiment count; the full 500 runs behind -m full_simulation
+
+jobs:
+  test:
+    name: ${{ matrix.os }}
+    runs-on: ${{ matrix.os }}
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [windows-latest, ubuntu-latest]
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Install uv
+        uses: astral-sh/setup-uv@v6
+        with:
+          version: "0.12.19"        # matches [tool.uv] required-version
+          enable-cache: true
+
+      - name: Install Python and the locked environment
+        run: |
+          uv python install 3.12
+          uv sync --locked
+
+      - name: Lint and format check
+        run: |
+          uv run ruff check .
+          uv run ruff format --check .
+
+      - name: Unit, property and reduced simulation tests
+        run: uv run pytest -q
+
+      - name: Selftest on the fake provider
+        run: uv run islands selftest --out selftest-out
+
+      - name: Upload the selftest outputs
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: selftest-${{ matrix.os }}
+          path: |
+            selftest-out/runs.jsonl
+            selftest-out/snapshot/snapshot.json
+            selftest-out/snapshot/statement.txt
+            selftest-out/snapshot/SHA256SUMS
+          if-no-files-found: warn

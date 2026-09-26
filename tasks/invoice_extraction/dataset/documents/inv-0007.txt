@@ -1,0 +1,30 @@
+Invoice
+
+Supplier: Duskwater IT Services Ltd
+          170 Thimble Way, Duskmere 70461
+Invoice dated: December 9, 2026
+Invoice #: DU971330
+Billing currency: GBP
+Note: our earlier invoice DU970436 dated September 12, 2026 was paid in full, thank you.
+Customer: Bellmarrow Cycle Works
+          136 Larkspur Road, Pellwick Cross 42242
+
+Description                       Qty  Unit price  Disc.
+--------------------------------------------------------
+Printer maintenance visit           1      102.25     5%
+Network cabling survey, half day    3      265.97       
+  visit
+Data migration, per hour            8       99.85    20%
+Monthly backup monitoring           1      162.02    10%
+Firewall configuration review       1      496.91    15%
+--------------------------------------------------------
+Freight: £48.60
+Each line amount is the quantity times the unit price, less the line's discount,
+rounded half up to the cent.
+VAT at 5% is charged on the sum of the line amounts, rounded
+half up to the cent; freight is not taxed.
+Total: the sum of the line amounts, plus freight, plus VAT.
+
+Previous balance: £771.28 received on September 27, 2026, thank you.
+Payment terms: 45 days.
+Thank you for your business.

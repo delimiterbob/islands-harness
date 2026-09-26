@@ -1,0 +1,32 @@
+TAX INVOICE
+
+Currency: USD
+Bill to: Gorsemere Community Library
+         91 Heron Way, Fernhollow 72468
+Issued by: Glimmerholt Grounds Care Co.
+           126 Marigold Road, Brambleketh 96090
+Purchase order: GL371992
+Note: our earlier invoice GL898638 dated April 22, 2025 was paid in full, thank you.
+Issue date: May 25, 2025
+Invoice #: GL899197
+
+Description                        Qty  Unit price  Disc.
+---------------------------------------------------------
+Winter gritting service, per         5      103.62       
+  callout
+Weed control treatment, per visit    4       69.57       
+Planter refresh with seasonal        2       49.07       
+  bulbs
+Green waste removal, per load        3      107.13       
+Gutter clearing, per building        2       87.33       
+Hedge trimming, per linear metre    46        3.39     5%
+---------------------------------------------------------
+Delivery: $28.35
+Each line amount is the quantity times the unit price, less the line's discount,
+rounded half up to the cent.
+Sales tax at 7.25% is charged on the sum of the line amounts, rounded
+half up to the cent; delivery is not taxed.
+Invoice total: the sum of the line amounts, plus delivery, plus Sales tax.
+
+Payment terms: 14 days.
+Thank you for your business.

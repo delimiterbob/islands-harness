@@ -1,0 +1,879 @@
+{
+  "$defs": {
+    "CellV1": {
+      "additionalProperties": false,
+      "properties": {
+        "fault": {
+          "title": "Fault",
+          "type": "number"
+        },
+        "faults_per_run": {
+          "anyOf": [
+            {
+              "type": "number"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "title": "Faults Per Run"
+        },
+        "hi": {
+          "title": "Hi",
+          "type": "number"
+        },
+        "in_scope": {
+          "title": "In Scope",
+          "type": "boolean"
+        },
+        "k": {
+          "title": "K",
+          "type": "integer"
+        },
+        "lo": {
+          "title": "Lo",
+          "type": "number"
+        },
+        "mean_score": {
+          "anyOf": [
+            {
+              "type": "number"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "title": "Mean Score"
+        },
+        "n": {
+          "title": "N",
+          "type": "integer"
+        },
+        "p": {
+          "title": "P",
+          "type": "number"
+        },
+        "tools": {
+          "title": "Tools",
+          "type": "integer"
+        }
+      },
+      "required": [
+        "tools",
+        "fault",
+        "n",
+        "k",
+        "p",
+        "lo",
+        "hi",
+        "in_scope",
+        "mean_score",
+        "faults_per_run"
+      ],
+      "title": "CellV1",
+      "type": "object"
+    },
+    "ConditionV1": {
+      "additionalProperties": false,
+      "properties": {
+        "detail": {
+          "default": "",
+          "title": "Detail",
+          "type": "string"
+        },
+        "name": {
+          "title": "Name",
+          "type": "string"
+        },
+        "passed": {
+          "anyOf": [
+            {
+              "type": "boolean"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "title": "Passed"
+        },
+        "value": {
+          "title": "Value"
+        }
+      },
+      "required": [
+        "name",
+        "value",
+        "passed"
+      ],
+      "title": "ConditionV1",
+      "type": "object"
+    },
+    "Descriptive": {
+      "additionalProperties": false,
+      "properties": {
+        "descriptive": {
+          "const": true,
+          "default": true,
+          "title": "Descriptive",
+          "type": "boolean"
+        },
+        "value": {
+          "title": "Value"
+        }
+      },
+      "required": [
+        "value"
+      ],
+      "title": "Descriptive",
+      "type": "object"
+    },
+    "FitV1": {
+      "additionalProperties": false,
+      "properties": {
+        "coefficients": {
+          "additionalProperties": {
+            "type": "number"
+          },
+          "title": "Coefficients",
+          "type": "object"
+        },
+        "drop": {
+          "anyOf": [
+            {
+              "type": "number"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "title": "Drop"
+        },
+        "drop_interval": {
+          "anyOf": [
+            {
+              "items": {
+                "anyOf": [
+                  {
+                    "type": "number"
+                  },
+                  {
+                    "enum": [
+                      "inf",
+                      "-inf"
+                    ],
+                    "type": "string"
+                  }
+                ]
+              },
+              "type": "array"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "title": "Drop Interval"
+        },
+        "estimator": {
+          "enum": [
+            "mle",
+            "firth",
+            "not_estimable"
+          ],
+          "title": "Estimator",
+          "type": "string"
+        },
+        "intervals": {
+          "additionalProperties": {
+            "items": {
+              "anyOf": [
+                {
+                  "type": "number"
+                },
+                {
+                  "enum": [
+                    "inf",
+                    "-inf"
+                  ],
+                  "type": "string"
+                }
+              ]
+            },
+            "type": "array"
+          },
+          "title": "Intervals",
+          "type": "object"
+        },
+        "intervals_source": {
+          "enum": [
+            "wald_cluster",
+            "bootstrap",
+            "none"
+          ],
+          "title": "Intervals Source",
+          "type": "string"
+        },
+        "peak": {
+          "anyOf": [
+            {
+              "type": "number"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "title": "Peak"
+        },
+        "peak_interval": {
+          "anyOf": [
+            {
+              "items": {
+                "anyOf": [
+                  {
+                    "type": "number"
+                  },
+                  {
+                    "enum": [
+                      "inf",
+                      "-inf"
+                    ],
+                    "type": "string"
+                  }
+                ]
+              },
+              "type": "array"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "title": "Peak Interval"
+        },
+        "status": {
+          "title": "Status",
+          "type": "string"
+        }
+      },
+      "required": [
+        "estimator",
+        "coefficients",
+        "intervals",
+        "intervals_source",
+        "peak",
+        "peak_interval",
+        "drop",
+        "drop_interval",
+        "status"
+      ],
+      "title": "FitV1",
+      "type": "object"
+    },
+    "GridV1": {
+      "additionalProperties": false,
+      "properties": {
+        "cells": {
+          "items": {
+            "$ref": "#/$defs/CellV1"
+          },
+          "title": "Cells",
+          "type": "array"
+        },
+        "fault_axis": {
+          "items": {
+            "type": "number"
+          },
+          "title": "Fault Axis",
+          "type": "array"
+        },
+        "tools_axis": {
+          "items": {
+            "type": "integer"
+          },
+          "title": "Tools Axis",
+          "type": "array"
+        }
+      },
+      "required": [
+        "tools_axis",
+        "fault_axis",
+        "cells"
+      ],
+      "title": "GridV1",
+      "type": "object"
+    },
+    "HarnessRef": {
+      "additionalProperties": false,
+      "properties": {
+        "commit": {
+          "title": "Commit",
+          "type": "string"
+        },
+        "config_hash": {
+          "title": "Config Hash",
+          "type": "string"
+        },
+        "version": {
+          "title": "Version",
+          "type": "string"
+        }
+      },
+      "required": [
+        "version",
+        "commit",
+        "config_hash"
+      ],
+      "title": "HarnessRef",
+      "type": "object"
+    },
+    "IdentityV1": {
+      "additionalProperties": false,
+      "properties": {
+        "build": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "title": "Build"
+        },
+        "fingerprints": {
+          "items": {
+            "type": "string"
+          },
+          "title": "Fingerprints",
+          "type": "array"
+        },
+        "gpu": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "title": "Gpu"
+        },
+        "model": {
+          "title": "Model",
+          "type": "string"
+        },
+        "response_models": {
+          "items": {
+            "type": "string"
+          },
+          "title": "Response Models",
+          "type": "array"
+        },
+        "revision": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "title": "Revision"
+        },
+        "sampling": {
+          "additionalProperties": true,
+          "title": "Sampling",
+          "type": "object"
+        },
+        "server": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "title": "Server"
+        },
+        "weights_verified": {
+          "anyOf": [
+            {
+              "type": "boolean"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "title": "Weights Verified"
+        }
+      },
+      "required": [
+        "model",
+        "revision",
+        "weights_verified",
+        "server",
+        "build",
+        "gpu",
+        "response_models",
+        "fingerprints",
+        "sampling"
+      ],
+      "title": "IdentityV1",
+      "type": "object"
+    },
+    "JitterV1": {
+      "additionalProperties": false,
+      "properties": {
+        "flip_hi": {
+          "anyOf": [
+            {
+              "type": "number"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "title": "Flip Hi"
+        },
+        "flip_lo": {
+          "anyOf": [
+            {
+              "type": "number"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "title": "Flip Lo"
+        },
+        "flip_rate": {
+          "anyOf": [
+            {
+              "type": "number"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "title": "Flip Rate"
+        },
+        "identity_rate": {
+          "anyOf": [
+            {
+              "type": "number"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "title": "Identity Rate"
+        },
+        "jitter_sd": {
+          "anyOf": [
+            {
+              "type": "number"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "title": "Jitter Sd"
+        },
+        "phi": {
+          "anyOf": [
+            {
+              "type": "number"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "title": "Phi"
+        },
+        "regime": {
+          "title": "Regime",
+          "type": "string"
+        }
+      },
+      "required": [
+        "identity_rate",
+        "flip_rate",
+        "flip_lo",
+        "flip_hi",
+        "jitter_sd",
+        "phi",
+        "regime"
+      ],
+      "title": "JitterV1",
+      "type": "object"
+    },
+    "LinksV1": {
+      "additionalProperties": false,
+      "properties": {
+        "method_note": {
+          "title": "Method Note",
+          "type": "string"
+        },
+        "preregistration": {
+          "title": "Preregistration",
+          "type": "string"
+        }
+      },
+      "required": [
+        "method_note",
+        "preregistration"
+      ],
+      "title": "LinksV1",
+      "type": "object"
+    },
+    "ModelEntryV1": {
+      "additionalProperties": false,
+      "properties": {
+        "files": {
+          "$ref": "#/$defs/ModelFilesV1"
+        },
+        "fit": {
+          "$ref": "#/$defs/FitV1"
+        },
+        "grid": {
+          "$ref": "#/$defs/GridV1"
+        },
+        "id": {
+          "title": "Id",
+          "type": "string"
+        },
+        "identity": {
+          "$ref": "#/$defs/IdentityV1"
+        },
+        "jitter": {
+          "$ref": "#/$defs/JitterV1"
+        },
+        "mix": {
+          "title": "Mix",
+          "type": "string"
+        },
+        "role": {
+          "title": "Role",
+          "type": "string"
+        },
+        "spend_usd": {
+          "anyOf": [
+            {
+              "type": "number"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "title": "Spend Usd"
+        },
+        "stack": {
+          "$ref": "#/$defs/StackV1"
+        },
+        "statement": {
+          "title": "Statement",
+          "type": "string"
+        },
+        "summary": {
+          "$ref": "#/$defs/SummaryV1"
+        },
+        "verdicts": {
+          "$ref": "#/$defs/VerdictsV1"
+        }
+      },
+      "required": [
+        "id",
+        "role",
+        "mix",
+        "identity",
+        "stack",
+        "grid",
+        "jitter",
+        "fit",
+        "summary",
+        "verdicts",
+        "statement",
+        "spend_usd",
+        "files"
+      ],
+      "title": "ModelEntryV1",
+      "type": "object"
+    },
+    "ModelFilesV1": {
+      "additionalProperties": false,
+      "description": "Paths relative to snapshot.json.",
+      "properties": {
+        "heatmap": {
+          "title": "Heatmap",
+          "type": "string"
+        },
+        "manifest": {
+          "title": "Manifest",
+          "type": "string"
+        },
+        "results": {
+          "title": "Results",
+          "type": "string"
+        },
+        "runs_jsonl": {
+          "title": "Runs Jsonl",
+          "type": "string"
+        },
+        "verdict": {
+          "title": "Verdict",
+          "type": "string"
+        }
+      },
+      "required": [
+        "runs_jsonl",
+        "results",
+        "verdict",
+        "manifest",
+        "heatmap"
+      ],
+      "title": "ModelFilesV1",
+      "type": "object"
+    },
+    "PreregRef": {
+      "additionalProperties": false,
+      "properties": {
+        "doi": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "title": "Doi"
+        },
+        "hash": {
+          "title": "Hash",
+          "type": "string"
+        },
+        "version": {
+          "title": "Version",
+          "type": "string"
+        }
+      },
+      "required": [
+        "version",
+        "doi",
+        "hash"
+      ],
+      "title": "PreregRef",
+      "type": "object"
+    },
+    "PropositionVerdictV1": {
+      "additionalProperties": false,
+      "properties": {
+        "conditions": {
+          "items": {
+            "$ref": "#/$defs/ConditionV1"
+          },
+          "title": "Conditions",
+          "type": "array"
+        },
+        "moves": {
+          "title": "Moves",
+          "type": "boolean"
+        },
+        "verdict": {
+          "title": "Verdict",
+          "type": "string"
+        }
+      },
+      "required": [
+        "verdict",
+        "moves",
+        "conditions"
+      ],
+      "title": "PropositionVerdictV1",
+      "type": "object"
+    },
+    "SnapshotMetaV1": {
+      "additionalProperties": false,
+      "properties": {
+        "bundle_doi": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "title": "Bundle Doi"
+        },
+        "date_end": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "title": "Date End"
+        },
+        "date_start": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "title": "Date Start"
+        },
+        "harness": {
+          "$ref": "#/$defs/HarnessRef"
+        },
+        "id": {
+          "title": "Id",
+          "type": "string"
+        },
+        "kind": {
+          "enum": [
+            "snapshot",
+            "exploratory",
+            "selftest"
+          ],
+          "title": "Kind",
+          "type": "string"
+        },
+        "label": {
+          "title": "Label",
+          "type": "string"
+        },
+        "preregistration": {
+          "$ref": "#/$defs/PreregRef"
+        }
+      },
+      "required": [
+        "id",
+        "kind",
+        "label",
+        "date_start",
+        "date_end",
+        "preregistration",
+        "harness",
+        "bundle_doi"
+      ],
+      "title": "SnapshotMetaV1",
+      "type": "object"
+    },
+    "StackV1": {
+      "additionalProperties": false,
+      "properties": {
+        "deterministic_verified": {
+          "anyOf": [
+            {
+              "type": "boolean"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "title": "Deterministic Verified"
+        },
+        "label": {
+          "title": "Label",
+          "type": "string"
+        }
+      },
+      "required": [
+        "deterministic_verified",
+        "label"
+      ],
+      "title": "StackV1",
+      "type": "object"
+    },
+    "SummaryV1": {
+      "additionalProperties": false,
+      "properties": {
+        "boundary_width": {
+          "$ref": "#/$defs/Descriptive"
+        },
+        "fault_axis_shape": {
+          "$ref": "#/$defs/Descriptive"
+        },
+        "recovery_time": {
+          "$ref": "#/$defs/Descriptive"
+        },
+        "upper_tool_edge": {
+          "$ref": "#/$defs/Descriptive"
+        },
+        "viable_fraction": {
+          "$ref": "#/$defs/Descriptive"
+        }
+      },
+      "required": [
+        "viable_fraction",
+        "upper_tool_edge",
+        "boundary_width",
+        "recovery_time",
+        "fault_axis_shape"
+      ],
+      "title": "SummaryV1",
+      "type": "object"
+    },
+    "VerdictsV1": {
+      "additionalProperties": false,
+      "properties": {
+        "instrument": {
+          "title": "Instrument",
+          "type": "string"
+        },
+        "p1": {
+          "$ref": "#/$defs/PropositionVerdictV1"
+        },
+        "p2": {
+          "$ref": "#/$defs/PropositionVerdictV1"
+        },
+        "propositions_move": {
+          "title": "Propositions Move",
+          "type": "boolean"
+        }
+      },
+      "required": [
+        "instrument",
+        "propositions_move",
+        "p1",
+        "p2"
+      ],
+      "title": "VerdictsV1",
+      "type": "object"
+    }
+  },
+  "additionalProperties": false,
+  "properties": {
+    "links": {
+      "$ref": "#/$defs/LinksV1"
+    },
+    "models": {
+      "items": {
+        "$ref": "#/$defs/ModelEntryV1"
+      },
+      "title": "Models",
+      "type": "array"
+    },
+    "schema_version": {
+      "const": 1,
+      "default": 1,
+      "title": "Schema Version",
+      "type": "integer"
+    },
+    "snapshot": {
+      "$ref": "#/$defs/SnapshotMetaV1"
+    }
+  },
+  "required": [
+    "snapshot",
+    "models",
+    "links"
+  ],
+  "title": "SnapshotV1",
+  "type": "object"
+}

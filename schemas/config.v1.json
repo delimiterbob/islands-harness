@@ -1,0 +1,960 @@
+{
+  "$defs": {
+    "AgentConfig": {
+      "additionalProperties": false,
+      "properties": {
+        "max_tool_calls": {
+          "minimum": 1,
+          "title": "Max Tool Calls",
+          "type": "integer"
+        },
+        "max_turns": {
+          "minimum": 1,
+          "title": "Max Turns",
+          "type": "integer"
+        },
+        "on_malformed_arguments": {
+          "const": "catalog_error",
+          "title": "On Malformed Arguments",
+          "type": "string"
+        },
+        "on_stop_without_submit": {
+          "const": "end",
+          "title": "On Stop Without Submit",
+          "type": "string"
+        },
+        "parallel_tool_calls": {
+          "enum": [
+            "allow",
+            "disallow"
+          ],
+          "title": "Parallel Tool Calls",
+          "type": "string"
+        },
+        "strict_schemas": {
+          "const": false,
+          "title": "Strict Schemas",
+          "type": "boolean"
+        },
+        "time_limit_s": {
+          "exclusiveMinimum": 0,
+          "title": "Time Limit S",
+          "type": "number"
+        },
+        "token_limit": {
+          "minimum": 1,
+          "title": "Token Limit",
+          "type": "integer"
+        },
+        "tool_choice": {
+          "const": "auto",
+          "title": "Tool Choice",
+          "type": "string"
+        }
+      },
+      "required": [
+        "max_turns",
+        "max_tool_calls",
+        "token_limit",
+        "time_limit_s",
+        "parallel_tool_calls",
+        "tool_choice",
+        "strict_schemas",
+        "on_stop_without_submit",
+        "on_malformed_arguments"
+      ],
+      "title": "AgentConfig",
+      "type": "object"
+    },
+    "CalibrationConfig": {
+      "additionalProperties": false,
+      "properties": {
+        "anchor_cell": {
+          "$ref": "#/$defs/CellRef"
+        },
+        "difficulty_levels": {
+          "items": {
+            "type": "integer"
+          },
+          "title": "Difficulty Levels",
+          "type": "array"
+        },
+        "max_malformed_call_rate": {
+          "maximum": 1,
+          "minimum": 0,
+          "title": "Max Malformed Call Rate",
+          "type": "number"
+        },
+        "pilot_runs": {
+          "minimum": 1,
+          "title": "Pilot Runs",
+          "type": "integer"
+        },
+        "target_band": {
+          "maxItems": 2,
+          "minItems": 2,
+          "prefixItems": [
+            {
+              "type": "number"
+            },
+            {
+              "type": "number"
+            }
+          ],
+          "title": "Target Band",
+          "type": "array"
+        },
+        "tau_candidates": {
+          "items": {
+            "type": "number"
+          },
+          "title": "Tau Candidates",
+          "type": "array"
+        }
+      },
+      "required": [
+        "anchor_cell",
+        "target_band",
+        "pilot_runs",
+        "difficulty_levels",
+        "tau_candidates",
+        "max_malformed_call_rate"
+      ],
+      "title": "CalibrationConfig",
+      "type": "object"
+    },
+    "CellRef": {
+      "additionalProperties": false,
+      "properties": {
+        "fault": {
+          "title": "Fault",
+          "type": "number"
+        },
+        "tools": {
+          "title": "Tools",
+          "type": "integer"
+        }
+      },
+      "required": [
+        "tools",
+        "fault"
+      ],
+      "title": "CellRef",
+      "type": "object"
+    },
+    "ExpectConfig": {
+      "additionalProperties": false,
+      "description": "What ``doctor`` and ``serve`` verify about a local server before a run (D9).\n\nFor llama.cpp every field is checked against the running server's ``GET /props``\n(``build_info``, ``model_path``, ``total_slots``, ``n_ctx``, chat format) and against the\nweights file on disk (sha256 recomputed). A mismatch blocks the run.",
+      "properties": {
+        "batch_size": {
+          "minimum": 1,
+          "title": "Batch Size",
+          "type": "integer"
+        },
+        "build": {
+          "title": "Build",
+          "type": "string"
+        },
+        "build_commit": {
+          "title": "Build Commit",
+          "type": "string"
+        },
+        "cache_prompt": {
+          "const": false,
+          "title": "Cache Prompt",
+          "type": "boolean"
+        },
+        "chat_format": {
+          "title": "Chat Format",
+          "type": "string"
+        },
+        "ctx_size": {
+          "minimum": 1024,
+          "title": "Ctx Size",
+          "type": "integer"
+        },
+        "deterministic": {
+          "const": "verify_with_gate",
+          "title": "Deterministic",
+          "type": "string"
+        },
+        "flash_attn": {
+          "enum": [
+            "on",
+            "off"
+          ],
+          "title": "Flash Attn",
+          "type": "string"
+        },
+        "kv_cache_type": {
+          "const": "f16",
+          "title": "Kv Cache Type",
+          "type": "string"
+        },
+        "parallel_slots": {
+          "const": 1,
+          "title": "Parallel Slots",
+          "type": "integer"
+        },
+        "quantization": {
+          "title": "Quantization",
+          "type": "string"
+        },
+        "server": {
+          "enum": [
+            "llama.cpp",
+            "other"
+          ],
+          "title": "Server",
+          "type": "string"
+        },
+        "ubatch_size": {
+          "minimum": 1,
+          "title": "Ubatch Size",
+          "type": "integer"
+        },
+        "weights_file": {
+          "title": "Weights File",
+          "type": "string"
+        },
+        "weights_sha256": {
+          "title": "Weights Sha256",
+          "type": "string"
+        }
+      },
+      "required": [
+        "server",
+        "build",
+        "build_commit",
+        "weights_file",
+        "weights_sha256",
+        "quantization",
+        "ctx_size",
+        "parallel_slots",
+        "cache_prompt",
+        "flash_attn",
+        "kv_cache_type",
+        "batch_size",
+        "ubatch_size",
+        "chat_format",
+        "deterministic"
+      ],
+      "title": "ExpectConfig",
+      "type": "object"
+    },
+    "FaultConfig": {
+      "additionalProperties": false,
+      "properties": {
+        "applies_to": {
+          "enum": [
+            "all_tools",
+            "exempt_submit"
+          ],
+          "title": "Applies To",
+          "type": "string"
+        },
+        "garble": {
+          "$ref": "#/$defs/GarbleConfig"
+        },
+        "kinds": {
+          "items": {
+            "enum": [
+              "timeout",
+              "garbled_payload",
+              "error_response",
+              "empty_result"
+            ],
+            "type": "string"
+          },
+          "title": "Kinds",
+          "type": "array"
+        },
+        "nested_across_rates": {
+          "const": true,
+          "title": "Nested Across Rates",
+          "type": "boolean"
+        },
+        "simulate_delay_s": {
+          "minimum": 0,
+          "title": "Simulate Delay S",
+          "type": "number"
+        },
+        "weights": {
+          "items": {
+            "type": "number"
+          },
+          "title": "Weights",
+          "type": "array"
+        }
+      },
+      "required": [
+        "kinds",
+        "weights",
+        "applies_to",
+        "nested_across_rates",
+        "simulate_delay_s",
+        "garble"
+      ],
+      "title": "FaultConfig",
+      "type": "object"
+    },
+    "GarbleConfig": {
+      "additionalProperties": false,
+      "properties": {
+        "char_fraction": {
+          "exclusiveMaximum": 1,
+          "exclusiveMinimum": 0,
+          "title": "Char Fraction",
+          "type": "number"
+        },
+        "truncate": {
+          "title": "Truncate",
+          "type": "boolean"
+        }
+      },
+      "required": [
+        "char_fraction",
+        "truncate"
+      ],
+      "title": "GarbleConfig",
+      "type": "object"
+    },
+    "GateConfig": {
+      "additionalProperties": false,
+      "properties": {
+        "filler_requests": {
+          "minimum": 0,
+          "title": "Filler Requests",
+          "type": "integer"
+        },
+        "replays_per_regime": {
+          "minimum": 1,
+          "title": "Replays Per Regime",
+          "type": "integer"
+        },
+        "specs": {
+          "minimum": 1,
+          "title": "Specs",
+          "type": "integer"
+        }
+      },
+      "required": [
+        "specs",
+        "replays_per_regime",
+        "filler_requests"
+      ],
+      "title": "GateConfig",
+      "type": "object"
+    },
+    "HostedFloorConfig": {
+      "additionalProperties": false,
+      "properties": {
+        "cells": {
+          "items": {
+            "$ref": "#/$defs/CellRef"
+          },
+          "title": "Cells",
+          "type": "array"
+        },
+        "documents_per_rerun": {
+          "minimum": 1,
+          "title": "Documents Per Rerun",
+          "type": "integer"
+        },
+        "reruns": {
+          "minimum": 1,
+          "title": "Reruns",
+          "type": "integer"
+        }
+      },
+      "required": [
+        "cells",
+        "reruns",
+        "documents_per_rerun"
+      ],
+      "title": "HostedFloorConfig",
+      "type": "object"
+    },
+    "LocalFloorConfig": {
+      "additionalProperties": false,
+      "properties": {
+        "cell": {
+          "$ref": "#/$defs/CellRef"
+        },
+        "fixed_seed_documents": {
+          "anyOf": [
+            {
+              "minimum": 1,
+              "type": "integer"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Fixed Seed Documents"
+        },
+        "fixed_seed_reruns": {
+          "minimum": 1,
+          "title": "Fixed Seed Reruns",
+          "type": "integer"
+        },
+        "varied_seed_reruns": {
+          "minimum": 1,
+          "title": "Varied Seed Reruns",
+          "type": "integer"
+        }
+      },
+      "required": [
+        "cell",
+        "fixed_seed_reruns",
+        "varied_seed_reruns"
+      ],
+      "title": "LocalFloorConfig",
+      "type": "object"
+    },
+    "ModelConfig": {
+      "additionalProperties": false,
+      "properties": {
+        "allowed_hosts": {
+          "items": {
+            "type": "string"
+          },
+          "minItems": 1,
+          "title": "Allowed Hosts",
+          "type": "array"
+        },
+        "api_key_env": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Api Key Env"
+        },
+        "base_url": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Base Url"
+        },
+        "concurrency": {
+          "minimum": 1,
+          "title": "Concurrency",
+          "type": "integer"
+        },
+        "documents": {
+          "minimum": 1,
+          "title": "Documents",
+          "type": "integer"
+        },
+        "epochs": {
+          "minimum": 1,
+          "title": "Epochs",
+          "type": "integer"
+        },
+        "expect": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/ExpectConfig"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null
+        },
+        "extra_body": {
+          "anyOf": [
+            {
+              "additionalProperties": true,
+              "type": "object"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Extra Body"
+        },
+        "fallbacks": {
+          "const": "none",
+          "default": "none",
+          "title": "Fallbacks",
+          "type": "string"
+        },
+        "id": {
+          "title": "Id",
+          "type": "string"
+        },
+        "lock": {
+          "anyOf": [
+            {
+              "format": "path",
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Lock"
+        },
+        "model": {
+          "title": "Model",
+          "type": "string"
+        },
+        "prices": {
+          "anyOf": [
+            {
+              "format": "path",
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Prices"
+        },
+        "prompt_caching": {
+          "default": false,
+          "title": "Prompt Caching",
+          "type": "boolean"
+        },
+        "provider": {
+          "enum": [
+            "openai_compat",
+            "anthropic"
+          ],
+          "title": "Provider",
+          "type": "string"
+        },
+        "sampling": {
+          "$ref": "#/$defs/SamplingConfig"
+        },
+        "spend_cap_usd": {
+          "anyOf": [
+            {
+              "exclusiveMinimum": 0,
+              "type": "number"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Spend Cap Usd"
+        },
+        "transport": {
+          "anyOf": [
+            {
+              "enum": [
+                "anthropic",
+                "bedrock",
+                "vertex",
+                "foundry"
+              ],
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Transport"
+        },
+        "transport_options": {
+          "anyOf": [
+            {
+              "additionalProperties": {
+                "type": "string"
+              },
+              "type": "object"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Transport Options"
+        }
+      },
+      "required": [
+        "id",
+        "provider",
+        "model",
+        "allowed_hosts",
+        "documents",
+        "epochs",
+        "concurrency",
+        "sampling"
+      ],
+      "title": "ModelConfig",
+      "type": "object"
+    },
+    "NoiseFloorConfig": {
+      "additionalProperties": false,
+      "properties": {
+        "hosted": {
+          "$ref": "#/$defs/HostedFloorConfig"
+        },
+        "local": {
+          "$ref": "#/$defs/LocalFloorConfig"
+        }
+      },
+      "required": [
+        "local",
+        "hosted"
+      ],
+      "title": "NoiseFloorConfig",
+      "type": "object"
+    },
+    "ProbeConfig": {
+      "additionalProperties": false,
+      "properties": {
+        "fault_points": {
+          "items": {
+            "type": "number"
+          },
+          "title": "Fault Points",
+          "type": "array"
+        },
+        "runs_per_point": {
+          "minimum": 1,
+          "title": "Runs Per Point",
+          "type": "integer"
+        },
+        "tools_points": {
+          "items": {
+            "type": "integer"
+          },
+          "title": "Tools Points",
+          "type": "array"
+        }
+      },
+      "required": [
+        "runs_per_point",
+        "tools_points",
+        "fault_points"
+      ],
+      "title": "ProbeConfig",
+      "type": "object"
+    },
+    "SamplingConfig": {
+      "additionalProperties": false,
+      "description": "What the harness asks of the sampler; providers/base.CAPABILITIES says who accepts what.",
+      "properties": {
+        "effort": {
+          "anyOf": [
+            {
+              "enum": [
+                "low",
+                "medium",
+                "high",
+                "xhigh",
+                "max"
+              ],
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Effort"
+        },
+        "max_tokens": {
+          "minimum": 1,
+          "title": "Max Tokens",
+          "type": "integer"
+        },
+        "seed": {
+          "anyOf": [
+            {
+              "const": "per_run",
+              "type": "string"
+            },
+            {
+              "type": "integer"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Seed"
+        },
+        "temperature": {
+          "anyOf": [
+            {
+              "type": "number"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Temperature"
+        },
+        "thinking": {
+          "anyOf": [
+            {
+              "enum": [
+                "adaptive",
+                "disabled"
+              ],
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Thinking"
+        },
+        "top_p": {
+          "anyOf": [
+            {
+              "type": "number"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Top P"
+        }
+      },
+      "required": [
+        "max_tokens"
+      ],
+      "title": "SamplingConfig",
+      "type": "object"
+    },
+    "SnapshotMeta": {
+      "additionalProperties": false,
+      "properties": {
+        "harness_tag": {
+          "title": "Harness Tag",
+          "type": "string"
+        },
+        "id": {
+          "title": "Id",
+          "type": "string"
+        },
+        "outputs": {
+          "format": "path",
+          "title": "Outputs",
+          "type": "string"
+        },
+        "preregistration": {
+          "format": "path",
+          "title": "Preregistration",
+          "type": "string"
+        },
+        "root_seed": {
+          "title": "Root Seed",
+          "type": "integer"
+        }
+      },
+      "required": [
+        "id",
+        "root_seed",
+        "preregistration",
+        "harness_tag",
+        "outputs"
+      ],
+      "title": "SnapshotMeta",
+      "type": "object"
+    },
+    "SweepConfig": {
+      "additionalProperties": false,
+      "properties": {
+        "fault_axis": {
+          "items": {
+            "type": "number"
+          },
+          "title": "Fault Axis",
+          "type": "array"
+        },
+        "in_scope_tools": {
+          "items": {
+            "type": "integer"
+          },
+          "title": "In Scope Tools",
+          "type": "array"
+        },
+        "mixes_to_run": {
+          "items": {
+            "type": "string"
+          },
+          "title": "Mixes To Run",
+          "type": "array"
+        },
+        "order": {
+          "enum": [
+            "round_robin",
+            "sequential"
+          ],
+          "title": "Order",
+          "type": "string"
+        },
+        "rung1_runs_per_cell": {
+          "minimum": 0,
+          "title": "Rung1 Runs Per Cell",
+          "type": "integer"
+        },
+        "tools_axis": {
+          "items": {
+            "type": "integer"
+          },
+          "title": "Tools Axis",
+          "type": "array"
+        }
+      },
+      "required": [
+        "tools_axis",
+        "in_scope_tools",
+        "fault_axis",
+        "mixes_to_run",
+        "order",
+        "rung1_runs_per_cell"
+      ],
+      "title": "SweepConfig",
+      "type": "object"
+    },
+    "TaskConfig": {
+      "additionalProperties": false,
+      "properties": {
+        "dataset": {
+          "format": "path",
+          "title": "Dataset",
+          "type": "string"
+        },
+        "dir": {
+          "format": "path",
+          "title": "Dir",
+          "type": "string"
+        },
+        "grader": {
+          "format": "path",
+          "title": "Grader",
+          "type": "string"
+        },
+        "mixes": {
+          "additionalProperties": {
+            "items": {
+              "type": "string"
+            },
+            "type": "array"
+          },
+          "title": "Mixes",
+          "type": "object"
+        },
+        "required_tools": {
+          "items": {
+            "type": "string"
+          },
+          "maxItems": 2,
+          "minItems": 2,
+          "title": "Required Tools",
+          "type": "array"
+        },
+        "rung1": {
+          "items": {
+            "type": "string"
+          },
+          "maxItems": 1,
+          "minItems": 1,
+          "title": "Rung1",
+          "type": "array"
+        },
+        "system_prompt": {
+          "format": "path",
+          "title": "System Prompt",
+          "type": "string"
+        }
+      },
+      "required": [
+        "dir",
+        "system_prompt",
+        "dataset",
+        "grader",
+        "required_tools",
+        "mixes",
+        "rung1"
+      ],
+      "title": "TaskConfig",
+      "type": "object"
+    }
+  },
+  "additionalProperties": false,
+  "properties": {
+    "agent": {
+      "$ref": "#/$defs/AgentConfig"
+    },
+    "calibration": {
+      "$ref": "#/$defs/CalibrationConfig"
+    },
+    "determinism_gate": {
+      "$ref": "#/$defs/GateConfig"
+    },
+    "faults": {
+      "$ref": "#/$defs/FaultConfig"
+    },
+    "models": {
+      "items": {
+        "$ref": "#/$defs/ModelConfig"
+      },
+      "minItems": 1,
+      "title": "Models",
+      "type": "array"
+    },
+    "noise_floor": {
+      "$ref": "#/$defs/NoiseFloorConfig"
+    },
+    "probe": {
+      "$ref": "#/$defs/ProbeConfig"
+    },
+    "schema_version": {
+      "const": 1,
+      "title": "Schema Version",
+      "type": "integer"
+    },
+    "snapshot": {
+      "$ref": "#/$defs/SnapshotMeta"
+    },
+    "sweep": {
+      "$ref": "#/$defs/SweepConfig"
+    },
+    "task": {
+      "$ref": "#/$defs/TaskConfig"
+    }
+  },
+  "required": [
+    "schema_version",
+    "snapshot",
+    "task",
+    "agent",
+    "sweep",
+    "faults",
+    "probe",
+    "calibration",
+    "noise_floor",
+    "determinism_gate",
+    "models"
+  ],
+  "title": "SnapshotConfig",
+  "type": "object"
+}

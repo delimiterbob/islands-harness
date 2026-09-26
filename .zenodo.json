@@ -1,0 +1,12 @@
+{
+  "creators": [{"name": "Encarnação, Robert"}],
+  "description": "The Islands of Stability harness: one agent, one fixed task, a two-axis sweep of tool count against injected tool-fault rate, with sampling error and rerun jitter measured first and one pre-registered verdict per proposition.",
+  "keywords": ["AI agents", "tool use", "fault injection", "pre-registration", "reproducibility"],
+  "license": "Apache-2.0",
+  "related_identifiers": [
+    {"identifier": "https://islandsofstability.com", "relation": "isDocumentedBy", "scheme": "url"}
+  ],
+  "title": "Islands of Stability harness",
+  "upload_type": "software",
+  "version": "1.0.0"
+}

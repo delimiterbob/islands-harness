@@ -1,0 +1,27 @@
+TAX INVOICE
+
+Bill to: Gorsemere Theatre Company
+         235 Larkspur Court, Harrowvane 36475
+Billing currency: EUR
+Issue date: August 26, 2025
+PO number: CO355286
+Invoice #: CO243806
+Issued by: Cobblemere Office Supplies GmbH
+           85 Wicket Court, Harrowvane 10527
+Note: our earlier invoice CO243718 dated May 6, 2025 was paid in full, thank you.
+
+Description                         Qty  Unit price  Disc.
+----------------------------------------------------------
+Self seal envelopes C5, box of 500    5       16,09       
+Archive storage boxes, flat           5       15,46       
+  packed, pack of 10
+----------------------------------------------------------
+Shipping and handling: 10,61 €
+Each line amount is the quantity times the unit price, less the line's discount,
+rounded half up to the cent.
+VAT at 19% is charged on the sum of the line amounts, rounded
+half up to the cent; shipping and handling is not taxed.
+Total due: the sum of the line amounts, plus shipping and handling, plus VAT.
+
+Payment terms: 45 days.
+Thank you for your business.

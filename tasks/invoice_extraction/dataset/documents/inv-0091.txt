@@ -1,0 +1,32 @@
+Invoice
+
+Purchase order: STA-2026-2626
+Billing currency: USD
+Issue date: 2026-07-25
+Invoice to: Cindervale Dental Studio
+            113 Orchard Court, Mossmarrow 19177
+Issued by: Starlingholt Print Studio LLC
+           199 Thimble Way, Lindenharrow 12760
+Note: our earlier invoice STA-2026-5116 dated 2026-04-22 was paid in full, thank you.
+Invoice no.: STA-2026-5620
+
+Description                        Qty  Unit price  Disc.
+---------------------------------------------------------
+Letterheads 100 gsm, box of 1000     1      100.05       
+A2 posters, gloss, pack of 50        2       49.82       
+Design proof and artwork check,      1       41.37       
+  per hour
+Wall calendars, spiral bound, 100    2      241.70     5%
+  copies
+Round vinyl stickers 60 mm, roll     1       45.37       
+  of 500
+---------------------------------------------------------
+Shipping and handling: $44.42
+Each line amount is the quantity times the unit price, less the line's discount,
+rounded half up to the cent.
+Sales tax at 8% is charged on the sum of the line amounts, rounded
+half up to the cent; shipping and handling is not taxed.
+Total due: the sum of the line amounts, plus shipping and handling, plus Sales tax.
+
+Payment terms: 45 days.
+Thank you for your business.

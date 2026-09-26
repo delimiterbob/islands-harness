@@ -1,0 +1,30 @@
+TAX INVOICE
+
+Supplier: Oakenquist Office Supplies Ltd
+          239 Saltmarsh Court, Starling Hythe 80382
+Note: our earlier invoice 3684752 dated 23 June 2025 was paid in full, thank you.
+Invoice number: 3685586
+Invoice date: 14 August 2025
+Currency: GBP
+Your order no.: 7241298
+Invoice to: Ivywhistle Community Library
+            28 Lantern Court, Lindenharrow 86567
+
+Description                       Qty  Unit price  Disc.
+--------------------------------------------------------
+Archive storage boxes, flat         1       15.21       
+  packed, pack of 10
+Ballpoint pens, blue, box of 50     1       13.29       
+Heavy duty stapler, full strip      4       17.23    10%
+Sticky notes 76 x 76 mm, pack of    3       10.96       
+  12
+--------------------------------------------------------
+Freight: £40.38
+Each line amount is the quantity times the unit price, less the line's discount,
+rounded half up to the cent.
+VAT at 20% is charged on the sum of the line amounts, rounded
+half up to the cent; freight is not taxed.
+Invoice total: the sum of the line amounts, plus freight, plus VAT.
+
+Payment terms: 14 days.
+Thank you for your business.

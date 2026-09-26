@@ -1,0 +1,22 @@
+# Hosted model definitions, not part of snapshot 1.
+#
+# Snapshot 1 runs the three local models only (author's decision, 2026-09-26). To add a
+# hosted model to a later snapshot, copy its entry into that snapshot config's `models` list;
+# the Anthropic adapter, the spend ledger and the probe are built and tested (M2). Nothing
+# here is read by a snapshot command; tests load it through config.load_models.
+
+models:
+  - id: opus5-hosted
+    provider: anthropic
+    transport: anthropic              # or bedrock, vertex, foundry
+    model: claude-opus-5
+    api_key_env: ANTHROPIC_API_KEY
+    allowed_hosts: ["api.anthropic.com"]
+    documents: 50
+    epochs: 1
+    concurrency: 4
+    sampling: {temperature: null, thinking: adaptive, effort: medium, max_tokens: 4096}
+    prompt_caching: true
+    fallbacks: none
+    prices: configs/prices.v1.json
+    spend_cap_usd: 900

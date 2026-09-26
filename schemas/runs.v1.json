@@ -1,0 +1,254 @@
+{
+  "additionalProperties": false,
+  "description": "One runs.jsonl line (runs.v1). Mirrors loop.RunRecord; runner.record_to_json produces it.",
+  "properties": {
+    "cost_usd": {
+      "anyOf": [
+        {
+          "type": "number"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "title": "Cost Usd"
+    },
+    "doc_id": {
+      "title": "Doc Id",
+      "type": "string"
+    },
+    "epoch": {
+      "title": "Epoch",
+      "type": "integer"
+    },
+    "events": {
+      "items": {
+        "additionalProperties": true,
+        "type": "object"
+      },
+      "title": "Events",
+      "type": "array"
+    },
+    "fault_events": {
+      "items": {
+        "additionalProperties": true,
+        "type": "object"
+      },
+      "title": "Fault Events",
+      "type": "array"
+    },
+    "fault_rate": {
+      "title": "Fault Rate",
+      "type": "number"
+    },
+    "fingerprints": {
+      "items": {
+        "type": "string"
+      },
+      "title": "Fingerprints",
+      "type": "array"
+    },
+    "first_fault_turn": {
+      "anyOf": [
+        {
+          "type": "integer"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "title": "First Fault Turn"
+    },
+    "identity": {
+      "additionalProperties": true,
+      "title": "Identity",
+      "type": "object"
+    },
+    "index": {
+      "title": "Index",
+      "type": "integer"
+    },
+    "malformed_calls": {
+      "default": 0,
+      "title": "Malformed Calls",
+      "type": "integer"
+    },
+    "mix": {
+      "title": "Mix",
+      "type": "string"
+    },
+    "model_id": {
+      "title": "Model Id",
+      "type": "string"
+    },
+    "outcome": {
+      "title": "Outcome",
+      "type": "string"
+    },
+    "per_field": {
+      "anyOf": [
+        {
+          "additionalProperties": {
+            "type": "number"
+          },
+          "type": "object"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "title": "Per Field"
+    },
+    "phase": {
+      "title": "Phase",
+      "type": "string"
+    },
+    "recovered": {
+      "anyOf": [
+        {
+          "type": "boolean"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "title": "Recovered"
+    },
+    "response_models": {
+      "items": {
+        "type": "string"
+      },
+      "title": "Response Models",
+      "type": "array"
+    },
+    "run_id": {
+      "title": "Run Id",
+      "type": "string"
+    },
+    "sample_seed": {
+      "title": "Sample Seed",
+      "type": "integer"
+    },
+    "score": {
+      "anyOf": [
+        {
+          "type": "number"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "title": "Score"
+    },
+    "seconds": {
+      "title": "Seconds",
+      "type": "number"
+    },
+    "seed_offset": {
+      "anyOf": [
+        {
+          "type": "integer"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "title": "Seed Offset"
+    },
+    "submission": {
+      "title": "Submission"
+    },
+    "submission_attempted_in_text": {
+      "anyOf": [
+        {
+          "type": "boolean"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null,
+      "title": "Submission Attempted In Text"
+    },
+    "success": {
+      "anyOf": [
+        {
+          "type": "boolean"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "title": "Success"
+    },
+    "tool_calls": {
+      "title": "Tool Calls",
+      "type": "integer"
+    },
+    "tool_list": {
+      "items": {
+        "type": "string"
+      },
+      "title": "Tool List",
+      "type": "array"
+    },
+    "tools": {
+      "title": "Tools",
+      "type": "integer"
+    },
+    "transcript_path": {
+      "title": "Transcript Path",
+      "type": "string"
+    },
+    "transport_retries": {
+      "default": 0,
+      "title": "Transport Retries",
+      "type": "integer"
+    },
+    "turns": {
+      "title": "Turns",
+      "type": "integer"
+    },
+    "usage": {
+      "additionalProperties": {
+        "type": "integer"
+      },
+      "title": "Usage",
+      "type": "object"
+    }
+  },
+  "required": [
+    "run_id",
+    "model_id",
+    "phase",
+    "mix",
+    "tools",
+    "fault_rate",
+    "index",
+    "doc_id",
+    "epoch",
+    "sample_seed",
+    "seed_offset",
+    "tool_list",
+    "outcome",
+    "score",
+    "success",
+    "per_field",
+    "turns",
+    "tool_calls",
+    "seconds",
+    "usage",
+    "cost_usd",
+    "fault_events",
+    "first_fault_turn",
+    "recovered",
+    "submission",
+    "response_models",
+    "fingerprints",
+    "identity",
+    "transcript_path",
+    "events"
+  ],
+  "title": "RunRowV1",
+  "type": "object"
+}

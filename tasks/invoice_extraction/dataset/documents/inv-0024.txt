@@ -1,0 +1,30 @@
+INVOICE
+
+Invoice to: Bellmarrow Cycle Works
+            29 Marigold Court, Fernhollow 71916
+Vendor: Copperwick Workshop Tools Co.
+        103 Lantern Road, Ottersnook 44021
+Billing currency: USD
+PO number: COP-2026-4854
+Invoice date: 26/05/2026
+Note: our earlier invoice COP-2026-2531 dated 17/03/2026 was paid in full, thank you.
+Invoice ID: COP-2026-2594
+
+Description                      Qty  Unit price  Disc.
+-------------------------------------------------------
+Tape measure 8 m, magnetic hook   14       18.08    15%
+Cut resistant work gloves, 12      7       44.43       
+  pairs
+HSS drill bit set, 19 piece        7       23.50    10%
+Cable ties 300 mm, bag of 100     18        4.51       
+Metric hex key set, 9 piece        5       13.75       
+-------------------------------------------------------
+Delivery: $20.93
+Each line amount is the quantity times the unit price, less the line's discount,
+rounded half up to the cent.
+Sales tax at 8.875% is charged on the sum of the line amounts, rounded
+half up to the cent; delivery is not taxed.
+Total due: the sum of the line amounts, plus delivery, plus Sales tax.
+
+Payment terms: 30 days.
+Thank you for your business.

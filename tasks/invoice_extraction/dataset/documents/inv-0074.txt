@@ -1,0 +1,30 @@
+INVOICE
+
+Note: our earlier invoice TI610462 dated 27/12/2024 was paid in full, thank you.
+Invoice currency: USD
+Issued by: Tinderwick Lab Supplies LLC
+           181 Saltmarsh Row, Brambleketh 99773
+Customer: Gorsemere Bakery
+          41 Wicket Court, Brambleketh 36357
+Date of issue: 21/01/2025
+Invoice number: TI611363
+
+Description                         Qty  Unit price  Disc.
+----------------------------------------------------------
+Nitrile gloves, medium, box of 100   11        6.48     5%
+pH indicator strips, pack of 100      2       12.17       
+Microscope slides, frosted end,       9       18.50    15%
+  box of 72
+Cotton lab coats, size large          2       30.48       
+Glass beakers 250 ml, pack of 12      2       37.93       
+----------------------------------------------------------
+Freight: $46.89
+Each line amount is the quantity times the unit price, less the line's discount,
+rounded half up to the cent.
+Sales tax at 8% is charged on the sum of the line amounts, rounded
+half up to the cent; freight is not taxed.
+Total due: the sum of the line amounts, plus freight, plus Sales tax.
+
+Previous balance: $1,341.41 received on 14/11/2024, thank you.
+Payment terms: 45 days.
+Thank you for your business.

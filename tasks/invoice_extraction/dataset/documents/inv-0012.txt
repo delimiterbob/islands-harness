@@ -1,0 +1,28 @@
+TAX INVOICE
+
+Issue date: July 14, 2025
+Vendor: Frostvane Catering Supplies Ltd.
+        200 Thimble Road, Duskmere 59045
+Invoice to: Juniperholt Theatre Company
+            135 Heron Lane, Brambleketh 43578
+Note: our earlier invoice FRO-2025-7600 dated April 24, 2025 was paid in full, thank you.
+Invoice #: FRO-2025-8487
+Currency: GBP
+PO number: FRO-2025-8288
+
+Description                       Qty  Unit price  Disc.
+--------------------------------------------------------
+Compostable cutlery sets, box of    7       23.17       
+  250
+Arabica coffee beans, 1 kg bag     19       23.14     5%
+Sugar sticks, box of 1000           8       12.50     5%
+--------------------------------------------------------
+Freight: £28.64
+Each line amount is the quantity times the unit price, less the line's discount,
+rounded half up to the cent.
+VAT at 5% is charged on the sum of the line amounts, rounded
+half up to the cent; freight is not taxed.
+Invoice total: the sum of the line amounts, plus freight, plus VAT.
+
+Payment terms: 30 days.
+Thank you for your business.

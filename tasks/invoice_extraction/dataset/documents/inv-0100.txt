@@ -1,0 +1,34 @@
+TAX INVOICE
+
+PO number: KES-2026-8589
+Note: our earlier invoice KES-2026-8912 dated 2026-11-17 was paid in full, thank you.
+Invoice number: KES-2026-9387
+From: Kestrelmoor Grounds Care & Co. Ltd
+      98 Larkspur Road, Brambleketh 61240
+Billing currency: GBP
+Invoice to: Juniperholt Architects
+            38 Orchard Court, Starling Hythe 45397
+Date of issue: 2026-12-05
+
+Description                        Qty  Unit price  Disc.
+---------------------------------------------------------
+Winter gritting service, per         4      112.55    15%
+  callout
+Tree survey and written report       1      478.07       
+Bark mulch, bulk bag of 1 cubic      3       82.55       
+  metre
+Lawn mowing and edging, per visit    5       69.75    15%
+Weed control treatment, per visit    2       84.31    20%
+Planter refresh with seasonal       10       48.60    15%
+  bulbs
+Leaf clearance, per hour             3       28.72       
+---------------------------------------------------------
+Freight: £31.59
+Each line amount is the quantity times the unit price, less the line's discount,
+rounded half up to the cent.
+VAT at 20% is charged on the sum of the line amounts, rounded
+half up to the cent; freight is not taxed.
+Total due: the sum of the line amounts, plus freight, plus VAT.
+
+Payment terms: 30 days.
+Thank you for your business.

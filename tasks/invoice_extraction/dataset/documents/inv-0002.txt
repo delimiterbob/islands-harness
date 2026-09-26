@@ -1,0 +1,28 @@
+INVOICE
+
+Vendor: Pebblequay Packaging LLC
+        72 Saltmarsh Road, Mossmarrow 25455
+Issue date: 25/11/2026
+Invoice currency: USD
+Note: our earlier invoice 1030143 dated 15/10/2026 was paid in full, thank you.
+Bill to: Foxglade Bakery
+         228 Orchard Row, Starling Hythe 83089
+Invoice number: 1030726
+
+Description                         Qty  Unit price  Disc.
+----------------------------------------------------------
+Tamper evident seals, roll of 500     5       20.91       
+Stretch film 500 mm, cast, 6 rolls    4       56.75       
+Poly mailing bags, large, pack of     7       40.51    10%
+  500
+----------------------------------------------------------
+Delivery: $20.97
+Each line amount is the quantity times the unit price, less the line's discount,
+rounded half up to the cent.
+Sales tax at 7.25% is charged on the sum of the line amounts, rounded
+half up to the cent; delivery is not taxed.
+Amount due: the sum of the line amounts, plus delivery, plus Sales tax.
+
+Previous balance: $1,794.89 received on 15/10/2026, thank you.
+Payment terms: 14 days.
+Thank you for your business.

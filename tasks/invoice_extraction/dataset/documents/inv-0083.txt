@@ -1,0 +1,33 @@
+INVOICE
+
+Currency: GBP
+Issued by: Oakenquist Office Supplies Ltd
+           236 Thimble Road, Fernhollow 79981
+Customer: Kilnbrook Bakery
+          57 Cobble Road, Duskmere 70118
+Note: our earlier invoice OA889865 dated 17/08/2026 was paid in full, thank you.
+Invoice number: OA890446
+Invoice dated: 22/11/2026
+
+Description                         Qty  Unit price  Disc.
+----------------------------------------------------------
+Heavy duty stapler, full strip        1       30.74       
+Self seal envelopes C5, box of 500    5       17.04     5%
+A4 copy paper, 80 gsm, ream of 500   27        7.43       
+Desk organiser, recycled plastic     10       16.07       
+Whiteboard markers, set of 8          6        6.95       
+Ballpoint pens, blue, box of 50      15       15.08       
+Laminating pouches A4, pack of 100    5       19.29    20%
+Archive storage boxes, flat          10       19.96       
+  packed, pack of 10
+----------------------------------------------------------
+Delivery: £36.16
+Each line amount is the quantity times the unit price, less the line's discount,
+rounded half up to the cent.
+VAT at 20% is charged on the sum of the line amounts, rounded
+half up to the cent; delivery is not taxed.
+Total due: the sum of the line amounts, plus delivery, plus VAT.
+
+Previous balance: £2,274.21 received on 15/09/2026, thank you.
+Payment terms: 30 days.
+Thank you for your business.

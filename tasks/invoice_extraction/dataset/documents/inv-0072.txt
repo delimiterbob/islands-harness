@@ -1,0 +1,33 @@
+Invoice
+
+From: Wintercress Catering Supplies GmbH
+      190 Orchard Lane, Duskmere 99983
+Invoice currency: EUR
+Bill to: Ashquill Theatre Company
+         195 Heron Way, Fernhollow 66290
+Note: our earlier invoice WI357032 dated January 11, 2026 was paid in full, thank you.
+Issue date: February 5, 2026
+Invoice ID: WI357536
+
+Description                         Qty  Unit price  Disc.
+----------------------------------------------------------
+Napkins, two ply, white, pack of     23        9,54       
+  500
+Sugar sticks, box of 1000             9       12,45       
+Oat milk, barista edition, case of   12       10,28       
+  6
+Hand soap refill, 5 litre             7       13,07       
+Loose leaf breakfast tea, 500 g       4        9,01       
+Food storage containers with lids,    6       22,13       
+  set of 20
+----------------------------------------------------------
+Shipping and handling: 46,68 €
+Each line amount is the quantity times the unit price, less the line's discount,
+rounded half up to the cent.
+VAT at 7% is charged on the sum of the line amounts, rounded
+half up to the cent; shipping and handling is not taxed.
+Total due: the sum of the line amounts, plus shipping and handling, plus VAT.
+
+Previous balance: 544,44 € received on December 24, 2025, thank you.
+Payment terms: 45 days.
+Thank you for your business.

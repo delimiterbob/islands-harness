@@ -1,0 +1,31 @@
+Invoice
+
+Bill to: Cindervale Physiotherapy
+         78 Thimble Road, Wetherquill 58782
+Invoice date: 4 November 2026
+Billing currency: USD
+Note: our earlier invoice AM630860 dated 24 October 2026 was paid in full, thank you.
+Invoice #: AM631631
+PO number: AM181678
+Supplier: Amberquill Print Studio Co.
+          141 Juniper Street, Lindenharrow 24331
+
+Description                       Qty  Unit price  Disc.
+--------------------------------------------------------
+Presentation folders, box of 250    1      245.54       
+A5 flyers, double sided, 2000       1      138.94       
+  copies
+Roller banner 850 x 2000 mm with    1      110.87       
+  stand
+Round vinyl stickers 60 mm, roll    2       48.99       
+  of 500
+--------------------------------------------------------
+Delivery: $16.96
+Each line amount is the quantity times the unit price, less the line's discount,
+rounded half up to the cent.
+Sales tax at 8% is charged on the sum of the line amounts, rounded
+half up to the cent; delivery is not taxed.
+Total: the sum of the line amounts, plus delivery, plus Sales tax.
+
+Payment terms: 30 days.
+Thank you for your business.

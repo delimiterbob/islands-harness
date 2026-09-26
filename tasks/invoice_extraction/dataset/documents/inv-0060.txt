@@ -1,0 +1,30 @@
+TAX INVOICE
+
+Billing currency: EUR
+Date of issue: 14/03/2026
+From: Larkvane Catering Supplies S.A.
+      178 Pennyroyal Street, Quillinby 26469
+Note: our earlier invoice LAR-2026-4925 dated 14/02/2026 was paid in full, thank you.
+Invoice number: LAR-2026-5666
+PO number: LAR-2026-6703
+Invoice to: Lindenquist Primary School
+            217 Kettle Lane, Brambleketh 23193
+
+Description                       Qty  Unit price  Disc.
+--------------------------------------------------------
+Napkins, two ply, white, pack of   15        9,05       
+  500
+Stainless steel water jug, 1.5      1       19,21    10%
+  litre
+Loose leaf breakfast tea, 500 g    11        9,01       
+Hand soap refill, 5 litre           9       11,10       
+--------------------------------------------------------
+Shipping and handling: 45,81 €
+Each line amount is the quantity times the unit price, less the line's discount,
+rounded half up to the cent.
+VAT at 7% is charged on the sum of the line amounts, rounded
+half up to the cent; shipping and handling is not taxed.
+Total: the sum of the line amounts, plus shipping and handling, plus VAT.
+
+Payment terms: 45 days.
+Thank you for your business.

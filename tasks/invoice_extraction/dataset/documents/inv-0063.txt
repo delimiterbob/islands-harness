@@ -1,0 +1,27 @@
+TAX INVOICE
+
+Note: our earlier invoice BR939704 dated 2026-09-10 was paid in full, thank you.
+Invoice to: Dewhollow Community Library
+            187 Pennyroyal Lane, Duskmere 67752
+Invoice no.: BR940054
+Invoice date: 2026-11-13
+Billing currency: GBP
+Issued by: Brindlequay Print Studio & Co. Ltd
+           129 Orchard Way, Glassmere Vale 89787
+
+Description                       Qty  Unit price  Disc.
+--------------------------------------------------------
+Roller banner 850 x 2000 mm with    3       78.26       
+  stand
+Business cards, matt, box of 500    3       40.46       
+--------------------------------------------------------
+Freight: £38.33
+Each line amount is the quantity times the unit price, less the line's discount,
+rounded half up to the cent.
+VAT at 5% is charged on the sum of the line amounts, rounded
+half up to the cent; freight is not taxed.
+Total: the sum of the line amounts, plus freight, plus VAT.
+
+Previous balance: £909.70 received on 2026-08-10, thank you.
+Payment terms: 30 days.
+Thank you for your business.

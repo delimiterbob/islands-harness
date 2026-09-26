@@ -1,0 +1,31 @@
+Invoice
+
+Note: our earlier invoice HO426713 dated July 12, 2026 was paid in full, thank you.
+Bill to: Elderwick Physiotherapy
+         119 Thimble Street, Pellwick Cross 79320
+Invoice no.: HO427077
+Invoice date: October 1, 2026
+From: Hollowmere Office Supplies Co.
+      1 Larkspur Court, Wetherquill 24610
+Invoice currency: USD
+
+Description                         Qty  Unit price  Disc.
+----------------------------------------------------------
+Archive storage boxes, flat          10       24.73    15%
+  packed, pack of 10
+A4 copy paper, 80 gsm, ream of 500   12        5.85       
+Lever arch files, assorted           12       21.64    10%
+  colours, pack of 10
+Desk organiser, recycled plastic      4       15.61       
+Ballpoint pens, blue, box of 50       1        8.54       
+----------------------------------------------------------
+Delivery: $24.93
+Each line amount is the quantity times the unit price, less the line's discount,
+rounded half up to the cent.
+Sales tax at 8% is charged on the sum of the line amounts, rounded
+half up to the cent; delivery is not taxed.
+Amount due: the sum of the line amounts, plus delivery, plus Sales tax.
+
+Previous balance: $2,381.12 received on September 10, 2026, thank you.
+Payment terms: 30 days.
+Thank you for your business.

@@ -1,0 +1,32 @@
+TAX INVOICE
+
+Invoice currency: GBP
+Invoice dated: 19/02/2025
+Customer: Gorsemere Veterinary Clinic
+          65 Juniper Street, Glassmere Vale 29784
+Supplier: Harrowfinch Packaging & Co. Ltd
+          57 Larkspur Road, Quillinby 13759
+Note: our earlier invoice 9452359 dated 14/12/2024 was paid in full, thank you.
+Invoice number: 9452761
+
+Description                         Qty  Unit price  Disc.
+----------------------------------------------------------
+Clear packing tape 48 mm, 36 rolls    6       31.96       
+Bubble wrap roll 750 mm x 100 m       9       33.72    20%
+Void fill paper roll, 5 kg            6       20.23       
+Kraft mailer boxes, medium, pack     17       22.70    10%
+  of 25
+Fragile labels, roll of 1000          9       12.06       
+Corrugated sheets 1200 x 800 mm,      5       56.81       
+  pack of 50
+----------------------------------------------------------
+Freight: £49.35
+Each line amount is the quantity times the unit price, less the line's discount,
+rounded half up to the cent.
+VAT at 20% is charged on the sum of the line amounts, rounded
+half up to the cent; freight is not taxed.
+Total due: the sum of the line amounts, plus freight, plus VAT.
+
+Previous balance: £2,295.21 received on 25/11/2024, thank you.
+Payment terms: 45 days.
+Thank you for your business.

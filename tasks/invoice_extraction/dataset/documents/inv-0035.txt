@@ -1,0 +1,30 @@
+INVOICE
+
+Purchase order: NE377001
+Billing currency: USD
+Invoice #: NE602561
+Invoice dated: January 11, 2025
+Note: our earlier invoice NE601936 dated November 9, 2024 was paid in full, thank you.
+Issued by: Nettlewhistle Grounds Care Co.
+           42 Larkspur Road, Quillinby 77970
+Customer: Bellmarrow Theatre Company
+          97 Thimble Lane, Duskmere 16686
+
+Description                        Qty  Unit price  Disc.
+---------------------------------------------------------
+Green waste removal, per load        1       78.10       
+Bark mulch, bulk bag of 1 cubic      4       56.18       
+  metre
+Weed control treatment, per visit    3       88.29       
+Lawn mowing and edging, per visit    3       58.98       
+Leaf clearance, per hour             4       48.25       
+---------------------------------------------------------
+Shipping and handling: $47.31
+Each line amount is the quantity times the unit price, less the line's discount,
+rounded half up to the cent.
+Sales tax at 7.25% is charged on the sum of the line amounts, rounded
+half up to the cent; shipping and handling is not taxed.
+Amount due: the sum of the line amounts, plus shipping and handling, plus Sales tax.
+
+Payment terms: 30 days.
+Thank you for your business.

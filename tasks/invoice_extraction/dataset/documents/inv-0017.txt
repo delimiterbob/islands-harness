@@ -1,0 +1,26 @@
+Invoice
+
+Invoice to: Ashquill Community Library
+            208 Marigold Street, Glassmere Vale 10615
+Invoice ID: 4842297
+PO number: 6806510
+Billing currency: GBP
+Note: our earlier invoice 4841453 dated 24/11/2025 was paid in full, thank you.
+Issued by: Nettlewhistle IT Services & Co. Ltd
+           95 Saltmarsh Row, Starling Hythe 33079
+Date of issue: 13/12/2025
+
+Description                Qty  Unit price  Disc.
+-------------------------------------------------
+Monthly backup monitoring    2      228.69       
+Data migration, per hour     5       88.50    15%
+-------------------------------------------------
+Delivery: £40.12
+Each line amount is the quantity times the unit price, less the line's discount,
+rounded half up to the cent.
+VAT at 5% is charged on the sum of the line amounts, rounded
+half up to the cent; delivery is not taxed.
+Amount due: the sum of the line amounts, plus delivery, plus VAT.
+
+Payment terms: 30 days.
+Thank you for your business.

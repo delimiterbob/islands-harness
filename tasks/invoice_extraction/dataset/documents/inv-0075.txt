@@ -1,0 +1,28 @@
+Invoice
+
+Invoice no.: GLI-2026-8524
+From: Glimmerholt IT Services Ltd
+      44 Marigold Street, Ottersnook 25044
+PO number: GLI-2026-3090
+Note: our earlier invoice GLI-2026-8123 dated 2026-04-07 was paid in full, thank you.
+Bill to: Hazelquay Physiotherapy
+         7 Juniper Street, Duskmere 54499
+Invoice dated: 2026-05-19
+Billing currency: GBP
+
+Description                         Qty  Unit price  Disc.
+----------------------------------------------------------
+Password manager licence, per user    7       32.02       
+  per year
+Help desk retainer, monthly, up to    2      586.26       
+  20 tickets
+----------------------------------------------------------
+Shipping and handling: £6.87
+Each line amount is the quantity times the unit price, less the line's discount,
+rounded half up to the cent.
+VAT at 20% is charged on the sum of the line amounts, rounded
+half up to the cent; shipping and handling is not taxed.
+Total: the sum of the line amounts, plus shipping and handling, plus VAT.
+
+Payment terms: 14 days.
+Thank you for your business.

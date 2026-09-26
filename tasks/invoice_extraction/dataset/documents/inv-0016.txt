@@ -1,0 +1,32 @@
+INVOICE
+
+Invoice number: QU597110
+Billing currency: USD
+Customer: Lindenquist Theatre Company
+          228 Marigold Row, Duskmere 74902
+Note: our earlier invoice QU596706 dated December 22, 2025 was paid in full, thank you.
+Issue date: January 13, 2026
+Purchase order: QU479452
+Issued by: Quillhaven Print Studio Inc.
+           13 Heron Lane, Mossmarrow 84479
+
+Description                       Qty  Unit price  Disc.
+--------------------------------------------------------
+Letterheads 100 gsm, box of 1000    1      106.97    15%
+Round vinyl stickers 60 mm, roll    2       61.10    10%
+  of 500
+Business cards, matt, box of 500    5       42.63    20%
+A5 flyers, double sided, 2000       1      147.96       
+  copies
+Design proof and artwork check,     3       59.16       
+  per hour
+--------------------------------------------------------
+Freight: $22.76
+Each line amount is the quantity times the unit price, less the line's discount,
+rounded half up to the cent.
+Sales tax at 6.5% is charged on the sum of the line amounts, rounded
+half up to the cent; freight is not taxed.
+Amount due: the sum of the line amounts, plus freight, plus Sales tax.
+
+Payment terms: 30 days.
+Thank you for your business.

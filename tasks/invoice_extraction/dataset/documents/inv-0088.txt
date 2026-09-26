@@ -1,0 +1,31 @@
+TAX INVOICE
+
+From: Glimmerholt Lab Supplies B.V.
+      80 Thimble Lane, Brambleketh 76997
+Customer: Dewhollow Bakery
+          208 Larkspur Street, Lindenharrow 74874
+Currency: EUR
+Purchase order: GLI-2026-9975
+Date of issue: 21/08/2026
+Note: our earlier invoice GLI-2026-3127 dated 21/07/2026 was paid in full, thank you.
+Invoice ID: GLI-2026-3558
+
+Description                         Qty  Unit price  Disc.
+----------------------------------------------------------
+Anti fog safety goggles              13       10,04    10%
+Sample vials 2 ml with caps, pack     9       19,84       
+  of 100
+Centrifuge tubes 50 ml, sterile,      5       24,09       
+  bag of 25
+Nitrile gloves, medium, box of 100   28        9,89    10%
+Glass beakers 250 ml, pack of 12      1       40,82       
+----------------------------------------------------------
+Freight: 27,77 €
+Each line amount is the quantity times the unit price, less the line's discount,
+rounded half up to the cent.
+VAT at 21% is charged on the sum of the line amounts, rounded
+half up to the cent; freight is not taxed.
+Total due: the sum of the line amounts, plus freight, plus VAT.
+
+Payment terms: 30 days.
+Thank you for your business.

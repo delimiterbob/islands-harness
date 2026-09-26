@@ -1,0 +1,30 @@
+INVOICE
+
+Note: our earlier invoice SAL-2025-4614 dated 2025-08-13 was paid in full, thank you.
+Invoice currency: USD
+Invoice #: SAL-2025-5182
+PO number: SAL-2025-2512
+Customer: Hazelquay Cycle Works
+          57 Saltmarsh Lane, Starling Hythe 71484
+Invoice dated: 2025-09-27
+Supplier: Saltreed Office Supplies LLC
+          69 Thimble Lane, Fernhollow 51248
+
+Description                         Qty  Unit price  Disc.
+----------------------------------------------------------
+Self seal envelopes C5, box of 500    5       22.67       
+Lever arch files, assorted            6       13.55       
+  colours, pack of 10
+Ballpoint pens, blue, box of 50      16       12.45       
+Laminating pouches A4, pack of 100   10       11.02       
+Heavy duty stapler, full strip        6       29.03       
+----------------------------------------------------------
+Freight: $19.18
+Each line amount is the quantity times the unit price, less the line's discount,
+rounded half up to the cent.
+Sales tax at 7.25% is charged on the sum of the line amounts, rounded
+half up to the cent; freight is not taxed.
+Total due: the sum of the line amounts, plus freight, plus Sales tax.
+
+Payment terms: 14 days.
+Thank you for your business.

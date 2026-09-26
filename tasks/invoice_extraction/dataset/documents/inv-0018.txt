@@ -1,0 +1,27 @@
+TAX INVOICE
+
+Currency: GBP
+PO number: MOS-2026-1278
+Issue date: 2026-12-03
+Customer: Elderwick Community Library
+          208 Orchard Road, Duskmere 84367
+Note: our earlier invoice MOS-2026-3980 dated 2026-11-12 was paid in full, thank you.
+Vendor: Mossbeck Catering Supplies Ltd
+        160 Heron Lane, Ottersnook 52286
+Invoice number: MOS-2026-4556
+
+Description                         Qty  Unit price  Disc.
+----------------------------------------------------------
+Sugar sticks, box of 1000             9       10.53       
+Food storage containers with lids,    2       31.20       
+  set of 20
+----------------------------------------------------------
+Delivery: £20.71
+Each line amount is the quantity times the unit price, less the line's discount,
+rounded half up to the cent.
+VAT at 20% is charged on the sum of the line amounts, rounded
+half up to the cent; delivery is not taxed.
+Total: the sum of the line amounts, plus delivery, plus VAT.
+
+Payment terms: 14 days.
+Thank you for your business.

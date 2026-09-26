@@ -1,0 +1,31 @@
+TAX INVOICE
+
+Issue date: 11 February 2025
+Issued by: Marrowdell Office Supplies Ltd
+           66 Cobble Row, Lindenharrow 73047
+Note: our earlier invoice MAR-2024-6484 dated 16 November 2024 was paid in full, thank you.
+Billing currency: GBP
+Invoice ID: MAR-2025-6603
+Invoice to: Bellmarrow Physiotherapy
+            100 Marigold Lane, Glassmere Vale 70984
+
+Description                         Qty  Unit price  Disc.
+----------------------------------------------------------
+Ballpoint pens, blue, box of 50       6       10.45    20%
+Lever arch files, assorted            9       23.34       
+  colours, pack of 10
+Desk organiser, recycled plastic      6       11.04       
+A4 copy paper, 80 gsm, ream of 500   15        6.35    15%
+Sticky notes 76 x 76 mm, pack of     28        8.40    15%
+  12
+----------------------------------------------------------
+Shipping and handling: £30.26
+Each line amount is the quantity times the unit price, less the line's discount,
+rounded half up to the cent.
+VAT at 20% is charged on the sum of the line amounts, rounded
+half up to the cent; shipping and handling is not taxed.
+Total due: the sum of the line amounts, plus shipping and handling, plus VAT.
+
+Previous balance: £884.57 received on 4 November 2024, thank you.
+Payment terms: 30 days.
+Thank you for your business.

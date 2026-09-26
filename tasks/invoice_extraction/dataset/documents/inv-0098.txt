@@ -1,0 +1,30 @@
+Invoice
+
+Customer: Elderwick Bakery
+          158 Pennyroyal Road, Mossmarrow 83334
+Note: our earlier invoice 8834550 dated 26 March 2026 was paid in full, thank you.
+Billing currency: USD
+Vendor: Thistlewren Workshop Tools LLC
+        240 Saltmarsh Row, Ottersnook 63647
+Issue date: 6 April 2026
+Invoice #: 8835296
+
+Description                       Qty  Unit price  Disc.
+--------------------------------------------------------
+Spirit level 600 mm, aluminium      5       18.87    10%
+Metric hex key set, 9 piece         3       13.46    20%
+Adjustable spanner 250 mm           3       16.70       
+Tape measure 8 m, magnetic hook     1       13.17    15%
+HSS drill bit set, 19 piece        10       24.09       
+Safety boots, steel toe, size 42    6       65.40       
+--------------------------------------------------------
+Shipping and handling: $14.46
+Each line amount is the quantity times the unit price, less the line's discount,
+rounded half up to the cent.
+Sales tax at 6.5% is charged on the sum of the line amounts, rounded
+half up to the cent; shipping and handling is not taxed.
+Total: the sum of the line amounts, plus shipping and handling, plus Sales tax.
+
+Previous balance: $2,020.28 received on 27 January 2026, thank you.
+Payment terms: 14 days.
+Thank you for your business.

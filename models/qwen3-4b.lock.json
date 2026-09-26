@@ -1,0 +1,19 @@
+{
+  "schema_version": 1,
+  "model_id": "qwen3-4b-local",
+  "repo": "Qwen/Qwen3-4B-GGUF",
+  "revision": "bc640142c66e1fdd12af0bd68f40445458f3869b",
+  "upstream": "Qwen/Qwen3-4B",
+  "license": "apache-2.0",
+  "gated": false,
+  "files": [
+    {
+      "path": "Qwen3-4B-Q5_K_M.gguf",
+      "size_bytes": 2889513184,
+      "sha256": "aca596860e8cb40af6539e3f2ea40df305f42515deac56d49c08d39a02e6533f"
+    }
+  ],
+  "local_dir": "models/weights",
+  "checked": "2026-09-26",
+  "note": "Official Qwen GGUF, Q5_K_M like the 14B model, so the pair differs in size only. Added as a third replicate after calibration found both larger models at the task's ceiling."
+}

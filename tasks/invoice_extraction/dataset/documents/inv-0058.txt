@@ -1,0 +1,30 @@
+TAX INVOICE
+
+Date of issue: 26/06/2026
+From: Glimmerholt Packaging Co.
+      198 Orchard Court, Lindenharrow 15869
+Billing currency: USD
+Invoice #: GLI-2026-4374
+Bill to: Hazelquay Primary School
+         170 Pennyroyal Lane, Duskmere 46966
+Note: our earlier invoice GLI-2026-3651 dated 17/05/2026 was paid in full, thank you.
+
+Description                        Qty  Unit price  Disc.
+---------------------------------------------------------
+Corrugated sheets 1200 x 800 mm,     5       48.07       
+  pack of 50
+Poly mailing bags, large, pack of    2       25.95       
+  500
+Void fill paper roll, 5 kg           8       22.60    20%
+Tamper evident seals, roll of 500    7       17.33    15%
+---------------------------------------------------------
+Shipping and handling: $26.62
+Each line amount is the quantity times the unit price, less the line's discount,
+rounded half up to the cent.
+Sales tax at 8% is charged on the sum of the line amounts, rounded
+half up to the cent; shipping and handling is not taxed.
+Invoice total: the sum of the line amounts, plus shipping and handling, plus Sales tax.
+
+Previous balance: $1,436.72 received on 19/04/2026, thank you.
+Payment terms: 30 days.
+Thank you for your business.

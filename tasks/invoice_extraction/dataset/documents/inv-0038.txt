@@ -1,0 +1,35 @@
+TAX INVOICE
+
+Billing currency: GBP
+Invoice to: Kilnbrook Veterinary Clinic
+            188 Juniper Lane, Ottersnook 32621
+Vendor: Marrowdell Catering Supplies & Co. Ltd
+        183 Larkspur Row, Duskmere 43366
+Date of issue: 2025-01-20
+Invoice no.: 2625490
+Purchase order: 8477601
+Note: our earlier invoice 2625124 dated 2024-12-11 was paid in full, thank you.
+
+Description                         Qty  Unit price  Disc.
+----------------------------------------------------------
+Compostable cutlery sets, box of      3       33.06    10%
+  250
+Food storage containers with lids,    4       19.53       
+  set of 20
+Paper cups 8 oz, sleeve of 1000       4       39.72       
+Oat milk, barista edition, case of    4       12.30       
+  6
+Loose leaf breakfast tea, 500 g      12       10.43       
+Napkins, two ply, white, pack of     15        8.68       
+  500
+Sugar sticks, box of 1000             6       11.40       
+----------------------------------------------------------
+Freight: £28.25
+Each line amount is the quantity times the unit price, less the line's discount,
+rounded half up to the cent.
+VAT at 20% is charged on the sum of the line amounts, rounded
+half up to the cent; freight is not taxed.
+Total due: the sum of the line amounts, plus freight, plus VAT.
+
+Payment terms: 45 days.
+Thank you for your business.

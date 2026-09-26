@@ -1,0 +1,28 @@
+TAX INVOICE
+
+Invoice number: 8560665
+Customer: Lindenquist Cycle Works
+          177 Marigold Road, Pellwick Cross 14604
+Invoice currency: EUR
+Note: our earlier invoice 8560274 dated 2026-04-23 was paid in full, thank you.
+Date of issue: 2026-06-05
+From: Thistlewren Workshop Tools GmbH
+      215 Saltmarsh Street, Quillinby 72979
+
+Description                    Qty  Unit price  Disc.
+-----------------------------------------------------
+Cut resistant work gloves, 12    1       41,56    20%
+  pairs
+Adjustable spanner 250 mm        1       20,97       
+HSS drill bit set, 19 piece      7       21,47       
+-----------------------------------------------------
+Delivery: 48,89 €
+Each line amount is the quantity times the unit price, less the line's discount,
+rounded half up to the cent.
+VAT at 7% is charged on the sum of the line amounts, rounded
+half up to the cent; delivery is not taxed.
+Total due: the sum of the line amounts, plus delivery, plus VAT.
+
+Previous balance: 64,65 € received on 2026-03-01, thank you.
+Payment terms: 14 days.
+Thank you for your business.

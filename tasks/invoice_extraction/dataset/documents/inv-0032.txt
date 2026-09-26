@@ -1,0 +1,26 @@
+INVOICE
+
+Billing currency: EUR
+Customer: Gorsemere Bakery
+          131 Cobble Court, Ottersnook 64503
+Issued by: Starlingholt Office Supplies B.V.
+           232 Juniper Court, Quillinby 72015
+Invoice #: STA-2026-9116
+Issue date: January 18, 2026
+Note: our earlier invoice STA-2025-8634 dated December 19, 2025 was paid in full, thank you.
+
+Description                      Qty  Unit price  Disc.
+-------------------------------------------------------
+Ballpoint pens, blue, box of 50    1        9,72       
+Whiteboard markers, set of 8      25        5,84       
+-------------------------------------------------------
+Shipping and handling: 15,59 €
+Each line amount is the quantity times the unit price, less the line's discount,
+rounded half up to the cent.
+VAT at 21% is charged on the sum of the line amounts, rounded
+half up to the cent; shipping and handling is not taxed.
+Amount due: the sum of the line amounts, plus shipping and handling, plus VAT.
+
+Previous balance: 1.556,32 € received on October 10, 2025, thank you.
+Payment terms: 45 days.
+Thank you for your business.

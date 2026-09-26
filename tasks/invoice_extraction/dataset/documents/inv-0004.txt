@@ -1,0 +1,28 @@
+TAX INVOICE
+
+Your order no.: EMB-2026-6454
+Bill to: Kilnbrook Bakery
+         173 Juniper Lane, Quillinby 41574
+Invoice no.: EMB-2026-9333
+Supplier: Emberlyn Workshop Tools Ltd.
+          231 Thimble Court, Starling Hythe 66580
+Note: our earlier invoice EMB-2026-9078 dated 2026-05-20 was paid in full, thank you.
+Invoice currency: GBP
+Invoice date: 2026-08-09
+
+Description                       Qty  Unit price  Disc.
+--------------------------------------------------------
+Tape measure 8 m, magnetic hook    11       11.09       
+Cordless drill driver 18 V, body    1      100.31       
+  only
+Metric hex key set, 9 piece        11       12.83       
+--------------------------------------------------------
+Delivery: £45.37
+Each line amount is the quantity times the unit price, less the line's discount,
+rounded half up to the cent.
+VAT at 20% is charged on the sum of the line amounts, rounded
+half up to the cent; delivery is not taxed.
+Amount due: the sum of the line amounts, plus delivery, plus VAT.
+
+Payment terms: 30 days.
+Thank you for your business.

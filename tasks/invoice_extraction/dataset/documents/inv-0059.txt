@@ -1,0 +1,33 @@
+TAX INVOICE
+
+Billing currency: EUR
+Supplier: Fenwhistle Office Supplies GmbH
+          182 Wicket Court, Fernhollow 31169
+Bill to: Ashquill Architects
+         37 Thimble Row, Brambleketh 26889
+Invoice dated: 18/12/2026
+Invoice no.: 7216051
+Purchase order: 2138617
+Note: our earlier invoice 7215748 dated 17/11/2026 was paid in full, thank you.
+
+Description                         Qty  Unit price  Disc.
+----------------------------------------------------------
+Whiteboard markers, set of 8          1        8,25       
+Heavy duty stapler, full strip        1       30,39    10%
+Ballpoint pens, blue, box of 50      13       10,03    15%
+Self seal envelopes C5, box of 500    8       19,00    10%
+Archive storage boxes, flat           5       19,79       
+  packed, pack of 10
+A4 copy paper, 80 gsm, ream of 500   20        7,43       
+Sticky notes 76 x 76 mm, pack of     16        6,76       
+  12
+----------------------------------------------------------
+Delivery: 17,64 €
+Each line amount is the quantity times the unit price, less the line's discount,
+rounded half up to the cent.
+VAT at 7% is charged on the sum of the line amounts, rounded
+half up to the cent; delivery is not taxed.
+Total: the sum of the line amounts, plus delivery, plus VAT.
+
+Payment terms: 14 days.
+Thank you for your business.

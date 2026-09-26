@@ -1,0 +1,36 @@
+Invoice
+
+Customer: Juniperholt Primary School
+          206 Kettle Road, Pellwick Cross 75191
+Invoice #: CO900735
+Invoice currency: EUR
+Invoice dated: 18/05/2025
+Issued by: Cobblemere Catering Supplies S.A.
+           38 Saltmarsh Road, Lindenharrow 19730
+Note: our earlier invoice CO899907 dated 16/04/2025 was paid in full, thank you.
+Purchase order: CO424250
+
+Description                         Qty  Unit price  Disc.
+----------------------------------------------------------
+Napkins, two ply, white, pack of     25        9,48       
+  500
+Compostable cutlery sets, box of      3       34,62       
+  250
+Stainless steel water jug, 1.5        5       13,39       
+  litre
+Oat milk, barista edition, case of   10       12,82       
+  6
+Sugar sticks, box of 1000             6       12,79    10%
+Loose leaf breakfast tea, 500 g      10        9,83       
+Paper cups 8 oz, sleeve of 1000       8       41,39    15%
+Hand soap refill, 5 litre             6       12,27       
+----------------------------------------------------------
+Shipping and handling: 43,30 €
+Each line amount is the quantity times the unit price, less the line's discount,
+rounded half up to the cent.
+VAT at 19% is charged on the sum of the line amounts, rounded
+half up to the cent; shipping and handling is not taxed.
+Amount due: the sum of the line amounts, plus shipping and handling, plus VAT.
+
+Payment terms: 14 days.
+Thank you for your business.

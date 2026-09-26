@@ -1,0 +1,31 @@
+TAX INVOICE
+
+Billing currency: USD
+Invoice #: SA566940
+Note: our earlier invoice SA566113 dated October 24, 2024 was paid in full, thank you.
+Invoice to: Kilnbrook Physiotherapy
+            154 Kettle Road, Glassmere Vale 36975
+Vendor: Saltreed Lab Supplies Inc.
+        201 Wicket Lane, Duskmere 67886
+Invoice dated: January 27, 2025
+
+Description                         Qty  Unit price  Disc.
+----------------------------------------------------------
+Sample vials 2 ml with caps, pack    12       18.54       
+  of 100
+Anti fog safety goggles              15       10.51       
+pH indicator strips, pack of 100      1       11.76       
+Glass beakers 250 ml, pack of 12      4       36.47       
+Pipette tips 200 ul, rack of 96      19       10.38       
+Distilled water, 5 litre container   15        7.45       
+----------------------------------------------------------
+Freight: $17.47
+Each line amount is the quantity times the unit price, less the line's discount,
+rounded half up to the cent.
+Sales tax at 8.875% is charged on the sum of the line amounts, rounded
+half up to the cent; freight is not taxed.
+Total: the sum of the line amounts, plus freight, plus Sales tax.
+
+Previous balance: $2,297.55 received on November 1, 2024, thank you.
+Payment terms: 14 days.
+Thank you for your business.

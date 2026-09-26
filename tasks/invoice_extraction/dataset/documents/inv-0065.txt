@@ -1,0 +1,37 @@
+INVOICE
+
+From: Frostvane Print Studio Ltd
+      228 Larkspur Street, Ottersnook 12085
+Invoice number: FRO-2026-4925
+Bill to: Lindenquist Veterinary Clinic
+         142 Lantern Lane, Mossmarrow 80652
+Note: our earlier invoice FRO-2026-4490 dated 6 July 2026 was paid in full, thank you.
+Purchase order: FRO-2026-1093
+Invoice date: 10 August 2026
+Billing currency: GBP
+
+Description                        Qty  Unit price  Disc.
+---------------------------------------------------------
+Business cards, matt, box of 500     5       46.35       
+A5 flyers, double sided, 2000        1      142.09       
+  copies
+Presentation folders, box of 250     1      210.24       
+Round vinyl stickers 60 mm, roll     2       47.98       
+  of 500
+Wall calendars, spiral bound, 100    1      282.07    15%
+  copies
+Design proof and artwork check,      2       39.23       
+  per hour
+A2 posters, gloss, pack of 50        5       83.05       
+Roller banner 850 x 2000 mm with     3       89.79    10%
+  stand
+---------------------------------------------------------
+Delivery: £48.05
+Each line amount is the quantity times the unit price, less the line's discount,
+rounded half up to the cent.
+VAT at 5% is charged on the sum of the line amounts, rounded
+half up to the cent; delivery is not taxed.
+Amount due: the sum of the line amounts, plus delivery, plus VAT.
+
+Payment terms: 45 days.
+Thank you for your business.

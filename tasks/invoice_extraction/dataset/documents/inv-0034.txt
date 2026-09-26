@@ -1,0 +1,27 @@
+Invoice
+
+Billing currency: USD
+Vendor: Emberlyn Lab Supplies Inc.
+        133 Juniper Lane, Duskmere 17997
+Customer: Foxglade Rowing Club
+          24 Larkspur Lane, Quillinby 54136
+Issue date: 2026-02-18
+Invoice #: EM899573
+Note: our earlier invoice EM898822 dated 2025-12-20 was paid in full, thank you.
+PO number: EM954085
+
+Description                       Qty  Unit price  Disc.
+--------------------------------------------------------
+Anti fog safety goggles            18       10.20       
+Centrifuge tubes 50 ml, sterile,    1       21.77       
+  bag of 25
+--------------------------------------------------------
+Shipping and handling: $37.97
+Each line amount is the quantity times the unit price, less the line's discount,
+rounded half up to the cent.
+Sales tax at 8.875% is charged on the sum of the line amounts, rounded
+half up to the cent; shipping and handling is not taxed.
+Amount due: the sum of the line amounts, plus shipping and handling, plus Sales tax.
+
+Payment terms: 14 days.
+Thank you for your business.

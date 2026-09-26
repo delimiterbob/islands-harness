@@ -1,0 +1,27 @@
+INVOICE
+
+Note: our earlier invoice 7574657 dated 8 August 2026 was paid in full, thank you.
+Invoice date: 13 October 2026
+Invoice number: 7575532
+Vendor: Kestrelmoor Catering Supplies Co.
+        159 Cobble Court, Brambleketh 14714
+Currency: USD
+Your order no.: 9214875
+Customer: Elderwick Bakery
+          30 Orchard Street, Quillinby 20004
+
+Description                         Qty  Unit price  Disc.
+----------------------------------------------------------
+Food storage containers with lids,    1       20.70       
+  set of 20
+Hand soap refill, 5 litre             5       12.67       
+----------------------------------------------------------
+Shipping and handling: $32.67
+Each line amount is the quantity times the unit price, less the line's discount,
+rounded half up to the cent.
+Sales tax at 6.5% is charged on the sum of the line amounts, rounded
+half up to the cent; shipping and handling is not taxed.
+Total due: the sum of the line amounts, plus shipping and handling, plus Sales tax.
+
+Payment terms: 30 days.
+Thank you for your business.

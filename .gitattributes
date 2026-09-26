@@ -1,0 +1,5 @@
+# Keep LF line endings in every checkout, so file bytes (and every hash) match on all platforms.
+* text=auto eol=lf
+*.gguf binary
+*.zip binary
+*.png binary

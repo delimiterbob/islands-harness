@@ -1,0 +1,19 @@
+{
+  "schema_version": 1,
+  "model_id": "gpt-oss-20b-local",
+  "repo": "ggml-org/gpt-oss-20b-GGUF",
+  "revision": "ef9b12f2ff56c69cf32153a02784e7a3c88bf524",
+  "upstream": "openai/gpt-oss-20b",
+  "license": "apache-2.0",
+  "gated": false,
+  "files": [
+    {
+      "path": "gpt-oss-20b-MXFP4.gguf",
+      "size_bytes": 12109566624,
+      "sha256": "27cd6c432c7672cb812a92f611cf3ba7bbc35928262bb1e1253ff4ee6ae35901"
+    }
+  ],
+  "local_dir": "models/weights",
+  "checked": "2026-09-25",
+  "note": "MXFP4 is the format OpenAI released the weights in; this GGUF is the llama.cpp project conversion."
+}

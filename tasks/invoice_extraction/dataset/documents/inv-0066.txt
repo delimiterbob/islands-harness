@@ -1,0 +1,29 @@
+Invoice
+
+Customer: Ashquill Community Library
+          52 Thimble Way, Lindenharrow 92520
+Note: our earlier invoice 2574112 dated 5 April 2026 was paid in full, thank you.
+Vendor: Fenwhistle Lab Supplies B.V.
+        130 Kettle Court, Glassmere Vale 28765
+Currency: EUR
+Invoice no.: 2574171
+PO number: 5553000
+Date of issue: 5 May 2026
+
+Description                        Qty  Unit price  Disc.
+---------------------------------------------------------
+Anti fog safety goggles             16       12,25    20%
+Sample vials 2 ml with caps, pack    4       29,19       
+  of 100
+pH indicator strips, pack of 100     5       15,00       
+Glass beakers 250 ml, pack of 12     5       39,52       
+---------------------------------------------------------
+Delivery: 39,48 €
+Each line amount is the quantity times the unit price, less the line's discount,
+rounded half up to the cent.
+VAT at 19% is charged on the sum of the line amounts, rounded
+half up to the cent; delivery is not taxed.
+Total: the sum of the line amounts, plus delivery, plus VAT.
+
+Payment terms: 45 days.
+Thank you for your business.

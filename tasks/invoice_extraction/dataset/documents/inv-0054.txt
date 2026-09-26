@@ -1,0 +1,26 @@
+INVOICE
+
+Note: our earlier invoice CO989719 dated November 9, 2026 was paid in full, thank you.
+Invoice no.: CO990619
+Invoice date: December 20, 2026
+Bill to: Gorsemere Bakery
+         108 Larkspur Road, Lindenharrow 23952
+Your order no.: CO590858
+Currency: GBP
+From: Copperwick Packaging & Co. Ltd
+      84 Orchard Row, Pellwick Cross 59756
+
+Description                   Qty  Unit price  Disc.
+----------------------------------------------------
+Fragile labels, roll of 1000    2       10.89    20%
+Void fill paper roll, 5 kg     11       31.52    10%
+----------------------------------------------------
+Freight: £6.55
+Each line amount is the quantity times the unit price, less the line's discount,
+rounded half up to the cent.
+VAT at 5% is charged on the sum of the line amounts, rounded
+half up to the cent; freight is not taxed.
+Invoice total: the sum of the line amounts, plus freight, plus VAT.
+
+Payment terms: 30 days.
+Thank you for your business.

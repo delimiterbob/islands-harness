@@ -1,0 +1,35 @@
+INVOICE
+
+Invoice date: 2026-03-06
+Customer: Foxglade Rowing Club
+          9 Kettle Road, Harrowvane 40763
+Invoice #: HA166729
+Note: our earlier invoice HA165771 dated 2026-02-08 was paid in full, thank you.
+Supplier: Harrowfinch Grounds Care GmbH
+          131 Juniper Row, Ottersnook 94314
+Currency: EUR
+
+Description                        Qty  Unit price  Disc.
+---------------------------------------------------------
+Winter gritting service, per         3      101,79    10%
+  callout
+Bark mulch, bulk bag of 1 cubic      6       83,95       
+  metre
+Planter refresh with seasonal       10       51,74    15%
+  bulbs
+Hedge trimming, per linear metre    37        4,57       
+Weed control treatment, per visit    1       80,87       
+Lawn mowing and edging, per visit    7       81,56       
+Leaf clearance, per hour             8       38,18       
+Gutter clearing, per building        3       94,12    15%
+---------------------------------------------------------
+Delivery: 40,78 €
+Each line amount is the quantity times the unit price, less the line's discount,
+rounded half up to the cent.
+VAT at 7% is charged on the sum of the line amounts, rounded
+half up to the cent; delivery is not taxed.
+Total due: the sum of the line amounts, plus delivery, plus VAT.
+
+Previous balance: 1.904,59 € received on 2026-01-24, thank you.
+Payment terms: 30 days.
+Thank you for your business.

@@ -1,0 +1,32 @@
+TAX INVOICE
+
+Bill to: Kilnbrook Theatre Company
+         33 Pennyroyal Street, Brambleketh 68995
+Billing currency: EUR
+PO number: PE637878
+Invoice date: 28/08/2026
+Invoice no.: PE398053
+From: Pebblequay Packaging S.A.
+      226 Orchard Row, Brambleketh 68051
+Note: our earlier invoice PE397057 dated 24/07/2026 was paid in full, thank you.
+
+Description                         Qty  Unit price  Disc.
+----------------------------------------------------------
+Pallet corner protectors, pack of     3       33,25       
+  200
+Kraft mailer boxes, medium, pack      3       27,65       
+  of 25
+Tamper evident seals, roll of 500     7       19,72       
+Void fill paper roll, 5 kg           11       28,34       
+Stretch film 500 mm, cast, 6 rolls    4       52,82       
+Clear packing tape 48 mm, 36 rolls    8       48,52    10%
+----------------------------------------------------------
+Freight: 15,88 €
+Each line amount is the quantity times the unit price, less the line's discount,
+rounded half up to the cent.
+VAT at 19% is charged on the sum of the line amounts, rounded
+half up to the cent; freight is not taxed.
+Amount due: the sum of the line amounts, plus freight, plus VAT.
+
+Payment terms: 45 days.
+Thank you for your business.

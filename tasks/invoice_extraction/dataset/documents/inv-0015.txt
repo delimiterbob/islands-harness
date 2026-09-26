@@ -1,0 +1,33 @@
+INVOICE
+
+Invoice date: 15/02/2026
+Note: our earlier invoice OAK-2025-7797 dated 14/11/2025 was paid in full, thank you.
+Invoice no.: OAK-2026-8363
+Purchase order: OAK-2026-8423
+From: Oakenquist Office Supplies LLC
+      186 Larkspur Lane, Ottersnook 94421
+Invoice to: Ivywhistle Primary School
+            6 Orchard Row, Pellwick Cross 11155
+Invoice currency: USD
+
+Description                         Qty  Unit price  Disc.
+----------------------------------------------------------
+Desk organiser, recycled plastic      1       10.48    15%
+Whiteboard markers, set of 8         10        5.55       
+Sticky notes 76 x 76 mm, pack of     15        7.81       
+  12
+Lever arch files, assorted            4       23.26       
+  colours, pack of 10
+A4 copy paper, 80 gsm, ream of 500   32        6.63       
+Self seal envelopes C5, box of 500    8       20.04     5%
+Laminating pouches A4, pack of 100    6       14.32    20%
+----------------------------------------------------------
+Shipping and handling: $47.60
+Each line amount is the quantity times the unit price, less the line's discount,
+rounded half up to the cent.
+Sales tax at 7.25% is charged on the sum of the line amounts, rounded
+half up to the cent; shipping and handling is not taxed.
+Total: the sum of the line amounts, plus shipping and handling, plus Sales tax.
+
+Payment terms: 45 days.
+Thank you for your business.

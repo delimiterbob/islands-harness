@@ -1,0 +1,31 @@
+Invoice
+
+Note: our earlier invoice 9196212 dated July 24, 2025 was paid in full, thank you.
+Bill to: Hazelquay Community Library
+         237 Wicket Road, Lindenharrow 58300
+Invoice currency: EUR
+Supplier: Mossbeck Grounds Care B.V.
+          19 Juniper Court, Starling Hythe 42400
+Invoice #: 9196726
+Issue date: October 12, 2025
+PO number: 3328174
+
+Description                        Qty  Unit price  Disc.
+---------------------------------------------------------
+Winter gritting service, per         5      106,89       
+  callout
+Tree survey and written report       1      408,61       
+Leaf clearance, per hour            12       40,97    15%
+Planter refresh with seasonal        3       68,96       
+  bulbs
+Weed control treatment, per visit    6       55,30    20%
+---------------------------------------------------------
+Delivery: 26,23 €
+Each line amount is the quantity times the unit price, less the line's discount,
+rounded half up to the cent.
+VAT at 21% is charged on the sum of the line amounts, rounded
+half up to the cent; delivery is not taxed.
+Invoice total: the sum of the line amounts, plus delivery, plus VAT.
+
+Payment terms: 30 days.
+Thank you for your business.

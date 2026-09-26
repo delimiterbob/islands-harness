@@ -1,0 +1,27 @@
+Invoice
+
+Supplier: Wintercress IT Services B.V.
+          87 Lantern Road, Lindenharrow 96234
+Invoice currency: EUR
+Bill to: Elderwick Physiotherapy
+         55 Thimble Court, Harrowvane 43281
+Invoice #: 5725302
+Note: our earlier invoice 5725113 dated 2025-04-18 was paid in full, thank you.
+Issue date: 2025-06-20
+
+Description                Qty  Unit price  Disc.
+-------------------------------------------------
+Monthly backup monitoring    3      165,15       
+Data migration, per hour     8       91,33       
+Laptop setup and imaging     2      153,32    10%
+-------------------------------------------------
+Freight: 13,73 €
+Each line amount is the quantity times the unit price, less the line's discount,
+rounded half up to the cent.
+VAT at 7% is charged on the sum of the line amounts, rounded
+half up to the cent; freight is not taxed.
+Total: the sum of the line amounts, plus freight, plus VAT.
+
+Previous balance: 1.126,11 € received on 2025-03-16, thank you.
+Payment terms: 45 days.
+Thank you for your business.

@@ -1,0 +1,32 @@
+TAX INVOICE
+
+Bill to: Hazelquay Architects
+         23 Wicket Lane, Fernhollow 80437
+PO number: BR401463
+Invoice dated: 2025-10-12
+Invoice number: BR323211
+Note: our earlier invoice BR323199 dated 2025-08-28 was paid in full, thank you.
+Issued by: Brindlequay IT Services B.V.
+           221 Kettle Court, Lindenharrow 88960
+Invoice currency: EUR
+
+Description                         Qty  Unit price  Disc.
+----------------------------------------------------------
+Monthly backup monitoring             3      208,01       
+Password manager licence, per user   16       26,91       
+  per year
+Wireless access point installation    1      197,85       
+Network cabling survey, half day      3      297,71       
+  visit
+On-site support, per hour            10       99,78    10%
+Firewall configuration review         1      527,58       
+----------------------------------------------------------
+Delivery: 37,70 €
+Each line amount is the quantity times the unit price, less the line's discount,
+rounded half up to the cent.
+VAT at 7% is charged on the sum of the line amounts, rounded
+half up to the cent; delivery is not taxed.
+Total due: the sum of the line amounts, plus delivery, plus VAT.
+
+Payment terms: 45 days.
+Thank you for your business.

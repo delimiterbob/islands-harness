@@ -1,0 +1,21 @@
+cff-version: 1.2.0
+message: "If you use this harness or a snapshot it produced, please cite it as below."
+title: "Islands of Stability harness"
+type: software
+authors:
+  - family-names: "Encarnação"
+    given-names: "Robert"
+version: "1.0.0"
+license: Apache-2.0
+url: "https://islandsofstability.com"
+abstract: >-
+  One agent, one fixed task, a two-axis sweep of tool count against injected tool-fault
+  rate, with sampling error and rerun jitter measured first and one pre-registered verdict
+  per proposition. The repository holds the harness, the task, the pre-registration and the
+  reviewer's verification command.
+keywords:
+  - AI agents
+  - tool use
+  - fault injection
+  - pre-registration
+  - reproducibility

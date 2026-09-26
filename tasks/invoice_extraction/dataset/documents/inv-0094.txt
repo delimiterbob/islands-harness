@@ -1,0 +1,29 @@
+Invoice
+
+Supplier: Oakenquist Print Studio Ltd.
+          81 Kettle Way, Ottersnook 37602
+Note: our earlier invoice OA799539 dated 2026-01-04 was paid in full, thank you.
+Bill to: Hazelquay Cycle Works
+         21 Pennyroyal Road, Quillinby 87885
+Issue date: 2026-03-07
+Currency: GBP
+Invoice #: OA799609
+PO number: OA810505
+
+Description                       Qty  Unit price  Disc.
+--------------------------------------------------------
+Round vinyl stickers 60 mm, roll    1       48.16    15%
+  of 500
+A5 flyers, double sided, 2000       3       87.48    10%
+  copies
+Presentation folders, box of 250    1      257.64       
+--------------------------------------------------------
+Freight: £42.26
+Each line amount is the quantity times the unit price, less the line's discount,
+rounded half up to the cent.
+VAT at 5% is charged on the sum of the line amounts, rounded
+half up to the cent; freight is not taxed.
+Total: the sum of the line amounts, plus freight, plus VAT.
+
+Payment terms: 30 days.
+Thank you for your business.

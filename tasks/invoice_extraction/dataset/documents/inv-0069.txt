@@ -1,0 +1,28 @@
+INVOICE
+
+From: Emberlyn Workshop Tools & Co. Ltd
+      230 Marigold Street, Fernhollow 55754
+Invoice ID: 7517271
+Billing currency: GBP
+Note: our earlier invoice 7517254 dated June 6, 2026 was paid in full, thank you.
+Purchase order: 7384786
+Invoice dated: September 16, 2026
+Invoice to: Gorsemere Community Library
+            149 Marigold Road, Starling Hythe 78931
+
+Description                      Qty  Unit price  Disc.
+-------------------------------------------------------
+HSS drill bit set, 19 piece        7       25.30    10%
+Tape measure 8 m, magnetic hook    2       11.44       
+Adjustable spanner 250 mm          2       15.19       
+Cable ties 300 mm, bag of 100     18        6.02       
+-------------------------------------------------------
+Delivery: £44.32
+Each line amount is the quantity times the unit price, less the line's discount,
+rounded half up to the cent.
+VAT at 20% is charged on the sum of the line amounts, rounded
+half up to the cent; delivery is not taxed.
+Total: the sum of the line amounts, plus delivery, plus VAT.
+
+Payment terms: 14 days.
+Thank you for your business.

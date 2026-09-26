@@ -1,0 +1,27 @@
+Invoice
+
+Billing currency: USD
+PO number: MO878219
+Note: our earlier invoice MO183014 dated 19/12/2025 was paid in full, thank you.
+Invoice ID: MO183573
+Vendor: Mossbeck Print Studio LLC
+        44 Heron Road, Quillinby 49600
+Issue date: 23/01/2026
+Customer: Dewhollow Rowing Club
+          127 Saltmarsh Court, Glassmere Vale 97387
+
+Description                       Qty  Unit price  Disc.
+--------------------------------------------------------
+Round vinyl stickers 60 mm, roll    5       34.24       
+  of 500
+Letterheads 100 gsm, box of 1000    4      106.06       
+--------------------------------------------------------
+Freight: $32.06
+Each line amount is the quantity times the unit price, less the line's discount,
+rounded half up to the cent.
+Sales tax at 6.5% is charged on the sum of the line amounts, rounded
+half up to the cent; freight is not taxed.
+Total due: the sum of the line amounts, plus freight, plus Sales tax.
+
+Payment terms: 45 days.
+Thank you for your business.

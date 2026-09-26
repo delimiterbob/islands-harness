@@ -1,0 +1,31 @@
+Invoice
+
+Note: our earlier invoice MA300134 dated 2026-09-20 was paid in full, thank you.
+Bill to: Ivywhistle Rowing Club
+         123 Wicket Lane, Ottersnook 32251
+Invoice ID: MA300736
+From: Marrowdell IT Services LLC
+      126 Juniper Row, Ottersnook 38523
+Invoice dated: 2026-11-20
+Invoice currency: USD
+
+Description                         Qty  Unit price  Disc.
+----------------------------------------------------------
+Laptop setup and imaging              6       88.77    20%
+Network cabling survey, half day      2      272.73       
+  visit
+Printer maintenance visit             2       77.21       
+Password manager licence, per user   20       28.24       
+  per year
+Data migration, per hour              3       99.66    20%
+----------------------------------------------------------
+Shipping and handling: $26.72
+Each line amount is the quantity times the unit price, less the line's discount,
+rounded half up to the cent.
+Sales tax at 8.875% is charged on the sum of the line amounts, rounded
+half up to the cent; shipping and handling is not taxed.
+Invoice total: the sum of the line amounts, plus shipping and handling, plus Sales tax.
+
+Previous balance: $2,884.47 received on 2026-09-21, thank you.
+Payment terms: 14 days.
+Thank you for your business.

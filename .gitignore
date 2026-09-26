@@ -1,0 +1,15 @@
+.venv/
+results/
+__pycache__/
+*.pyc
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+*.lock.json.bak
+
+# Local model weights (tens of GB); pinned by models/*.lock.json, fetched with hf download
+models/weights/
+*.gguf
+
+# The assembled pre-registration deposit (islands deposit); uploaded to Zenodo, not committed
+deposit/

@@ -1,0 +1,26 @@
+Invoice
+
+Billing currency: USD
+Customer: Gorsemere Veterinary Clinic
+          53 Juniper Court, Lindenharrow 24638
+Invoice number: 2841237
+Note: our earlier invoice 2840910 dated 2025-12-07 was paid in full, thank you.
+Issue date: 2026-02-03
+From: Cobblemere Lab Supplies Inc.
+      102 Saltmarsh Court, Ottersnook 79909
+
+Description                   Qty  Unit price  Disc.
+----------------------------------------------------
+Anti fog safety goggles        19        9.96       
+Cotton lab coats, size large   10       19.77       
+----------------------------------------------------
+Delivery: $26.85
+Each line amount is the quantity times the unit price, less the line's discount,
+rounded half up to the cent.
+Sales tax at 6.5% is charged on the sum of the line amounts, rounded
+half up to the cent; delivery is not taxed.
+Total: the sum of the line amounts, plus delivery, plus Sales tax.
+
+Previous balance: $1,530.10 received on 2025-12-28, thank you.
+Payment terms: 30 days.
+Thank you for your business.

@@ -1,0 +1,27 @@
+TAX INVOICE
+
+Note: our earlier invoice 4581785 dated 24/09/2026 was paid in full, thank you.
+PO number: 1505505
+From: Oakenquist Grounds Care Ltd.
+      20 Wicket Road, Starling Hythe 38706
+Invoice number: 4582571
+Customer: Foxglade Bakery
+          152 Larkspur Way, Fernhollow 88063
+Invoice date: 26/11/2026
+Invoice currency: GBP
+
+Description                    Qty  Unit price  Disc.
+-----------------------------------------------------
+Green waste removal, per load    3       97.14    15%
+Winter gritting service, per     3      122.42       
+  callout
+-----------------------------------------------------
+Freight: £40.81
+Each line amount is the quantity times the unit price, less the line's discount,
+rounded half up to the cent.
+VAT at 20% is charged on the sum of the line amounts, rounded
+half up to the cent; freight is not taxed.
+Amount due: the sum of the line amounts, plus freight, plus VAT.
+
+Payment terms: 14 days.
+Thank you for your business.

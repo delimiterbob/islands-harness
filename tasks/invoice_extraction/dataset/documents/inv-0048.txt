@@ -1,0 +1,27 @@
+INVOICE
+
+Invoice number: 6302331
+Invoice currency: EUR
+Note: our earlier invoice 6301552 dated 26/08/2025 was paid in full, thank you.
+Invoice dated: 14/09/2025
+Customer: Gorsemere Veterinary Clinic
+          110 Wicket Lane, Pellwick Cross 84383
+Your order no.: 6687663
+From: Nettlewhistle IT Services B.V.
+      196 Juniper Street, Glassmere Vale 64256
+
+Description                       Qty  Unit price  Disc.
+--------------------------------------------------------
+Firewall configuration review       1      389,22       
+Network cabling survey, half day    3      423,06       
+  visit
+--------------------------------------------------------
+Shipping and handling: 49,07 €
+Each line amount is the quantity times the unit price, less the line's discount,
+rounded half up to the cent.
+VAT at 19% is charged on the sum of the line amounts, rounded
+half up to the cent; shipping and handling is not taxed.
+Total: the sum of the line amounts, plus shipping and handling, plus VAT.
+
+Payment terms: 30 days.
+Thank you for your business.

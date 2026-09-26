@@ -1,0 +1,29 @@
+TAX INVOICE
+
+Note: our earlier invoice HA549948 dated 25/04/2026 was paid in full, thank you.
+From: Harrowfinch Lab Supplies & Co. Ltd
+      176 Marigold Road, Duskmere 75842
+Bill to: Bellmarrow Bakery
+         63 Cobble Court, Brambleketh 15013
+Your order no.: HA750350
+Invoice dated: 23/06/2026
+Invoice currency: GBP
+Invoice no.: HA550660
+
+Description                       Qty  Unit price  Disc.
+--------------------------------------------------------
+pH indicator strips, pack of 100    6        9.81       
+Pipette tips 200 ul, rack of 96    19       16.79       
+Anti fog safety goggles            19       12.74    20%
+Centrifuge tubes 50 ml, sterile,    3       23.70       
+  bag of 25
+--------------------------------------------------------
+Delivery: £26.94
+Each line amount is the quantity times the unit price, less the line's discount,
+rounded half up to the cent.
+VAT at 20% is charged on the sum of the line amounts, rounded
+half up to the cent; delivery is not taxed.
+Invoice total: the sum of the line amounts, plus delivery, plus VAT.
+
+Payment terms: 45 days.
+Thank you for your business.

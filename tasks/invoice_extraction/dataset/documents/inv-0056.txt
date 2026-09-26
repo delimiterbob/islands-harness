@@ -1,0 +1,35 @@
+Invoice
+
+Note: our earlier invoice CO439583 dated 2025-12-26 was paid in full, thank you.
+Issue date: 2026-01-14
+Currency: USD
+PO number: CO234290
+Supplier: Cobblemere Catering Supplies LLC
+          77 Orchard Street, Starling Hythe 45371
+Customer: Foxglade Theatre Company
+          213 Wicket Lane, Quillinby 92276
+Invoice #: CO439880
+
+Description                         Qty  Unit price  Disc.
+----------------------------------------------------------
+Hand soap refill, 5 litre             6       13.27       
+Sugar sticks, box of 1000             8        8.90     5%
+Paper cups 8 oz, sleeve of 1000       9       27.24    15%
+Loose leaf breakfast tea, 500 g       2       10.42       
+Arabica coffee beans, 1 kg bag        2       17.48       
+Stainless steel water jug, 1.5        5       11.77       
+  litre
+Compostable cutlery sets, box of      1       21.12    15%
+  250
+Food storage containers with lids,    1       33.62       
+  set of 20
+----------------------------------------------------------
+Freight: $41.50
+Each line amount is the quantity times the unit price, less the line's discount,
+rounded half up to the cent.
+Sales tax at 8.875% is charged on the sum of the line amounts, rounded
+half up to the cent; freight is not taxed.
+Invoice total: the sum of the line amounts, plus freight, plus Sales tax.
+
+Payment terms: 14 days.
+Thank you for your business.

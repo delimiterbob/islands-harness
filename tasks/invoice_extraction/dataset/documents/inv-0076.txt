@@ -1,0 +1,26 @@
+TAX INVOICE
+
+Bill to: Kilnbrook Dental Studio
+         59 Wicket Road, Glassmere Vale 51752
+Issue date: 2025-04-24
+Invoice #: WI854814
+Billing currency: USD
+Note: our earlier invoice WI854728 dated 2025-02-01 was paid in full, thank you.
+Purchase order: WI482656
+From: Wintercress Grounds Care Inc.
+      125 Wicket Way, Lindenharrow 32696
+
+Description                        Qty  Unit price  Disc.
+---------------------------------------------------------
+Green waste removal, per load        4       98.81       
+Lawn mowing and edging, per visit    8       72.29       
+---------------------------------------------------------
+Delivery: $38.91
+Each line amount is the quantity times the unit price, less the line's discount,
+rounded half up to the cent.
+Sales tax at 8.875% is charged on the sum of the line amounts, rounded
+half up to the cent; delivery is not taxed.
+Amount due: the sum of the line amounts, plus delivery, plus Sales tax.
+
+Payment terms: 14 days.
+Thank you for your business.

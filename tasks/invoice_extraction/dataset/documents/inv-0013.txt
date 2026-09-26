@@ -1,0 +1,32 @@
+TAX INVOICE
+
+Invoice date: 19 October 2026
+Note: our earlier invoice COP-2026-3117 dated 2 September 2026 was paid in full, thank you.
+Customer: Elderwick Bakery
+          228 Marigold Street, Harrowvane 67863
+Invoice #: COP-2026-3656
+Currency: EUR
+Issued by: Copperwick Print Studio S.A.
+           9 Larkspur Road, Wetherquill 71533
+
+Description                       Qty  Unit price  Disc.
+--------------------------------------------------------
+Round vinyl stickers 60 mm, roll    6       61,25    20%
+  of 500
+Presentation folders, box of 250    2      217,13       
+Saddle stitched booklets A5, 250    1      324,94    20%
+  copies
+A2 posters, gloss, pack of 50       3       79,48       
+A5 flyers, double sided, 2000       3      120,62     5%
+  copies
+--------------------------------------------------------
+Shipping and handling: 7,03 €
+Each line amount is the quantity times the unit price, less the line's discount,
+rounded half up to the cent.
+VAT at 19% is charged on the sum of the line amounts, rounded
+half up to the cent; shipping and handling is not taxed.
+Invoice total: the sum of the line amounts, plus shipping and handling, plus VAT.
+
+Previous balance: 1.228,89 € received on 18 July 2026, thank you.
+Payment terms: 45 days.
+Thank you for your business.

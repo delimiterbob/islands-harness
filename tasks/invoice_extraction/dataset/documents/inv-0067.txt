@@ -1,0 +1,33 @@
+INVOICE
+
+From: Fenwhistle IT Services Inc.
+      46 Pennyroyal Lane, Wetherquill 78512
+Invoice #: FEN-2026-4120
+Bill to: Juniperholt Primary School
+         5 Larkspur Row, Duskmere 75749
+Date of issue: February 22, 2026
+Currency: USD
+Note: our earlier invoice FEN-2025-4072 dated December 16, 2025 was paid in full, thank you.
+
+Description                         Qty  Unit price  Disc.
+----------------------------------------------------------
+On-site support, per hour            10       90.04       
+Monthly backup monitoring             3      149.84       
+Password manager licence, per user   14       37.35       
+  per year
+Help desk retainer, monthly, up to    1      613.54       
+  20 tickets
+Wireless access point installation    1      159.86    10%
+Network cabling survey, half day      2      427.28    20%
+  visit
+----------------------------------------------------------
+Delivery: $40.87
+Each line amount is the quantity times the unit price, less the line's discount,
+rounded half up to the cent.
+Sales tax at 8.875% is charged on the sum of the line amounts, rounded
+half up to the cent; delivery is not taxed.
+Amount due: the sum of the line amounts, plus delivery, plus Sales tax.
+
+Previous balance: $1,263.08 received on January 14, 2026, thank you.
+Payment terms: 30 days.
+Thank you for your business.

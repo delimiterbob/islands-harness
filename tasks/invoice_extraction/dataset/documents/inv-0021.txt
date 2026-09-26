@@ -1,0 +1,30 @@
+INVOICE
+
+Invoice ID: 7094014
+Purchase order: 4007137
+Invoice to: Gorsemere Primary School
+            154 Saltmarsh Street, Ottersnook 12879
+Currency: USD
+Issued by: Marrowdell Grounds Care LLC
+           16 Kettle Street, Pellwick Cross 36256
+Note: our earlier invoice 7093506 dated June 5, 2025 was paid in full, thank you.
+Invoice dated: July 16, 2025
+
+Description                       Qty  Unit price  Disc.
+--------------------------------------------------------
+Green waste removal, per load       3       66.60       
+Winter gritting service, per        4      126.35    10%
+  callout
+Hedge trimming, per linear metre   38        4.90       
+Bark mulch, bulk bag of 1 cubic     2       59.70    15%
+  metre
+--------------------------------------------------------
+Freight: $7.24
+Each line amount is the quantity times the unit price, less the line's discount,
+rounded half up to the cent.
+Sales tax at 8% is charged on the sum of the line amounts, rounded
+half up to the cent; freight is not taxed.
+Invoice total: the sum of the line amounts, plus freight, plus Sales tax.
+
+Payment terms: 14 days.
+Thank you for your business.

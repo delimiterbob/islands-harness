@@ -1,0 +1,28 @@
+TAX INVOICE
+
+Invoice to: Ashquill Cycle Works
+            64 Thimble Street, Duskmere 56487
+Note: our earlier invoice 2032107 dated 28 November 2025 was paid in full, thank you.
+Currency: GBP
+Vendor: Frostvane Print Studio Ltd
+        229 Marigold Road, Starling Hythe 85604
+Invoice no.: 2032128
+Invoice dated: 9 January 2026
+Your order no.: 7423139
+
+Description                       Qty  Unit price  Disc.
+--------------------------------------------------------
+Round vinyl stickers 60 mm, roll    5       55.65       
+  of 500
+Presentation folders, box of 250    2      185.83       
+Letterheads 100 gsm, box of 1000    4      100.81       
+--------------------------------------------------------
+Shipping and handling: £33.52
+Each line amount is the quantity times the unit price, less the line's discount,
+rounded half up to the cent.
+VAT at 20% is charged on the sum of the line amounts, rounded
+half up to the cent; shipping and handling is not taxed.
+Amount due: the sum of the line amounts, plus shipping and handling, plus VAT.
+
+Payment terms: 30 days.
+Thank you for your business.

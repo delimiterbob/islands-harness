@@ -1,0 +1,28 @@
+TAX INVOICE
+
+Note: our earlier invoice FE263123 dated 20/01/2026 was paid in full, thank you.
+Vendor: Fenwhistle Office Supplies & Co. Ltd
+        141 Cobble Road, Quillinby 56434
+Invoice dated: 18/02/2026
+Billing currency: GBP
+Invoice number: FE263885
+Bill to: Foxglade Theatre Company
+         213 Marigold Street, Brambleketh 96112
+Purchase order: FE607307
+
+Description                  Qty  Unit price  Disc.
+---------------------------------------------------
+Lever arch files, assorted    14       18.14       
+  colours, pack of 10
+Archive storage boxes, flat    2       20.81       
+  packed, pack of 10
+---------------------------------------------------
+Delivery: £49.34
+Each line amount is the quantity times the unit price, less the line's discount,
+rounded half up to the cent.
+VAT at 20% is charged on the sum of the line amounts, rounded
+half up to the cent; delivery is not taxed.
+Total due: the sum of the line amounts, plus delivery, plus VAT.
+
+Payment terms: 45 days.
+Thank you for your business.

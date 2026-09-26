@@ -1,0 +1,31 @@
+INVOICE
+
+Invoice ID: WIN-2025-2183
+Currency: USD
+Note: our earlier invoice WIN-2025-1899 dated February 20, 2025 was paid in full, thank you.
+Invoice dated: May 15, 2025
+Bill to: Juniperholt Architects
+         117 Saltmarsh Court, Brambleketh 98263
+Issued by: Wintercress Print Studio LLC
+           108 Juniper Street, Lindenharrow 32240
+
+Description                       Qty  Unit price  Disc.
+--------------------------------------------------------
+Roller banner 850 x 2000 mm with    1      113.92       
+  stand
+A5 flyers, double sided, 2000       3      139.97       
+  copies
+A2 posters, gloss, pack of 50       1       74.96       
+Saddle stitched booklets A5, 250    1      368.96       
+  copies
+--------------------------------------------------------
+Shipping and handling: $20.66
+Each line amount is the quantity times the unit price, less the line's discount,
+rounded half up to the cent.
+Sales tax at 7.25% is charged on the sum of the line amounts, rounded
+half up to the cent; shipping and handling is not taxed.
+Total: the sum of the line amounts, plus shipping and handling, plus Sales tax.
+
+Previous balance: $1,894.87 received on February 18, 2025, thank you.
+Payment terms: 14 days.
+Thank you for your business.

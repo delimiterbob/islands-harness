@@ -1,0 +1,34 @@
+Invoice
+
+Issued by: Oakenquist Lab Supplies LLC
+           26 Orchard Court, Starling Hythe 89576
+Issue date: 3 September 2026
+Invoice to: Cindervale Architects
+            26 Wicket Court, Starling Hythe 43919
+Invoice number: OAK-2026-5278
+Invoice currency: USD
+Note: our earlier invoice OAK-2026-4466 dated 4 July 2026 was paid in full, thank you.
+
+Description                         Qty  Unit price  Disc.
+----------------------------------------------------------
+Cotton lab coats, size large          2       27.63       
+pH indicator strips, pack of 100     15        8.85    20%
+Distilled water, 5 litre container    7        8.71    20%
+Centrifuge tubes 50 ml, sterile,      4       14.33       
+  bag of 25
+Sample vials 2 ml with caps, pack     9       24.76       
+  of 100
+Anti fog safety goggles               6        9.19       
+Microscope slides, frosted end,       1       13.89       
+  box of 72
+----------------------------------------------------------
+Freight: $12.38
+Each line amount is the quantity times the unit price, less the line's discount,
+rounded half up to the cent.
+Sales tax at 8% is charged on the sum of the line amounts, rounded
+half up to the cent; freight is not taxed.
+Total: the sum of the line amounts, plus freight, plus Sales tax.
+
+Previous balance: $1,136.92 received on 20 June 2026, thank you.
+Payment terms: 45 days.
+Thank you for your business.

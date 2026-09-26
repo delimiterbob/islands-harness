@@ -1,0 +1,26 @@
+INVOICE
+
+PO number: KES-2025-3279
+Note: our earlier invoice KES-2025-3499 dated 21 February 2025 was paid in full, thank you.
+Bill to: Foxglade Rowing Club
+         64 Marigold Court, Brambleketh 17609
+Invoice currency: USD
+Date of issue: 2 April 2025
+Invoice no.: KES-2025-4307
+Issued by: Kestrelmoor Office Supplies Inc.
+           33 Marigold Lane, Quillinby 38367
+
+Description                         Qty  Unit price  Disc.
+----------------------------------------------------------
+Whiteboard markers, set of 8          6        8.21       
+Laminating pouches A4, pack of 100    7       16.72       
+----------------------------------------------------------
+Freight: $21.89
+Each line amount is the quantity times the unit price, less the line's discount,
+rounded half up to the cent.
+Sales tax at 8% is charged on the sum of the line amounts, rounded
+half up to the cent; freight is not taxed.
+Total due: the sum of the line amounts, plus freight, plus Sales tax.
+
+Payment terms: 14 days.
+Thank you for your business.

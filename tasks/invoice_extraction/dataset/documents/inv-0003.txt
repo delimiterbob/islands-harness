@@ -1,0 +1,28 @@
+INVOICE
+
+Invoice dated: 15 November 2025
+Note: our earlier invoice 8145982 dated 19 September 2025 was paid in full, thank you.
+Invoice #: 8146714
+Issued by: Starlingholt Grounds Care B.V.
+           49 Saltmarsh Row, Fernhollow 62307
+Currency: EUR
+Bill to: Juniperholt Architects
+         209 Thimble Row, Glassmere Vale 34277
+
+Description                        Qty  Unit price  Disc.
+---------------------------------------------------------
+Winter gritting service, per         4      174,14       
+  callout
+Lawn mowing and edging, per visit    6       66,06    15%
+Tree survey and written report       1      391,93    15%
+---------------------------------------------------------
+Delivery: 37,79 €
+Each line amount is the quantity times the unit price, less the line's discount,
+rounded half up to the cent.
+VAT at 19% is charged on the sum of the line amounts, rounded
+half up to the cent; delivery is not taxed.
+Invoice total: the sum of the line amounts, plus delivery, plus VAT.
+
+Previous balance: 2.649,46 € received on 10 August 2025, thank you.
+Payment terms: 14 days.
+Thank you for your business.

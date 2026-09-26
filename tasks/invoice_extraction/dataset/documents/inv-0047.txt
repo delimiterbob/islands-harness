@@ -1,0 +1,34 @@
+INVOICE
+
+Your order no.: DU342652
+From: Duskwater Workshop Tools LLC
+      232 Cobble Road, Glassmere Vale 48596
+Date of issue: July 23, 2026
+Invoice #: DU472063
+Billing currency: USD
+Invoice to: Bellmarrow Veterinary Clinic
+            212 Lantern Road, Wetherquill 60151
+Note: our earlier invoice DU471460 dated April 7, 2026 was paid in full, thank you.
+
+Description                       Qty  Unit price  Disc.
+--------------------------------------------------------
+Spirit level 600 mm, aluminium      4       15.99       
+Cable ties 300 mm, bag of 100       8        4.99       
+Cut resistant work gloves, 12       9       38.81       
+  pairs
+Safety boots, steel toe, size 42    7       45.61       
+HSS drill bit set, 19 piece         9       20.85    10%
+Metric hex key set, 9 piece        12       10.68       
+Adjustable spanner 250 mm           9       21.72       
+Cordless drill driver 18 V, body    1       88.09       
+  only
+--------------------------------------------------------
+Shipping and handling: $36.89
+Each line amount is the quantity times the unit price, less the line's discount,
+rounded half up to the cent.
+Sales tax at 8% is charged on the sum of the line amounts, rounded
+half up to the cent; shipping and handling is not taxed.
+Invoice total: the sum of the line amounts, plus shipping and handling, plus Sales tax.
+
+Payment terms: 45 days.
+Thank you for your business.

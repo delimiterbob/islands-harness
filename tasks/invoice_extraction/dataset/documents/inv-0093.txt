@@ -1,0 +1,33 @@
+Invoice
+
+Invoice number: GL322909
+From: Glimmerholt Lab Supplies Inc.
+      62 Saltmarsh Road, Harrowvane 22528
+Invoice date: 25 December 2026
+Note: our earlier invoice GL322591 dated 23 November 2026 was paid in full, thank you.
+Currency: USD
+Bill to: Foxglade Primary School
+         214 Wicket Lane, Wetherquill 69222
+
+Description                         Qty  Unit price  Disc.
+----------------------------------------------------------
+Glass beakers 250 ml, pack of 12      5       38.02    10%
+Anti fog safety goggles              11       11.21    10%
+Microscope slides, frosted end,       7       11.95       
+  box of 72
+Centrifuge tubes 50 ml, sterile,      9       18.46       
+  bag of 25
+Distilled water, 5 litre container    9        6.21       
+Cotton lab coats, size large          4       30.71       
+Pipette tips 200 ul, rack of 96      21       15.77       
+----------------------------------------------------------
+Shipping and handling: $5.80
+Each line amount is the quantity times the unit price, less the line's discount,
+rounded half up to the cent.
+Sales tax at 7.25% is charged on the sum of the line amounts, rounded
+half up to the cent; shipping and handling is not taxed.
+Invoice total: the sum of the line amounts, plus shipping and handling, plus Sales tax.
+
+Previous balance: $1,295.53 received on 23 September 2026, thank you.
+Payment terms: 45 days.
+Thank you for your business.

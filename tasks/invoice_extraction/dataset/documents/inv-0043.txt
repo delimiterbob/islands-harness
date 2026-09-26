@@ -1,0 +1,27 @@
+Invoice
+
+Note: our earlier invoice CO794074 dated 24/12/2025 was paid in full, thank you.
+Currency: EUR
+Invoice ID: CO794561
+Your order no.: CO649989
+Invoice to: Hazelquay Primary School
+            149 Marigold Road, Duskmere 19281
+Issued by: Cobblemere Office Supplies S.A.
+           131 Marigold Lane, Quillinby 97879
+Issue date: 20/02/2026
+
+Description                         Qty  Unit price  Disc.
+----------------------------------------------------------
+Archive storage boxes, flat           4       21,85       
+  packed, pack of 10
+Self seal envelopes C5, box of 500    1       13,33       
+----------------------------------------------------------
+Delivery: 44,45 €
+Each line amount is the quantity times the unit price, less the line's discount,
+rounded half up to the cent.
+VAT at 19% is charged on the sum of the line amounts, rounded
+half up to the cent; delivery is not taxed.
+Total: the sum of the line amounts, plus delivery, plus VAT.
+
+Payment terms: 30 days.
+Thank you for your business.

@@ -1,0 +1,29 @@
+Invoice
+
+Invoice no.: FRO-2025-8441
+Invoice currency: EUR
+Invoice dated: 2025-06-10
+Note: our earlier invoice FRO-2025-7527 dated 2025-04-21 was paid in full, thank you.
+Vendor: Frostvane Lab Supplies GmbH
+        163 Thimble Lane, Glassmere Vale 44378
+Bill to: Dewhollow Dental Studio
+         223 Lantern Road, Glassmere Vale 18501
+
+Description                       Qty  Unit price  Disc.
+--------------------------------------------------------
+Glass beakers 250 ml, pack of 12    6       33,05       
+Centrifuge tubes 50 ml, sterile,    5       13,68       
+  bag of 25
+Microscope slides, frosted end,     9       14,95       
+  box of 72
+--------------------------------------------------------
+Delivery: 42,27 €
+Each line amount is the quantity times the unit price, less the line's discount,
+rounded half up to the cent.
+VAT at 21% is charged on the sum of the line amounts, rounded
+half up to the cent; delivery is not taxed.
+Invoice total: the sum of the line amounts, plus delivery, plus VAT.
+
+Previous balance: 1.308,61 € received on 2025-04-11, thank you.
+Payment terms: 45 days.
+Thank you for your business.

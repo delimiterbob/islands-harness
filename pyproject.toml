@@ -1,0 +1,100 @@
+[build-system]
+requires = ["hatchling==1.32.4"]
+build-backend = "hatchling.build"
+
+[project]
+name = "islands-harness"
+version = "1.0.0.dev0"
+description = "Islands of Stability harness: one agent, one task, a two-axis sweep with fault injection, a measured noise floor and pre-registered verdicts."
+readme = "README.md"
+license = { text = "Apache-2.0" }
+authors = [{ name = "Robert Encarnação" }]
+requires-python = "==3.12.*"
+keywords = ["evaluation", "agents", "fault-injection", "reproducibility", "pre-registration"]
+classifiers = [
+  "Programming Language :: Python :: 3.12",
+  "License :: OSI Approved :: Apache Software License",
+  "Operating System :: Microsoft :: Windows",
+  "Operating System :: POSIX :: Linux",
+]
+
+# Exact pins. uv.lock pins the transitive closure with hashes; these are the direct
+# dependencies at the versions verified on PyPI on 2026-09-25. Never change a pin between
+# the pre-registration deposit and the snapshot bundle.
+#
+# httpx2, not httpx: anthropic 1.x is built on httpx2 (the maintained httpx fork published
+# by Pydantic, github.com/pydantic/httpx2, version line 2.x). The netguard transport must be
+# an httpx2 transport or the SDK rejects it, and one HTTP stack for both adapters is the
+# point of D6, so the OpenAI-compatible adapter uses httpx2 as well. Same classes, same
+# behaviour, `import httpx2 as httpx`.
+dependencies = [
+  "pydantic==2.13.5",
+  "pyyaml==6.0.3",
+  "httpx2==2.13.1",
+  "anthropic==1.8.0",
+  "numpy==2.5.3",
+  "scipy==1.18.1",
+  "pandas==3.0.6",
+  "statsmodels==0.15.0",
+  "firthmodels==0.8.2",
+  "huggingface_hub==2.0.0",
+]
+
+[project.optional-dependencies]
+# Optional PNG export of the heatmap. The site reads the pure SVG; matplotlib is never required.
+plots = ["matplotlib==3.11.2"]
+# Client-mode transports through the same SDK.
+vertex = ["anthropic[vertex]==1.8.0"]
+bedrock = ["anthropic[bedrock]==1.8.0"]
+
+[project.scripts]
+islands = "islands_harness.cli:main"
+
+[project.urls]
+Homepage = "https://islandsofstability.com"
+Architecture = "https://islandsofstability.com/map"
+
+[dependency-groups]
+dev = [
+  "pytest==9.1.1",
+  "pytest-asyncio==1.4.0",
+  "hypothesis==6.168.1",
+  "ruff==0.16.9",
+]
+
+[tool.uv]
+required-version = "==0.12.19"
+# uv sync --locked is enforced by UV_LOCKED=1 in CI and in `islands sweep`.
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/islands_harness"]
+
+[tool.hatch.build.targets.sdist]
+include = ["src", "tasks", "configs", "schemas", "server", "docs", "README.md", "ARCHITECTURE.md", "LICENSE", "CITATION.cff"]
+
+[tool.ruff]
+line-length = 100
+target-version = "py312"
+src = ["src", "tests", "tasks"]
+
+[tool.ruff.lint]
+select = ["E", "F", "I", "B", "UP", "ASYNC"]
+# Line length belongs to the formatter: `ruff format` wraps code at line-length and CI runs
+# `ruff format --check`. E501 would only flag long strings and comments the formatter
+# cannot split, which here are frozen prompt and schema text.
+ignore = ["E501"]
+
+[tool.ruff.lint.flake8-bugbear]
+# Frozen dataclasses, safe as shared argument defaults (B008 would otherwise flag them).
+extend-immutable-calls = ["islands_harness.providers.netguard.RetryPolicy"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+asyncio_mode = "auto"
+# The 500-snapshot coverage experiment (ARCHITECTURE.md Section 9) is slow; the default run
+# uses the reduced count and CI passes -m "not full_simulation". Run the full one with
+#   uv run pytest -m full_simulation
+markers = [
+  "full_simulation: the full 500-snapshot coverage and false-survival run per truth preset",
+]
+addopts = "-m 'not full_simulation'"

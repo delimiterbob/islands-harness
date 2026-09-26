@@ -1,0 +1,27 @@
+TAX INVOICE
+
+Note: our earlier invoice 1827262 dated 23/04/2026 was paid in full, thank you.
+Vendor: Glimmerholt Lab Supplies Co.
+        97 Pennyroyal Row, Lindenharrow 22917
+Billing currency: USD
+Invoice dated: 13/06/2026
+Invoice no.: 1827555
+Customer: Hazelquay Veterinary Clinic
+          236 Larkspur Street, Harrowvane 90945
+
+Description                       Qty  Unit price  Disc.
+--------------------------------------------------------
+Glass beakers 250 ml, pack of 12    1       37.81    15%
+Centrifuge tubes 50 ml, sterile,    8       21.43       
+  bag of 25
+--------------------------------------------------------
+Shipping and handling: $28.57
+Each line amount is the quantity times the unit price, less the line's discount,
+rounded half up to the cent.
+Sales tax at 6.5% is charged on the sum of the line amounts, rounded
+half up to the cent; shipping and handling is not taxed.
+Total: the sum of the line amounts, plus shipping and handling, plus Sales tax.
+
+Previous balance: $739.16 received on 23/04/2026, thank you.
+Payment terms: 14 days.
+Thank you for your business.

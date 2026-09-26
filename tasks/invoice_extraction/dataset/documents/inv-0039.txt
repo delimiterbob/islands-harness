@@ -1,0 +1,33 @@
+TAX INVOICE
+
+Customer: Foxglade Rowing Club
+          57 Cobble Court, Wetherquill 90429
+Invoice #: 1781939
+Note: our earlier invoice 1781585 dated July 3, 2025 was paid in full, thank you.
+Supplier: Duskwater Print Studio & Co. Ltd
+          146 Saltmarsh Row, Wetherquill 74159
+Date of issue: September 17, 2025
+Currency: GBP
+
+Description                       Qty  Unit price  Disc.
+--------------------------------------------------------
+Presentation folders, box of 250    2      239.24       
+Design proof and artwork check,     6       71.47       
+  per hour
+Roller banner 850 x 2000 mm with    4      122.63       
+  stand
+Saddle stitched booklets A5, 250    1      304.59     5%
+  copies
+Round vinyl stickers 60 mm, roll    1       35.74       
+  of 500
+--------------------------------------------------------
+Shipping and handling: £13.17
+Each line amount is the quantity times the unit price, less the line's discount,
+rounded half up to the cent.
+VAT at 20% is charged on the sum of the line amounts, rounded
+half up to the cent; shipping and handling is not taxed.
+Invoice total: the sum of the line amounts, plus shipping and handling, plus VAT.
+
+Previous balance: £2,050.10 received on July 7, 2025, thank you.
+Payment terms: 30 days.
+Thank you for your business.

@@ -1,0 +1,27 @@
+Invoice
+
+Issue date: 2025-08-25
+Note: our earlier invoice AMB-2025-7944 dated 2025-05-10 was paid in full, thank you.
+Vendor: Amberquill Workshop Tools Inc.
+        227 Cobble Court, Wetherquill 90805
+Currency: USD
+Invoice number: AMB-2025-8114
+Bill to: Dewhollow Primary School
+         112 Larkspur Street, Quillinby 84048
+
+Description                      Qty  Unit price  Disc.
+-------------------------------------------------------
+Tape measure 8 m, magnetic hook    9       11.54       
+Metric hex key set, 9 piece        4       13.44       
+Rechargeable work light, 20 W      2       43.62       
+-------------------------------------------------------
+Shipping and handling: $40.73
+Each line amount is the quantity times the unit price, less the line's discount,
+rounded half up to the cent.
+Sales tax at 8% is charged on the sum of the line amounts, rounded
+half up to the cent; shipping and handling is not taxed.
+Total: the sum of the line amounts, plus shipping and handling, plus Sales tax.
+
+Previous balance: $1,501.93 received on 2025-06-01, thank you.
+Payment terms: 14 days.
+Thank you for your business.

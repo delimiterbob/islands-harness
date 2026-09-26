@@ -1,0 +1,2914 @@
+{
+  "inv-0001": [
+    {
+      "amount": "367.20",
+      "description": "Arabica coffee beans, 1 kg bag",
+      "quantity": "17",
+      "unit_price": "21.60"
+    },
+    {
+      "amount": "14.26",
+      "description": "Stainless steel water jug, 1.5 litre",
+      "quantity": "1",
+      "unit_price": "14.26"
+    },
+    {
+      "amount": "33.30",
+      "description": "Sugar sticks, box of 1000",
+      "quantity": "3",
+      "unit_price": "11.10"
+    },
+    {
+      "amount": "116.94",
+      "description": "Food storage containers with lids, set of 20",
+      "quantity": "6",
+      "unit_price": "19.49"
+    },
+    {
+      "amount": "323.30",
+      "description": "Paper cups 8 oz, sleeve of 1000",
+      "quantity": "10",
+      "unit_price": "32.33"
+    },
+    {
+      "amount": "26.89",
+      "description": "Napkins, two ply, white, pack of 500",
+      "quantity": "4",
+      "unit_price": "7.91"
+    },
+    {
+      "amount": "103.25",
+      "description": "Loose leaf breakfast tea, 500 g",
+      "quantity": "11",
+      "unit_price": "9.88"
+    }
+  ],
+  "inv-0002": [
+    {
+      "amount": "104.55",
+      "description": "Tamper evident seals, roll of 500",
+      "quantity": "5",
+      "unit_price": "20.91"
+    },
+    {
+      "amount": "227.00",
+      "description": "Stretch film 500 mm, cast, 6 rolls",
+      "quantity": "4",
+      "unit_price": "56.75"
+    },
+    {
+      "amount": "255.21",
+      "description": "Poly mailing bags, large, pack of 500",
+      "quantity": "7",
+      "unit_price": "40.51"
+    }
+  ],
+  "inv-0003": [
+    {
+      "amount": "696.56",
+      "description": "Winter gritting service, per callout",
+      "quantity": "4",
+      "unit_price": "174.14"
+    },
+    {
+      "amount": "336.91",
+      "description": "Lawn mowing and edging, per visit",
+      "quantity": "6",
+      "unit_price": "66.06"
+    },
+    {
+      "amount": "333.14",
+      "description": "Tree survey and written report",
+      "quantity": "1",
+      "unit_price": "391.93"
+    }
+  ],
+  "inv-0004": [
+    {
+      "amount": "121.99",
+      "description": "Tape measure 8 m, magnetic hook",
+      "quantity": "11",
+      "unit_price": "11.09"
+    },
+    {
+      "amount": "100.31",
+      "description": "Cordless drill driver 18 V, body only",
+      "quantity": "1",
+      "unit_price": "100.31"
+    },
+    {
+      "amount": "141.13",
+      "description": "Metric hex key set, 9 piece",
+      "quantity": "11",
+      "unit_price": "12.83"
+    }
+  ],
+  "inv-0005": [
+    {
+      "amount": "99.75",
+      "description": "Pallet corner protectors, pack of 200",
+      "quantity": "3",
+      "unit_price": "33.25"
+    },
+    {
+      "amount": "82.95",
+      "description": "Kraft mailer boxes, medium, pack of 25",
+      "quantity": "3",
+      "unit_price": "27.65"
+    },
+    {
+      "amount": "138.04",
+      "description": "Tamper evident seals, roll of 500",
+      "quantity": "7",
+      "unit_price": "19.72"
+    },
+    {
+      "amount": "311.74",
+      "description": "Void fill paper roll, 5 kg",
+      "quantity": "11",
+      "unit_price": "28.34"
+    },
+    {
+      "amount": "211.28",
+      "description": "Stretch film 500 mm, cast, 6 rolls",
+      "quantity": "4",
+      "unit_price": "52.82"
+    },
+    {
+      "amount": "349.34",
+      "description": "Clear packing tape 48 mm, 36 rolls",
+      "quantity": "8",
+      "unit_price": "48.52"
+    }
+  ],
+  "inv-0006": [
+    {
+      "amount": "153.47",
+      "description": "Hand soap refill, 5 litre",
+      "quantity": "9",
+      "unit_price": "17.95"
+    },
+    {
+      "amount": "120.87",
+      "description": "Food storage containers with lids, set of 20",
+      "quantity": "6",
+      "unit_price": "23.70"
+    },
+    {
+      "amount": "180.60",
+      "description": "Compostable cutlery sets, box of 250",
+      "quantity": "6",
+      "unit_price": "30.10"
+    },
+    {
+      "amount": "11.50",
+      "description": "Sugar sticks, box of 1000",
+      "quantity": "1",
+      "unit_price": "11.50"
+    }
+  ],
+  "inv-0007": [
+    {
+      "amount": "97.14",
+      "description": "Printer maintenance visit",
+      "quantity": "1",
+      "unit_price": "102.25"
+    },
+    {
+      "amount": "797.91",
+      "description": "Network cabling survey, half day visit",
+      "quantity": "3",
+      "unit_price": "265.97"
+    },
+    {
+      "amount": "639.04",
+      "description": "Data migration, per hour",
+      "quantity": "8",
+      "unit_price": "99.85"
+    },
+    {
+      "amount": "145.82",
+      "description": "Monthly backup monitoring",
+      "quantity": "1",
+      "unit_price": "162.02"
+    },
+    {
+      "amount": "422.37",
+      "description": "Firewall configuration review",
+      "quantity": "1",
+      "unit_price": "496.91"
+    }
+  ],
+  "inv-0008": [
+    {
+      "amount": "518.10",
+      "description": "Winter gritting service, per callout",
+      "quantity": "5",
+      "unit_price": "103.62"
+    },
+    {
+      "amount": "278.28",
+      "description": "Weed control treatment, per visit",
+      "quantity": "4",
+      "unit_price": "69.57"
+    },
+    {
+      "amount": "98.14",
+      "description": "Planter refresh with seasonal bulbs",
+      "quantity": "2",
+      "unit_price": "49.07"
+    },
+    {
+      "amount": "321.39",
+      "description": "Green waste removal, per load",
+      "quantity": "3",
+      "unit_price": "107.13"
+    },
+    {
+      "amount": "174.66",
+      "description": "Gutter clearing, per building",
+      "quantity": "2",
+      "unit_price": "87.33"
+    },
+    {
+      "amount": "148.14",
+      "description": "Hedge trimming, per linear metre",
+      "quantity": "46",
+      "unit_price": "3.39"
+    }
+  ],
+  "inv-0009": [
+    {
+      "amount": "191.76",
+      "description": "Clear packing tape 48 mm, 36 rolls",
+      "quantity": "6",
+      "unit_price": "31.96"
+    },
+    {
+      "amount": "242.78",
+      "description": "Bubble wrap roll 750 mm x 100 m",
+      "quantity": "9",
+      "unit_price": "33.72"
+    },
+    {
+      "amount": "121.38",
+      "description": "Void fill paper roll, 5 kg",
+      "quantity": "6",
+      "unit_price": "20.23"
+    },
+    {
+      "amount": "347.31",
+      "description": "Kraft mailer boxes, medium, pack of 25",
+      "quantity": "17",
+      "unit_price": "22.70"
+    },
+    {
+      "amount": "108.54",
+      "description": "Fragile labels, roll of 1000",
+      "quantity": "9",
+      "unit_price": "12.06"
+    },
+    {
+      "amount": "284.05",
+      "description": "Corrugated sheets 1200 x 800 mm, pack of 50",
+      "quantity": "5",
+      "unit_price": "56.81"
+    }
+  ],
+  "inv-0010": [
+    {
+      "amount": "228.00",
+      "description": "Cotton lab coats, size large",
+      "quantity": "8",
+      "unit_price": "28.50"
+    },
+    {
+      "amount": "179.90",
+      "description": "pH indicator strips, pack of 100",
+      "quantity": "14",
+      "unit_price": "12.85"
+    },
+    {
+      "amount": "109.03",
+      "description": "Pipette tips 200 ul, rack of 96",
+      "quantity": "11",
+      "unit_price": "12.39"
+    },
+    {
+      "amount": "100.08",
+      "description": "Microscope slides, frosted end, box of 72",
+      "quantity": "8",
+      "unit_price": "12.51"
+    }
+  ],
+  "inv-0011": [
+    {
+      "amount": "136.20",
+      "description": "Compostable cutlery sets, box of 250",
+      "quantity": "5",
+      "unit_price": "27.24"
+    },
+    {
+      "amount": "317.81",
+      "description": "Arabica coffee beans, 1 kg bag",
+      "quantity": "16",
+      "unit_price": "22.07"
+    },
+    {
+      "amount": "28.56",
+      "description": "Stainless steel water jug, 1.5 litre",
+      "quantity": "2",
+      "unit_price": "14.28"
+    },
+    {
+      "amount": "71.78",
+      "description": "Oat milk, barista edition, case of 6",
+      "quantity": "5",
+      "unit_price": "16.89"
+    },
+    {
+      "amount": "26.72",
+      "description": "Food storage containers with lids, set of 20",
+      "quantity": "1",
+      "unit_price": "26.72"
+    }
+  ],
+  "inv-0012": [
+    {
+      "amount": "162.19",
+      "description": "Compostable cutlery sets, box of 250",
+      "quantity": "7",
+      "unit_price": "23.17"
+    },
+    {
+      "amount": "417.68",
+      "description": "Arabica coffee beans, 1 kg bag",
+      "quantity": "19",
+      "unit_price": "23.14"
+    },
+    {
+      "amount": "95.00",
+      "description": "Sugar sticks, box of 1000",
+      "quantity": "8",
+      "unit_price": "12.50"
+    }
+  ],
+  "inv-0013": [
+    {
+      "amount": "294.00",
+      "description": "Round vinyl stickers 60 mm, roll of 500",
+      "quantity": "6",
+      "unit_price": "61.25"
+    },
+    {
+      "amount": "434.26",
+      "description": "Presentation folders, box of 250",
+      "quantity": "2",
+      "unit_price": "217.13"
+    },
+    {
+      "amount": "259.95",
+      "description": "Saddle stitched booklets A5, 250 copies",
+      "quantity": "1",
+      "unit_price": "324.94"
+    },
+    {
+      "amount": "238.44",
+      "description": "A2 posters, gloss, pack of 50",
+      "quantity": "3",
+      "unit_price": "79.48"
+    },
+    {
+      "amount": "343.77",
+      "description": "A5 flyers, double sided, 2000 copies",
+      "quantity": "3",
+      "unit_price": "120.62"
+    }
+  ],
+  "inv-0014": [
+    {
+      "amount": "32.14",
+      "description": "Glass beakers 250 ml, pack of 12",
+      "quantity": "1",
+      "unit_price": "37.81"
+    },
+    {
+      "amount": "171.44",
+      "description": "Centrifuge tubes 50 ml, sterile, bag of 25",
+      "quantity": "8",
+      "unit_price": "21.43"
+    }
+  ],
+  "inv-0015": [
+    {
+      "amount": "8.91",
+      "description": "Desk organiser, recycled plastic",
+      "quantity": "1",
+      "unit_price": "10.48"
+    },
+    {
+      "amount": "55.50",
+      "description": "Whiteboard markers, set of 8",
+      "quantity": "10",
+      "unit_price": "5.55"
+    },
+    {
+      "amount": "117.15",
+      "description": "Sticky notes 76 x 76 mm, pack of 12",
+      "quantity": "15",
+      "unit_price": "7.81"
+    },
+    {
+      "amount": "93.04",
+      "description": "Lever arch files, assorted colours, pack of 10",
+      "quantity": "4",
+      "unit_price": "23.26"
+    },
+    {
+      "amount": "212.16",
+      "description": "A4 copy paper, 80 gsm, ream of 500",
+      "quantity": "32",
+      "unit_price": "6.63"
+    },
+    {
+      "amount": "152.30",
+      "description": "Self seal envelopes C5, box of 500",
+      "quantity": "8",
+      "unit_price": "20.04"
+    },
+    {
+      "amount": "68.74",
+      "description": "Laminating pouches A4, pack of 100",
+      "quantity": "6",
+      "unit_price": "14.32"
+    }
+  ],
+  "inv-0016": [
+    {
+      "amount": "90.92",
+      "description": "Letterheads 100 gsm, box of 1000",
+      "quantity": "1",
+      "unit_price": "106.97"
+    },
+    {
+      "amount": "109.98",
+      "description": "Round vinyl stickers 60 mm, roll of 500",
+      "quantity": "2",
+      "unit_price": "61.10"
+    },
+    {
+      "amount": "170.52",
+      "description": "Business cards, matt, box of 500",
+      "quantity": "5",
+      "unit_price": "42.63"
+    },
+    {
+      "amount": "147.96",
+      "description": "A5 flyers, double sided, 2000 copies",
+      "quantity": "1",
+      "unit_price": "147.96"
+    },
+    {
+      "amount": "177.48",
+      "description": "Design proof and artwork check, per hour",
+      "quantity": "3",
+      "unit_price": "59.16"
+    }
+  ],
+  "inv-0017": [
+    {
+      "amount": "457.38",
+      "description": "Monthly backup monitoring",
+      "quantity": "2",
+      "unit_price": "228.69"
+    },
+    {
+      "amount": "376.13",
+      "description": "Data migration, per hour",
+      "quantity": "5",
+      "unit_price": "88.50"
+    }
+  ],
+  "inv-0018": [
+    {
+      "amount": "94.77",
+      "description": "Sugar sticks, box of 1000",
+      "quantity": "9",
+      "unit_price": "10.53"
+    },
+    {
+      "amount": "62.40",
+      "description": "Food storage containers with lids, set of 20",
+      "quantity": "2",
+      "unit_price": "31.20"
+    }
+  ],
+  "inv-0019": [
+    {
+      "amount": "197.68",
+      "description": "Nitrile gloves, medium, box of 100",
+      "quantity": "24",
+      "unit_price": "8.67"
+    },
+    {
+      "amount": "298.80",
+      "description": "Pipette tips 200 ul, rack of 96",
+      "quantity": "18",
+      "unit_price": "16.60"
+    },
+    {
+      "amount": "136.08",
+      "description": "Centrifuge tubes 50 ml, sterile, bag of 25",
+      "quantity": "6",
+      "unit_price": "22.68"
+    },
+    {
+      "amount": "179.64",
+      "description": "Cotton lab coats, size large",
+      "quantity": "9",
+      "unit_price": "19.96"
+    },
+    {
+      "amount": "126.18",
+      "description": "Distilled water, 5 litre container",
+      "quantity": "18",
+      "unit_price": "7.01"
+    }
+  ],
+  "inv-0020": [
+    {
+      "amount": "217.12",
+      "description": "Cordless drill driver 18 V, body only",
+      "quantity": "4",
+      "unit_price": "63.86"
+    },
+    {
+      "amount": "275.92",
+      "description": "Safety boots, steel toe, size 42",
+      "quantity": "4",
+      "unit_price": "68.98"
+    },
+    {
+      "amount": "102.50",
+      "description": "Cut resistant work gloves, 12 pairs",
+      "quantity": "4",
+      "unit_price": "32.03"
+    },
+    {
+      "amount": "279.95",
+      "description": "Rechargeable work light, 20 W",
+      "quantity": "5",
+      "unit_price": "55.99"
+    },
+    {
+      "amount": "86.50",
+      "description": "Tape measure 8 m, magnetic hook",
+      "quantity": "5",
+      "unit_price": "17.30"
+    },
+    {
+      "amount": "25.70",
+      "description": "Cable ties 300 mm, bag of 100",
+      "quantity": "5",
+      "unit_price": "5.14"
+    }
+  ],
+  "inv-0021": [
+    {
+      "amount": "199.80",
+      "description": "Green waste removal, per load",
+      "quantity": "3",
+      "unit_price": "66.60"
+    },
+    {
+      "amount": "454.86",
+      "description": "Winter gritting service, per callout",
+      "quantity": "4",
+      "unit_price": "126.35"
+    },
+    {
+      "amount": "186.20",
+      "description": "Hedge trimming, per linear metre",
+      "quantity": "38",
+      "unit_price": "4.90"
+    },
+    {
+      "amount": "101.49",
+      "description": "Bark mulch, bulk bag of 1 cubic metre",
+      "quantity": "2",
+      "unit_price": "59.70"
+    }
+  ],
+  "inv-0022": [
+    {
+      "amount": "189.24",
+      "description": "Anti fog safety goggles",
+      "quantity": "19",
+      "unit_price": "9.96"
+    },
+    {
+      "amount": "197.70",
+      "description": "Cotton lab coats, size large",
+      "quantity": "10",
+      "unit_price": "19.77"
+    }
+  ],
+  "inv-0023": [
+    {
+      "amount": "247.71",
+      "description": "Green waste removal, per load",
+      "quantity": "3",
+      "unit_price": "97.14"
+    },
+    {
+      "amount": "367.26",
+      "description": "Winter gritting service, per callout",
+      "quantity": "3",
+      "unit_price": "122.42"
+    }
+  ],
+  "inv-0024": [
+    {
+      "amount": "215.15",
+      "description": "Tape measure 8 m, magnetic hook",
+      "quantity": "14",
+      "unit_price": "18.08"
+    },
+    {
+      "amount": "311.01",
+      "description": "Cut resistant work gloves, 12 pairs",
+      "quantity": "7",
+      "unit_price": "44.43"
+    },
+    {
+      "amount": "148.05",
+      "description": "HSS drill bit set, 19 piece",
+      "quantity": "7",
+      "unit_price": "23.50"
+    },
+    {
+      "amount": "81.18",
+      "description": "Cable ties 300 mm, bag of 100",
+      "quantity": "18",
+      "unit_price": "4.51"
+    },
+    {
+      "amount": "68.75",
+      "description": "Metric hex key set, 9 piece",
+      "quantity": "5",
+      "unit_price": "13.75"
+    }
+  ],
+  "inv-0025": [
+    {
+      "amount": "173.30",
+      "description": "Compostable cutlery sets, box of 250",
+      "quantity": "8",
+      "unit_price": "24.07"
+    },
+    {
+      "amount": "174.16",
+      "description": "Arabica coffee beans, 1 kg bag",
+      "quantity": "8",
+      "unit_price": "21.77"
+    },
+    {
+      "amount": "51.96",
+      "description": "Food storage containers with lids, set of 20",
+      "quantity": "3",
+      "unit_price": "21.65"
+    },
+    {
+      "amount": "157.68",
+      "description": "Hand soap refill, 5 litre",
+      "quantity": "10",
+      "unit_price": "17.52"
+    },
+    {
+      "amount": "46.62",
+      "description": "Loose leaf breakfast tea, 500 g",
+      "quantity": "5",
+      "unit_price": "10.36"
+    },
+    {
+      "amount": "95.22",
+      "description": "Stainless steel water jug, 1.5 litre",
+      "quantity": "6",
+      "unit_price": "15.87"
+    }
+  ],
+  "inv-0026": [
+    {
+      "amount": "278.25",
+      "description": "Round vinyl stickers 60 mm, roll of 500",
+      "quantity": "5",
+      "unit_price": "55.65"
+    },
+    {
+      "amount": "371.66",
+      "description": "Presentation folders, box of 250",
+      "quantity": "2",
+      "unit_price": "185.83"
+    },
+    {
+      "amount": "403.24",
+      "description": "Letterheads 100 gsm, box of 1000",
+      "quantity": "4",
+      "unit_price": "100.81"
+    }
+  ],
+  "inv-0027": [
+    {
+      "amount": "426.10",
+      "description": "Laptop setup and imaging",
+      "quantity": "6",
+      "unit_price": "88.77"
+    },
+    {
+      "amount": "545.46",
+      "description": "Network cabling survey, half day visit",
+      "quantity": "2",
+      "unit_price": "272.73"
+    },
+    {
+      "amount": "154.42",
+      "description": "Printer maintenance visit",
+      "quantity": "2",
+      "unit_price": "77.21"
+    },
+    {
+      "amount": "564.80",
+      "description": "Password manager licence, per user per year",
+      "quantity": "20",
+      "unit_price": "28.24"
+    },
+    {
+      "amount": "239.18",
+      "description": "Data migration, per hour",
+      "quantity": "3",
+      "unit_price": "99.66"
+    }
+  ],
+  "inv-0028": [
+    {
+      "amount": "253.96",
+      "description": "Lever arch files, assorted colours, pack of 10",
+      "quantity": "14",
+      "unit_price": "18.14"
+    },
+    {
+      "amount": "41.62",
+      "description": "Archive storage boxes, flat packed, pack of 10",
+      "quantity": "2",
+      "unit_price": "20.81"
+    }
+  ],
+  "inv-0029": [
+    {
+      "amount": "210.21",
+      "description": "Archive storage boxes, flat packed, pack of 10",
+      "quantity": "10",
+      "unit_price": "24.73"
+    },
+    {
+      "amount": "70.20",
+      "description": "A4 copy paper, 80 gsm, ream of 500",
+      "quantity": "12",
+      "unit_price": "5.85"
+    },
+    {
+      "amount": "233.71",
+      "description": "Lever arch files, assorted colours, pack of 10",
+      "quantity": "12",
+      "unit_price": "21.64"
+    },
+    {
+      "amount": "62.44",
+      "description": "Desk organiser, recycled plastic",
+      "quantity": "4",
+      "unit_price": "15.61"
+    },
+    {
+      "amount": "8.54",
+      "description": "Ballpoint pens, blue, box of 50",
+      "quantity": "1",
+      "unit_price": "8.54"
+    }
+  ],
+  "inv-0030": [
+    {
+      "amount": "181.28",
+      "description": "Napkins, two ply, white, pack of 500",
+      "quantity": "22",
+      "unit_price": "8.24"
+    },
+    {
+      "amount": "162.40",
+      "description": "Oat milk, barista edition, case of 6",
+      "quantity": "16",
+      "unit_price": "10.15"
+    },
+    {
+      "amount": "162.90",
+      "description": "Hand soap refill, 5 litre",
+      "quantity": "10",
+      "unit_price": "16.29"
+    },
+    {
+      "amount": "298.60",
+      "description": "Paper cups 8 oz, sleeve of 1000",
+      "quantity": "10",
+      "unit_price": "29.86"
+    }
+  ],
+  "inv-0031": [
+    {
+      "amount": "150.59",
+      "description": "Stretch film 500 mm, cast, 6 rolls",
+      "quantity": "4",
+      "unit_price": "39.63"
+    },
+    {
+      "amount": "364.92",
+      "description": "Void fill paper roll, 5 kg",
+      "quantity": "12",
+      "unit_price": "30.41"
+    },
+    {
+      "amount": "205.47",
+      "description": "Corrugated sheets 1200 x 800 mm, pack of 50",
+      "quantity": "3",
+      "unit_price": "68.49"
+    },
+    {
+      "amount": "154.90",
+      "description": "Pallet corner protectors, pack of 200",
+      "quantity": "5",
+      "unit_price": "30.98"
+    },
+    {
+      "amount": "17.48",
+      "description": "Fragile labels, roll of 1000",
+      "quantity": "2",
+      "unit_price": "8.74"
+    },
+    {
+      "amount": "103.67",
+      "description": "Tamper evident seals, roll of 500",
+      "quantity": "7",
+      "unit_price": "14.81"
+    },
+    {
+      "amount": "132.48",
+      "description": "Poly mailing bags, large, pack of 500",
+      "quantity": "4",
+      "unit_price": "33.12"
+    },
+    {
+      "amount": "235.80",
+      "description": "Kraft mailer boxes, medium, pack of 25",
+      "quantity": "9",
+      "unit_price": "26.20"
+    }
+  ],
+  "inv-0032": [
+    {
+      "amount": "9.72",
+      "description": "Ballpoint pens, blue, box of 50",
+      "quantity": "1",
+      "unit_price": "9.72"
+    },
+    {
+      "amount": "146.00",
+      "description": "Whiteboard markers, set of 8",
+      "quantity": "25",
+      "unit_price": "5.84"
+    }
+  ],
+  "inv-0033": [
+    {
+      "amount": "400.10",
+      "description": "Cut resistant work gloves, 12 pairs",
+      "quantity": "10",
+      "unit_price": "40.01"
+    },
+    {
+      "amount": "180.96",
+      "description": "Cable ties 300 mm, bag of 100",
+      "quantity": "24",
+      "unit_price": "7.54"
+    },
+    {
+      "amount": "259.89",
+      "description": "Cordless drill driver 18 V, body only",
+      "quantity": "3",
+      "unit_price": "86.63"
+    },
+    {
+      "amount": "13.39",
+      "description": "Tape measure 8 m, magnetic hook",
+      "quantity": "1",
+      "unit_price": "13.39"
+    },
+    {
+      "amount": "97.65",
+      "description": "Rechargeable work light, 20 W",
+      "quantity": "3",
+      "unit_price": "32.55"
+    },
+    {
+      "amount": "100.44",
+      "description": "Adjustable spanner 250 mm",
+      "quantity": "8",
+      "unit_price": "14.77"
+    },
+    {
+      "amount": "128.76",
+      "description": "Spirit level 600 mm, aluminium",
+      "quantity": "6",
+      "unit_price": "21.46"
+    },
+    {
+      "amount": "36.90",
+      "description": "Metric hex key set, 9 piece",
+      "quantity": "4",
+      "unit_price": "11.53"
+    }
+  ],
+  "inv-0034": [
+    {
+      "amount": "183.60",
+      "description": "Anti fog safety goggles",
+      "quantity": "18",
+      "unit_price": "10.20"
+    },
+    {
+      "amount": "21.77",
+      "description": "Centrifuge tubes 50 ml, sterile, bag of 25",
+      "quantity": "1",
+      "unit_price": "21.77"
+    }
+  ],
+  "inv-0035": [
+    {
+      "amount": "78.10",
+      "description": "Green waste removal, per load",
+      "quantity": "1",
+      "unit_price": "78.10"
+    },
+    {
+      "amount": "224.72",
+      "description": "Bark mulch, bulk bag of 1 cubic metre",
+      "quantity": "4",
+      "unit_price": "56.18"
+    },
+    {
+      "amount": "264.87",
+      "description": "Weed control treatment, per visit",
+      "quantity": "3",
+      "unit_price": "88.29"
+    },
+    {
+      "amount": "176.94",
+      "description": "Lawn mowing and edging, per visit",
+      "quantity": "3",
+      "unit_price": "58.98"
+    },
+    {
+      "amount": "193.00",
+      "description": "Leaf clearance, per hour",
+      "quantity": "4",
+      "unit_price": "48.25"
+    }
+  ],
+  "inv-0036": [
+    {
+      "amount": "17.64",
+      "description": "A4 copy paper, 80 gsm, ream of 500",
+      "quantity": "4",
+      "unit_price": "4.41"
+    },
+    {
+      "amount": "40.61",
+      "description": "Heavy duty stapler, full strip",
+      "quantity": "2",
+      "unit_price": "25.38"
+    },
+    {
+      "amount": "210.75",
+      "description": "Sticky notes 76 x 76 mm, pack of 12",
+      "quantity": "25",
+      "unit_price": "8.43"
+    },
+    {
+      "amount": "18.85",
+      "description": "Self seal envelopes C5, box of 500",
+      "quantity": "1",
+      "unit_price": "18.85"
+    },
+    {
+      "amount": "51.40",
+      "description": "Whiteboard markers, set of 8",
+      "quantity": "10",
+      "unit_price": "5.14"
+    }
+  ],
+  "inv-0037": [
+    {
+      "amount": "409.03",
+      "description": "Network cabling survey, half day visit",
+      "quantity": "1",
+      "unit_price": "409.03"
+    },
+    {
+      "amount": "1246.36",
+      "description": "On-site support, per hour",
+      "quantity": "12",
+      "unit_price": "109.33"
+    }
+  ],
+  "inv-0038": [
+    {
+      "amount": "89.26",
+      "description": "Compostable cutlery sets, box of 250",
+      "quantity": "3",
+      "unit_price": "33.06"
+    },
+    {
+      "amount": "78.12",
+      "description": "Food storage containers with lids, set of 20",
+      "quantity": "4",
+      "unit_price": "19.53"
+    },
+    {
+      "amount": "158.88",
+      "description": "Paper cups 8 oz, sleeve of 1000",
+      "quantity": "4",
+      "unit_price": "39.72"
+    },
+    {
+      "amount": "49.20",
+      "description": "Oat milk, barista edition, case of 6",
+      "quantity": "4",
+      "unit_price": "12.30"
+    },
+    {
+      "amount": "125.16",
+      "description": "Loose leaf breakfast tea, 500 g",
+      "quantity": "12",
+      "unit_price": "10.43"
+    },
+    {
+      "amount": "130.20",
+      "description": "Napkins, two ply, white, pack of 500",
+      "quantity": "15",
+      "unit_price": "8.68"
+    },
+    {
+      "amount": "68.40",
+      "description": "Sugar sticks, box of 1000",
+      "quantity": "6",
+      "unit_price": "11.40"
+    }
+  ],
+  "inv-0039": [
+    {
+      "amount": "478.48",
+      "description": "Presentation folders, box of 250",
+      "quantity": "2",
+      "unit_price": "239.24"
+    },
+    {
+      "amount": "428.82",
+      "description": "Design proof and artwork check, per hour",
+      "quantity": "6",
+      "unit_price": "71.47"
+    },
+    {
+      "amount": "490.52",
+      "description": "Roller banner 850 x 2000 mm with stand",
+      "quantity": "4",
+      "unit_price": "122.63"
+    },
+    {
+      "amount": "289.36",
+      "description": "Saddle stitched booklets A5, 250 copies",
+      "quantity": "1",
+      "unit_price": "304.59"
+    },
+    {
+      "amount": "35.74",
+      "description": "Round vinyl stickers 60 mm, roll of 500",
+      "quantity": "1",
+      "unit_price": "35.74"
+    }
+  ],
+  "inv-0040": [
+    {
+      "amount": "49.26",
+      "description": "Whiteboard markers, set of 8",
+      "quantity": "6",
+      "unit_price": "8.21"
+    },
+    {
+      "amount": "117.04",
+      "description": "Laminating pouches A4, pack of 100",
+      "quantity": "7",
+      "unit_price": "16.72"
+    }
+  ],
+  "inv-0041": [
+    {
+      "amount": "55.26",
+      "description": "Cotton lab coats, size large",
+      "quantity": "2",
+      "unit_price": "27.63"
+    },
+    {
+      "amount": "106.20",
+      "description": "pH indicator strips, pack of 100",
+      "quantity": "15",
+      "unit_price": "8.85"
+    },
+    {
+      "amount": "48.78",
+      "description": "Distilled water, 5 litre container",
+      "quantity": "7",
+      "unit_price": "8.71"
+    },
+    {
+      "amount": "57.32",
+      "description": "Centrifuge tubes 50 ml, sterile, bag of 25",
+      "quantity": "4",
+      "unit_price": "14.33"
+    },
+    {
+      "amount": "222.84",
+      "description": "Sample vials 2 ml with caps, pack of 100",
+      "quantity": "9",
+      "unit_price": "24.76"
+    },
+    {
+      "amount": "55.14",
+      "description": "Anti fog safety goggles",
+      "quantity": "6",
+      "unit_price": "9.19"
+    },
+    {
+      "amount": "13.89",
+      "description": "Microscope slides, frosted end, box of 72",
+      "quantity": "1",
+      "unit_price": "13.89"
+    }
+  ],
+  "inv-0042": [
+    {
+      "amount": "14.60",
+      "description": "Stainless steel water jug, 1.5 litre",
+      "quantity": "1",
+      "unit_price": "14.60"
+    },
+    {
+      "amount": "132.84",
+      "description": "Food storage containers with lids, set of 20",
+      "quantity": "6",
+      "unit_price": "22.14"
+    },
+    {
+      "amount": "117.23",
+      "description": "Napkins, two ply, white, pack of 500",
+      "quantity": "19",
+      "unit_price": "6.17"
+    }
+  ],
+  "inv-0043": [
+    {
+      "amount": "87.40",
+      "description": "Archive storage boxes, flat packed, pack of 10",
+      "quantity": "4",
+      "unit_price": "21.85"
+    },
+    {
+      "amount": "13.33",
+      "description": "Self seal envelopes C5, box of 500",
+      "quantity": "1",
+      "unit_price": "13.33"
+    }
+  ],
+  "inv-0044": [
+    {
+      "amount": "274.83",
+      "description": "Winter gritting service, per callout",
+      "quantity": "3",
+      "unit_price": "101.79"
+    },
+    {
+      "amount": "503.70",
+      "description": "Bark mulch, bulk bag of 1 cubic metre",
+      "quantity": "6",
+      "unit_price": "83.95"
+    },
+    {
+      "amount": "439.79",
+      "description": "Planter refresh with seasonal bulbs",
+      "quantity": "10",
+      "unit_price": "51.74"
+    },
+    {
+      "amount": "169.09",
+      "description": "Hedge trimming, per linear metre",
+      "quantity": "37",
+      "unit_price": "4.57"
+    },
+    {
+      "amount": "80.87",
+      "description": "Weed control treatment, per visit",
+      "quantity": "1",
+      "unit_price": "80.87"
+    },
+    {
+      "amount": "570.92",
+      "description": "Lawn mowing and edging, per visit",
+      "quantity": "7",
+      "unit_price": "81.56"
+    },
+    {
+      "amount": "305.44",
+      "description": "Leaf clearance, per hour",
+      "quantity": "8",
+      "unit_price": "38.18"
+    },
+    {
+      "amount": "240.01",
+      "description": "Gutter clearing, per building",
+      "quantity": "3",
+      "unit_price": "94.12"
+    }
+  ],
+  "inv-0045": [
+    {
+      "amount": "171.20",
+      "description": "Round vinyl stickers 60 mm, roll of 500",
+      "quantity": "5",
+      "unit_price": "34.24"
+    },
+    {
+      "amount": "424.24",
+      "description": "Letterheads 100 gsm, box of 1000",
+      "quantity": "4",
+      "unit_price": "106.06"
+    }
+  ],
+  "inv-0046": [
+    {
+      "amount": "103.86",
+      "description": "Tape measure 8 m, magnetic hook",
+      "quantity": "9",
+      "unit_price": "11.54"
+    },
+    {
+      "amount": "53.76",
+      "description": "Metric hex key set, 9 piece",
+      "quantity": "4",
+      "unit_price": "13.44"
+    },
+    {
+      "amount": "87.24",
+      "description": "Rechargeable work light, 20 W",
+      "quantity": "2",
+      "unit_price": "43.62"
+    }
+  ],
+  "inv-0047": [
+    {
+      "amount": "63.96",
+      "description": "Spirit level 600 mm, aluminium",
+      "quantity": "4",
+      "unit_price": "15.99"
+    },
+    {
+      "amount": "39.92",
+      "description": "Cable ties 300 mm, bag of 100",
+      "quantity": "8",
+      "unit_price": "4.99"
+    },
+    {
+      "amount": "349.29",
+      "description": "Cut resistant work gloves, 12 pairs",
+      "quantity": "9",
+      "unit_price": "38.81"
+    },
+    {
+      "amount": "319.27",
+      "description": "Safety boots, steel toe, size 42",
+      "quantity": "7",
+      "unit_price": "45.61"
+    },
+    {
+      "amount": "168.89",
+      "description": "HSS drill bit set, 19 piece",
+      "quantity": "9",
+      "unit_price": "20.85"
+    },
+    {
+      "amount": "128.16",
+      "description": "Metric hex key set, 9 piece",
+      "quantity": "12",
+      "unit_price": "10.68"
+    },
+    {
+      "amount": "195.48",
+      "description": "Adjustable spanner 250 mm",
+      "quantity": "9",
+      "unit_price": "21.72"
+    },
+    {
+      "amount": "88.09",
+      "description": "Cordless drill driver 18 V, body only",
+      "quantity": "1",
+      "unit_price": "88.09"
+    }
+  ],
+  "inv-0048": [
+    {
+      "amount": "389.22",
+      "description": "Firewall configuration review",
+      "quantity": "1",
+      "unit_price": "389.22"
+    },
+    {
+      "amount": "1269.18",
+      "description": "Network cabling survey, half day visit",
+      "quantity": "3",
+      "unit_price": "423.06"
+    }
+  ],
+  "inv-0049": [
+    {
+      "amount": "248.16",
+      "description": "HSS drill bit set, 19 piece",
+      "quantity": "8",
+      "unit_price": "31.02"
+    },
+    {
+      "amount": "35.86",
+      "description": "Adjustable spanner 250 mm",
+      "quantity": "2",
+      "unit_price": "17.93"
+    },
+    {
+      "amount": "123.48",
+      "description": "Spirit level 600 mm, aluminium",
+      "quantity": "7",
+      "unit_price": "17.64"
+    },
+    {
+      "amount": "127.95",
+      "description": "Cut resistant work gloves, 12 pairs",
+      "quantity": "4",
+      "unit_price": "33.67"
+    },
+    {
+      "amount": "129.36",
+      "description": "Tape measure 8 m, magnetic hook",
+      "quantity": "9",
+      "unit_price": "16.91"
+    },
+    {
+      "amount": "53.46",
+      "description": "Metric hex key set, 9 piece",
+      "quantity": "4",
+      "unit_price": "14.85"
+    },
+    {
+      "amount": "201.66",
+      "description": "Safety boots, steel toe, size 42",
+      "quantity": "3",
+      "unit_price": "67.22"
+    }
+  ],
+  "inv-0050": [
+    {
+      "amount": "212.04",
+      "description": "Void fill paper roll, 5 kg",
+      "quantity": "9",
+      "unit_price": "23.56"
+    },
+    {
+      "amount": "84.24",
+      "description": "Fragile labels, roll of 1000",
+      "quantity": "10",
+      "unit_price": "9.36"
+    },
+    {
+      "amount": "103.43",
+      "description": "Clear packing tape 48 mm, 36 rolls",
+      "quantity": "3",
+      "unit_price": "40.56"
+    }
+  ],
+  "inv-0051": [
+    {
+      "amount": "20.70",
+      "description": "Food storage containers with lids, set of 20",
+      "quantity": "1",
+      "unit_price": "20.70"
+    },
+    {
+      "amount": "63.35",
+      "description": "Hand soap refill, 5 litre",
+      "quantity": "5",
+      "unit_price": "12.67"
+    }
+  ],
+  "inv-0052": [
+    {
+      "amount": "624.03",
+      "description": "Monthly backup monitoring",
+      "quantity": "3",
+      "unit_price": "208.01"
+    },
+    {
+      "amount": "430.56",
+      "description": "Password manager licence, per user per year",
+      "quantity": "16",
+      "unit_price": "26.91"
+    },
+    {
+      "amount": "197.85",
+      "description": "Wireless access point installation",
+      "quantity": "1",
+      "unit_price": "197.85"
+    },
+    {
+      "amount": "893.13",
+      "description": "Network cabling survey, half day visit",
+      "quantity": "3",
+      "unit_price": "297.71"
+    },
+    {
+      "amount": "898.02",
+      "description": "On-site support, per hour",
+      "quantity": "10",
+      "unit_price": "99.78"
+    },
+    {
+      "amount": "527.58",
+      "description": "Firewall configuration review",
+      "quantity": "1",
+      "unit_price": "527.58"
+    }
+  ],
+  "inv-0053": [
+    {
+      "amount": "495.45",
+      "description": "Monthly backup monitoring",
+      "quantity": "3",
+      "unit_price": "165.15"
+    },
+    {
+      "amount": "730.64",
+      "description": "Data migration, per hour",
+      "quantity": "8",
+      "unit_price": "91.33"
+    },
+    {
+      "amount": "275.98",
+      "description": "Laptop setup and imaging",
+      "quantity": "2",
+      "unit_price": "153.32"
+    }
+  ],
+  "inv-0054": [
+    {
+      "amount": "17.42",
+      "description": "Fragile labels, roll of 1000",
+      "quantity": "2",
+      "unit_price": "10.89"
+    },
+    {
+      "amount": "312.05",
+      "description": "Void fill paper roll, 5 kg",
+      "quantity": "11",
+      "unit_price": "31.52"
+    }
+  ],
+  "inv-0055": [
+    {
+      "amount": "40.68",
+      "description": "pH indicator strips, pack of 100",
+      "quantity": "3",
+      "unit_price": "13.56"
+    },
+    {
+      "amount": "74.28",
+      "description": "Sample vials 2 ml with caps, pack of 100",
+      "quantity": "4",
+      "unit_price": "18.57"
+    },
+    {
+      "amount": "120.63",
+      "description": "Anti fog safety goggles",
+      "quantity": "14",
+      "unit_price": "9.07"
+    },
+    {
+      "amount": "178.36",
+      "description": "Pipette tips 200 ul, rack of 96",
+      "quantity": "13",
+      "unit_price": "13.72"
+    },
+    {
+      "amount": "128.10",
+      "description": "Microscope slides, frosted end, box of 72",
+      "quantity": "10",
+      "unit_price": "12.81"
+    }
+  ],
+  "inv-0056": [
+    {
+      "amount": "79.62",
+      "description": "Hand soap refill, 5 litre",
+      "quantity": "6",
+      "unit_price": "13.27"
+    },
+    {
+      "amount": "67.64",
+      "description": "Sugar sticks, box of 1000",
+      "quantity": "8",
+      "unit_price": "8.90"
+    },
+    {
+      "amount": "208.39",
+      "description": "Paper cups 8 oz, sleeve of 1000",
+      "quantity": "9",
+      "unit_price": "27.24"
+    },
+    {
+      "amount": "20.84",
+      "description": "Loose leaf breakfast tea, 500 g",
+      "quantity": "2",
+      "unit_price": "10.42"
+    },
+    {
+      "amount": "34.96",
+      "description": "Arabica coffee beans, 1 kg bag",
+      "quantity": "2",
+      "unit_price": "17.48"
+    },
+    {
+      "amount": "58.85",
+      "description": "Stainless steel water jug, 1.5 litre",
+      "quantity": "5",
+      "unit_price": "11.77"
+    },
+    {
+      "amount": "17.95",
+      "description": "Compostable cutlery sets, box of 250",
+      "quantity": "1",
+      "unit_price": "21.12"
+    },
+    {
+      "amount": "33.62",
+      "description": "Food storage containers with lids, set of 20",
+      "quantity": "1",
+      "unit_price": "33.62"
+    }
+  ],
+  "inv-0057": [
+    {
+      "amount": "100.08",
+      "description": "Tamper evident seals, roll of 500",
+      "quantity": "6",
+      "unit_price": "16.68"
+    },
+    {
+      "amount": "212.88",
+      "description": "Kraft mailer boxes, medium, pack of 25",
+      "quantity": "8",
+      "unit_price": "26.61"
+    }
+  ],
+  "inv-0058": [
+    {
+      "amount": "240.35",
+      "description": "Corrugated sheets 1200 x 800 mm, pack of 50",
+      "quantity": "5",
+      "unit_price": "48.07"
+    },
+    {
+      "amount": "51.90",
+      "description": "Poly mailing bags, large, pack of 500",
+      "quantity": "2",
+      "unit_price": "25.95"
+    },
+    {
+      "amount": "144.64",
+      "description": "Void fill paper roll, 5 kg",
+      "quantity": "8",
+      "unit_price": "22.60"
+    },
+    {
+      "amount": "103.11",
+      "description": "Tamper evident seals, roll of 500",
+      "quantity": "7",
+      "unit_price": "17.33"
+    }
+  ],
+  "inv-0059": [
+    {
+      "amount": "8.25",
+      "description": "Whiteboard markers, set of 8",
+      "quantity": "1",
+      "unit_price": "8.25"
+    },
+    {
+      "amount": "27.35",
+      "description": "Heavy duty stapler, full strip",
+      "quantity": "1",
+      "unit_price": "30.39"
+    },
+    {
+      "amount": "110.83",
+      "description": "Ballpoint pens, blue, box of 50",
+      "quantity": "13",
+      "unit_price": "10.03"
+    },
+    {
+      "amount": "136.80",
+      "description": "Self seal envelopes C5, box of 500",
+      "quantity": "8",
+      "unit_price": "19.00"
+    },
+    {
+      "amount": "98.95",
+      "description": "Archive storage boxes, flat packed, pack of 10",
+      "quantity": "5",
+      "unit_price": "19.79"
+    },
+    {
+      "amount": "148.60",
+      "description": "A4 copy paper, 80 gsm, ream of 500",
+      "quantity": "20",
+      "unit_price": "7.43"
+    },
+    {
+      "amount": "108.16",
+      "description": "Sticky notes 76 x 76 mm, pack of 12",
+      "quantity": "16",
+      "unit_price": "6.76"
+    }
+  ],
+  "inv-0060": [
+    {
+      "amount": "135.75",
+      "description": "Napkins, two ply, white, pack of 500",
+      "quantity": "15",
+      "unit_price": "9.05"
+    },
+    {
+      "amount": "17.29",
+      "description": "Stainless steel water jug, 1.5 litre",
+      "quantity": "1",
+      "unit_price": "19.21"
+    },
+    {
+      "amount": "99.11",
+      "description": "Loose leaf breakfast tea, 500 g",
+      "quantity": "11",
+      "unit_price": "9.01"
+    },
+    {
+      "amount": "99.90",
+      "description": "Hand soap refill, 5 litre",
+      "quantity": "9",
+      "unit_price": "11.10"
+    }
+  ],
+  "inv-0061": [
+    {
+      "amount": "80.45",
+      "description": "Self seal envelopes C5, box of 500",
+      "quantity": "5",
+      "unit_price": "16.09"
+    },
+    {
+      "amount": "77.30",
+      "description": "Archive storage boxes, flat packed, pack of 10",
+      "quantity": "5",
+      "unit_price": "15.46"
+    }
+  ],
+  "inv-0062": [
+    {
+      "amount": "534.45",
+      "description": "Winter gritting service, per callout",
+      "quantity": "5",
+      "unit_price": "106.89"
+    },
+    {
+      "amount": "408.61",
+      "description": "Tree survey and written report",
+      "quantity": "1",
+      "unit_price": "408.61"
+    },
+    {
+      "amount": "417.89",
+      "description": "Leaf clearance, per hour",
+      "quantity": "12",
+      "unit_price": "40.97"
+    },
+    {
+      "amount": "206.88",
+      "description": "Planter refresh with seasonal bulbs",
+      "quantity": "3",
+      "unit_price": "68.96"
+    },
+    {
+      "amount": "265.44",
+      "description": "Weed control treatment, per visit",
+      "quantity": "6",
+      "unit_price": "55.30"
+    }
+  ],
+  "inv-0063": [
+    {
+      "amount": "234.78",
+      "description": "Roller banner 850 x 2000 mm with stand",
+      "quantity": "3",
+      "unit_price": "78.26"
+    },
+    {
+      "amount": "121.38",
+      "description": "Business cards, matt, box of 500",
+      "quantity": "3",
+      "unit_price": "40.46"
+    }
+  ],
+  "inv-0064": [
+    {
+      "amount": "33.25",
+      "description": "Cut resistant work gloves, 12 pairs",
+      "quantity": "1",
+      "unit_price": "41.56"
+    },
+    {
+      "amount": "20.97",
+      "description": "Adjustable spanner 250 mm",
+      "quantity": "1",
+      "unit_price": "20.97"
+    },
+    {
+      "amount": "150.29",
+      "description": "HSS drill bit set, 19 piece",
+      "quantity": "7",
+      "unit_price": "21.47"
+    }
+  ],
+  "inv-0065": [
+    {
+      "amount": "231.75",
+      "description": "Business cards, matt, box of 500",
+      "quantity": "5",
+      "unit_price": "46.35"
+    },
+    {
+      "amount": "142.09",
+      "description": "A5 flyers, double sided, 2000 copies",
+      "quantity": "1",
+      "unit_price": "142.09"
+    },
+    {
+      "amount": "210.24",
+      "description": "Presentation folders, box of 250",
+      "quantity": "1",
+      "unit_price": "210.24"
+    },
+    {
+      "amount": "95.96",
+      "description": "Round vinyl stickers 60 mm, roll of 500",
+      "quantity": "2",
+      "unit_price": "47.98"
+    },
+    {
+      "amount": "239.76",
+      "description": "Wall calendars, spiral bound, 100 copies",
+      "quantity": "1",
+      "unit_price": "282.07"
+    },
+    {
+      "amount": "78.46",
+      "description": "Design proof and artwork check, per hour",
+      "quantity": "2",
+      "unit_price": "39.23"
+    },
+    {
+      "amount": "415.25",
+      "description": "A2 posters, gloss, pack of 50",
+      "quantity": "5",
+      "unit_price": "83.05"
+    },
+    {
+      "amount": "242.43",
+      "description": "Roller banner 850 x 2000 mm with stand",
+      "quantity": "3",
+      "unit_price": "89.79"
+    }
+  ],
+  "inv-0066": [
+    {
+      "amount": "156.80",
+      "description": "Anti fog safety goggles",
+      "quantity": "16",
+      "unit_price": "12.25"
+    },
+    {
+      "amount": "116.76",
+      "description": "Sample vials 2 ml with caps, pack of 100",
+      "quantity": "4",
+      "unit_price": "29.19"
+    },
+    {
+      "amount": "75.00",
+      "description": "pH indicator strips, pack of 100",
+      "quantity": "5",
+      "unit_price": "15.00"
+    },
+    {
+      "amount": "197.60",
+      "description": "Glass beakers 250 ml, pack of 12",
+      "quantity": "5",
+      "unit_price": "39.52"
+    }
+  ],
+  "inv-0067": [
+    {
+      "amount": "900.40",
+      "description": "On-site support, per hour",
+      "quantity": "10",
+      "unit_price": "90.04"
+    },
+    {
+      "amount": "449.52",
+      "description": "Monthly backup monitoring",
+      "quantity": "3",
+      "unit_price": "149.84"
+    },
+    {
+      "amount": "522.90",
+      "description": "Password manager licence, per user per year",
+      "quantity": "14",
+      "unit_price": "37.35"
+    },
+    {
+      "amount": "613.54",
+      "description": "Help desk retainer, monthly, up to 20 tickets",
+      "quantity": "1",
+      "unit_price": "613.54"
+    },
+    {
+      "amount": "143.87",
+      "description": "Wireless access point installation",
+      "quantity": "1",
+      "unit_price": "159.86"
+    },
+    {
+      "amount": "683.65",
+      "description": "Network cabling survey, half day visit",
+      "quantity": "2",
+      "unit_price": "427.28"
+    }
+  ],
+  "inv-0068": [
+    {
+      "amount": "427.28",
+      "description": "Leaf clearance, per hour",
+      "quantity": "11",
+      "unit_price": "43.16"
+    },
+    {
+      "amount": "388.59",
+      "description": "Tree survey and written report",
+      "quantity": "1",
+      "unit_price": "388.59"
+    },
+    {
+      "amount": "479.08",
+      "description": "Planter refresh with seasonal bulbs",
+      "quantity": "7",
+      "unit_price": "68.44"
+    },
+    {
+      "amount": "106.35",
+      "description": "Gutter clearing, per building",
+      "quantity": "1",
+      "unit_price": "106.35"
+    },
+    {
+      "amount": "64.98",
+      "description": "Hedge trimming, per linear metre",
+      "quantity": "18",
+      "unit_price": "3.61"
+    },
+    {
+      "amount": "710.95",
+      "description": "Winter gritting service, per callout",
+      "quantity": "5",
+      "unit_price": "142.19"
+    },
+    {
+      "amount": "169.32",
+      "description": "Bark mulch, bulk bag of 1 cubic metre",
+      "quantity": "2",
+      "unit_price": "84.66"
+    }
+  ],
+  "inv-0069": [
+    {
+      "amount": "159.39",
+      "description": "HSS drill bit set, 19 piece",
+      "quantity": "7",
+      "unit_price": "25.30"
+    },
+    {
+      "amount": "22.88",
+      "description": "Tape measure 8 m, magnetic hook",
+      "quantity": "2",
+      "unit_price": "11.44"
+    },
+    {
+      "amount": "30.38",
+      "description": "Adjustable spanner 250 mm",
+      "quantity": "2",
+      "unit_price": "15.19"
+    },
+    {
+      "amount": "108.36",
+      "description": "Cable ties 300 mm, bag of 100",
+      "quantity": "18",
+      "unit_price": "6.02"
+    }
+  ],
+  "inv-0070": [
+    {
+      "amount": "822.26",
+      "description": "Firewall configuration review",
+      "quantity": "2",
+      "unit_price": "411.13"
+    },
+    {
+      "amount": "619.92",
+      "description": "Password manager licence, per user per year",
+      "quantity": "24",
+      "unit_price": "25.83"
+    },
+    {
+      "amount": "480.12",
+      "description": "Help desk retainer, monthly, up to 20 tickets",
+      "quantity": "1",
+      "unit_price": "480.12"
+    },
+    {
+      "amount": "531.86",
+      "description": "On-site support, per hour",
+      "quantity": "7",
+      "unit_price": "75.98"
+    },
+    {
+      "amount": "241.20",
+      "description": "Network cabling survey, half day visit",
+      "quantity": "1",
+      "unit_price": "301.50"
+    },
+    {
+      "amount": "537.54",
+      "description": "Wireless access point installation",
+      "quantity": "3",
+      "unit_price": "188.61"
+    }
+  ],
+  "inv-0071": [
+    {
+      "amount": "75.63",
+      "description": "Heavy duty stapler, full strip",
+      "quantity": "3",
+      "unit_price": "25.21"
+    },
+    {
+      "amount": "186.34",
+      "description": "Whiteboard markers, set of 8",
+      "quantity": "22",
+      "unit_price": "8.47"
+    },
+    {
+      "amount": "29.34",
+      "description": "Laminating pouches A4, pack of 100",
+      "quantity": "2",
+      "unit_price": "15.44"
+    },
+    {
+      "amount": "104.86",
+      "description": "Desk organiser, recycled plastic",
+      "quantity": "7",
+      "unit_price": "14.98"
+    },
+    {
+      "amount": "37.36",
+      "description": "Archive storage boxes, flat packed, pack of 10",
+      "quantity": "2",
+      "unit_price": "18.68"
+    },
+    {
+      "amount": "41.46",
+      "description": "Self seal envelopes C5, box of 500",
+      "quantity": "3",
+      "unit_price": "16.26"
+    }
+  ],
+  "inv-0072": [
+    {
+      "amount": "219.42",
+      "description": "Napkins, two ply, white, pack of 500",
+      "quantity": "23",
+      "unit_price": "9.54"
+    },
+    {
+      "amount": "112.05",
+      "description": "Sugar sticks, box of 1000",
+      "quantity": "9",
+      "unit_price": "12.45"
+    },
+    {
+      "amount": "123.36",
+      "description": "Oat milk, barista edition, case of 6",
+      "quantity": "12",
+      "unit_price": "10.28"
+    },
+    {
+      "amount": "91.49",
+      "description": "Hand soap refill, 5 litre",
+      "quantity": "7",
+      "unit_price": "13.07"
+    },
+    {
+      "amount": "36.04",
+      "description": "Loose leaf breakfast tea, 500 g",
+      "quantity": "4",
+      "unit_price": "9.01"
+    },
+    {
+      "amount": "132.78",
+      "description": "Food storage containers with lids, set of 20",
+      "quantity": "6",
+      "unit_price": "22.13"
+    }
+  ],
+  "inv-0073": [
+    {
+      "amount": "272.74",
+      "description": "Cordless drill driver 18 V, body only",
+      "quantity": "3",
+      "unit_price": "113.64"
+    },
+    {
+      "amount": "394.52",
+      "description": "Safety boots, steel toe, size 42",
+      "quantity": "7",
+      "unit_price": "56.36"
+    },
+    {
+      "amount": "115.65",
+      "description": "Tape measure 8 m, magnetic hook",
+      "quantity": "9",
+      "unit_price": "12.85"
+    },
+    {
+      "amount": "30.82",
+      "description": "Metric hex key set, 9 piece",
+      "quantity": "2",
+      "unit_price": "15.41"
+    },
+    {
+      "amount": "98.80",
+      "description": "Adjustable spanner 250 mm",
+      "quantity": "8",
+      "unit_price": "12.35"
+    },
+    {
+      "amount": "168.40",
+      "description": "Rechargeable work light, 20 W",
+      "quantity": "4",
+      "unit_price": "42.10"
+    }
+  ],
+  "inv-0074": [
+    {
+      "amount": "67.72",
+      "description": "Nitrile gloves, medium, box of 100",
+      "quantity": "11",
+      "unit_price": "6.48"
+    },
+    {
+      "amount": "24.34",
+      "description": "pH indicator strips, pack of 100",
+      "quantity": "2",
+      "unit_price": "12.17"
+    },
+    {
+      "amount": "141.53",
+      "description": "Microscope slides, frosted end, box of 72",
+      "quantity": "9",
+      "unit_price": "18.50"
+    },
+    {
+      "amount": "60.96",
+      "description": "Cotton lab coats, size large",
+      "quantity": "2",
+      "unit_price": "30.48"
+    },
+    {
+      "amount": "75.86",
+      "description": "Glass beakers 250 ml, pack of 12",
+      "quantity": "2",
+      "unit_price": "37.93"
+    }
+  ],
+  "inv-0075": [
+    {
+      "amount": "224.14",
+      "description": "Password manager licence, per user per year",
+      "quantity": "7",
+      "unit_price": "32.02"
+    },
+    {
+      "amount": "1172.52",
+      "description": "Help desk retainer, monthly, up to 20 tickets",
+      "quantity": "2",
+      "unit_price": "586.26"
+    }
+  ],
+  "inv-0076": [
+    {
+      "amount": "395.24",
+      "description": "Green waste removal, per load",
+      "quantity": "4",
+      "unit_price": "98.81"
+    },
+    {
+      "amount": "578.32",
+      "description": "Lawn mowing and edging, per visit",
+      "quantity": "8",
+      "unit_price": "72.29"
+    }
+  ],
+  "inv-0077": [
+    {
+      "amount": "471.38",
+      "description": "Wall calendars, spiral bound, 100 copies",
+      "quantity": "2",
+      "unit_price": "294.61"
+    },
+    {
+      "amount": "65.81",
+      "description": "Letterheads 100 gsm, box of 1000",
+      "quantity": "1",
+      "unit_price": "65.81"
+    },
+    {
+      "amount": "101.63",
+      "description": "Roller banner 850 x 2000 mm with stand",
+      "quantity": "1",
+      "unit_price": "101.63"
+    },
+    {
+      "amount": "37.28",
+      "description": "Round vinyl stickers 60 mm, roll of 500",
+      "quantity": "1",
+      "unit_price": "39.24"
+    },
+    {
+      "amount": "416.29",
+      "description": "Saddle stitched booklets A5, 250 copies",
+      "quantity": "2",
+      "unit_price": "219.10"
+    }
+  ],
+  "inv-0078": [
+    {
+      "amount": "237.00",
+      "description": "Napkins, two ply, white, pack of 500",
+      "quantity": "25",
+      "unit_price": "9.48"
+    },
+    {
+      "amount": "103.86",
+      "description": "Compostable cutlery sets, box of 250",
+      "quantity": "3",
+      "unit_price": "34.62"
+    },
+    {
+      "amount": "66.95",
+      "description": "Stainless steel water jug, 1.5 litre",
+      "quantity": "5",
+      "unit_price": "13.39"
+    },
+    {
+      "amount": "128.20",
+      "description": "Oat milk, barista edition, case of 6",
+      "quantity": "10",
+      "unit_price": "12.82"
+    },
+    {
+      "amount": "69.07",
+      "description": "Sugar sticks, box of 1000",
+      "quantity": "6",
+      "unit_price": "12.79"
+    },
+    {
+      "amount": "98.30",
+      "description": "Loose leaf breakfast tea, 500 g",
+      "quantity": "10",
+      "unit_price": "9.83"
+    },
+    {
+      "amount": "281.45",
+      "description": "Paper cups 8 oz, sleeve of 1000",
+      "quantity": "8",
+      "unit_price": "41.39"
+    },
+    {
+      "amount": "73.62",
+      "description": "Hand soap refill, 5 litre",
+      "quantity": "6",
+      "unit_price": "12.27"
+    }
+  ],
+  "inv-0079": [
+    {
+      "amount": "113.92",
+      "description": "Roller banner 850 x 2000 mm with stand",
+      "quantity": "1",
+      "unit_price": "113.92"
+    },
+    {
+      "amount": "419.91",
+      "description": "A5 flyers, double sided, 2000 copies",
+      "quantity": "3",
+      "unit_price": "139.97"
+    },
+    {
+      "amount": "74.96",
+      "description": "A2 posters, gloss, pack of 50",
+      "quantity": "1",
+      "unit_price": "74.96"
+    },
+    {
+      "amount": "368.96",
+      "description": "Saddle stitched booklets A5, 250 copies",
+      "quantity": "1",
+      "unit_price": "368.96"
+    }
+  ],
+  "inv-0080": [
+    {
+      "amount": "50.16",
+      "description": "Ballpoint pens, blue, box of 50",
+      "quantity": "6",
+      "unit_price": "10.45"
+    },
+    {
+      "amount": "210.06",
+      "description": "Lever arch files, assorted colours, pack of 10",
+      "quantity": "9",
+      "unit_price": "23.34"
+    },
+    {
+      "amount": "66.24",
+      "description": "Desk organiser, recycled plastic",
+      "quantity": "6",
+      "unit_price": "11.04"
+    },
+    {
+      "amount": "80.96",
+      "description": "A4 copy paper, 80 gsm, ream of 500",
+      "quantity": "15",
+      "unit_price": "6.35"
+    },
+    {
+      "amount": "199.92",
+      "description": "Sticky notes 76 x 76 mm, pack of 12",
+      "quantity": "28",
+      "unit_price": "8.40"
+    }
+  ],
+  "inv-0081": [
+    {
+      "amount": "302.62",
+      "description": "Wall calendars, spiral bound, 100 copies",
+      "quantity": "1",
+      "unit_price": "302.62"
+    },
+    {
+      "amount": "471.88",
+      "description": "Presentation folders, box of 250",
+      "quantity": "2",
+      "unit_price": "235.94"
+    }
+  ],
+  "inv-0082": [
+    {
+      "amount": "222.48",
+      "description": "Sample vials 2 ml with caps, pack of 100",
+      "quantity": "12",
+      "unit_price": "18.54"
+    },
+    {
+      "amount": "157.65",
+      "description": "Anti fog safety goggles",
+      "quantity": "15",
+      "unit_price": "10.51"
+    },
+    {
+      "amount": "11.76",
+      "description": "pH indicator strips, pack of 100",
+      "quantity": "1",
+      "unit_price": "11.76"
+    },
+    {
+      "amount": "145.88",
+      "description": "Glass beakers 250 ml, pack of 12",
+      "quantity": "4",
+      "unit_price": "36.47"
+    },
+    {
+      "amount": "197.22",
+      "description": "Pipette tips 200 ul, rack of 96",
+      "quantity": "19",
+      "unit_price": "10.38"
+    },
+    {
+      "amount": "111.75",
+      "description": "Distilled water, 5 litre container",
+      "quantity": "15",
+      "unit_price": "7.45"
+    }
+  ],
+  "inv-0083": [
+    {
+      "amount": "30.74",
+      "description": "Heavy duty stapler, full strip",
+      "quantity": "1",
+      "unit_price": "30.74"
+    },
+    {
+      "amount": "80.94",
+      "description": "Self seal envelopes C5, box of 500",
+      "quantity": "5",
+      "unit_price": "17.04"
+    },
+    {
+      "amount": "200.61",
+      "description": "A4 copy paper, 80 gsm, ream of 500",
+      "quantity": "27",
+      "unit_price": "7.43"
+    },
+    {
+      "amount": "160.70",
+      "description": "Desk organiser, recycled plastic",
+      "quantity": "10",
+      "unit_price": "16.07"
+    },
+    {
+      "amount": "41.70",
+      "description": "Whiteboard markers, set of 8",
+      "quantity": "6",
+      "unit_price": "6.95"
+    },
+    {
+      "amount": "226.20",
+      "description": "Ballpoint pens, blue, box of 50",
+      "quantity": "15",
+      "unit_price": "15.08"
+    },
+    {
+      "amount": "77.16",
+      "description": "Laminating pouches A4, pack of 100",
+      "quantity": "5",
+      "unit_price": "19.29"
+    },
+    {
+      "amount": "199.60",
+      "description": "Archive storage boxes, flat packed, pack of 10",
+      "quantity": "10",
+      "unit_price": "19.96"
+    }
+  ],
+  "inv-0084": [
+    {
+      "amount": "15.21",
+      "description": "Archive storage boxes, flat packed, pack of 10",
+      "quantity": "1",
+      "unit_price": "15.21"
+    },
+    {
+      "amount": "13.29",
+      "description": "Ballpoint pens, blue, box of 50",
+      "quantity": "1",
+      "unit_price": "13.29"
+    },
+    {
+      "amount": "62.03",
+      "description": "Heavy duty stapler, full strip",
+      "quantity": "4",
+      "unit_price": "17.23"
+    },
+    {
+      "amount": "32.88",
+      "description": "Sticky notes 76 x 76 mm, pack of 12",
+      "quantity": "3",
+      "unit_price": "10.96"
+    }
+  ],
+  "inv-0085": [
+    {
+      "amount": "113.35",
+      "description": "Self seal envelopes C5, box of 500",
+      "quantity": "5",
+      "unit_price": "22.67"
+    },
+    {
+      "amount": "81.30",
+      "description": "Lever arch files, assorted colours, pack of 10",
+      "quantity": "6",
+      "unit_price": "13.55"
+    },
+    {
+      "amount": "199.20",
+      "description": "Ballpoint pens, blue, box of 50",
+      "quantity": "16",
+      "unit_price": "12.45"
+    },
+    {
+      "amount": "110.20",
+      "description": "Laminating pouches A4, pack of 100",
+      "quantity": "10",
+      "unit_price": "11.02"
+    },
+    {
+      "amount": "174.18",
+      "description": "Heavy duty stapler, full strip",
+      "quantity": "6",
+      "unit_price": "29.03"
+    }
+  ],
+  "inv-0086": [
+    {
+      "amount": "217.28",
+      "description": "Pallet corner protectors, pack of 200",
+      "quantity": "4",
+      "unit_price": "54.32"
+    },
+    {
+      "amount": "146.90",
+      "description": "Tamper evident seals, roll of 500",
+      "quantity": "10",
+      "unit_price": "14.69"
+    },
+    {
+      "amount": "142.70",
+      "description": "Kraft mailer boxes, medium, pack of 25",
+      "quantity": "5",
+      "unit_price": "28.54"
+    }
+  ],
+  "inv-0087": [
+    {
+      "amount": "390.70",
+      "description": "Cordless drill driver 18 V, body only",
+      "quantity": "5",
+      "unit_price": "78.14"
+    },
+    {
+      "amount": "424.19",
+      "description": "Safety boots, steel toe, size 42",
+      "quantity": "8",
+      "unit_price": "66.28"
+    },
+    {
+      "amount": "242.55",
+      "description": "Rechargeable work light, 20 W",
+      "quantity": "5",
+      "unit_price": "48.51"
+    }
+  ],
+  "inv-0088": [
+    {
+      "amount": "117.47",
+      "description": "Anti fog safety goggles",
+      "quantity": "13",
+      "unit_price": "10.04"
+    },
+    {
+      "amount": "178.56",
+      "description": "Sample vials 2 ml with caps, pack of 100",
+      "quantity": "9",
+      "unit_price": "19.84"
+    },
+    {
+      "amount": "120.45",
+      "description": "Centrifuge tubes 50 ml, sterile, bag of 25",
+      "quantity": "5",
+      "unit_price": "24.09"
+    },
+    {
+      "amount": "249.23",
+      "description": "Nitrile gloves, medium, box of 100",
+      "quantity": "28",
+      "unit_price": "9.89"
+    },
+    {
+      "amount": "40.82",
+      "description": "Glass beakers 250 ml, pack of 12",
+      "quantity": "1",
+      "unit_price": "40.82"
+    }
+  ],
+  "inv-0089": [
+    {
+      "amount": "38.51",
+      "description": "Rechargeable work light, 20 W",
+      "quantity": "1",
+      "unit_price": "38.51"
+    },
+    {
+      "amount": "170.73",
+      "description": "Cut resistant work gloves, 12 pairs",
+      "quantity": "7",
+      "unit_price": "27.10"
+    },
+    {
+      "amount": "109.70",
+      "description": "Spirit level 600 mm, aluminium",
+      "quantity": "6",
+      "unit_price": "21.51"
+    },
+    {
+      "amount": "151.06",
+      "description": "Cordless drill driver 18 V, body only",
+      "quantity": "2",
+      "unit_price": "88.86"
+    },
+    {
+      "amount": "38.94",
+      "description": "Adjustable spanner 250 mm",
+      "quantity": "2",
+      "unit_price": "19.47"
+    },
+    {
+      "amount": "128.00",
+      "description": "Metric hex key set, 9 piece",
+      "quantity": "11",
+      "unit_price": "13.69"
+    },
+    {
+      "amount": "28.31",
+      "description": "HSS drill bit set, 19 piece",
+      "quantity": "1",
+      "unit_price": "28.31"
+    },
+    {
+      "amount": "171.35",
+      "description": "Cable ties 300 mm, bag of 100",
+      "quantity": "23",
+      "unit_price": "7.45"
+    }
+  ],
+  "inv-0090": [
+    {
+      "amount": "414.24",
+      "description": "A5 flyers, double sided, 2000 copies",
+      "quantity": "3",
+      "unit_price": "138.08"
+    },
+    {
+      "amount": "128.31",
+      "description": "Design proof and artwork check, per hour",
+      "quantity": "3",
+      "unit_price": "42.77"
+    },
+    {
+      "amount": "306.15",
+      "description": "A2 posters, gloss, pack of 50",
+      "quantity": "5",
+      "unit_price": "61.23"
+    },
+    {
+      "amount": "426.33",
+      "description": "Wall calendars, spiral bound, 100 copies",
+      "quantity": "1",
+      "unit_price": "426.33"
+    },
+    {
+      "amount": "298.66",
+      "description": "Presentation folders, box of 250",
+      "quantity": "2",
+      "unit_price": "149.33"
+    }
+  ],
+  "inv-0091": [
+    {
+      "amount": "100.05",
+      "description": "Letterheads 100 gsm, box of 1000",
+      "quantity": "1",
+      "unit_price": "100.05"
+    },
+    {
+      "amount": "99.64",
+      "description": "A2 posters, gloss, pack of 50",
+      "quantity": "2",
+      "unit_price": "49.82"
+    },
+    {
+      "amount": "41.37",
+      "description": "Design proof and artwork check, per hour",
+      "quantity": "1",
+      "unit_price": "41.37"
+    },
+    {
+      "amount": "459.23",
+      "description": "Wall calendars, spiral bound, 100 copies",
+      "quantity": "2",
+      "unit_price": "241.70"
+    },
+    {
+      "amount": "45.37",
+      "description": "Round vinyl stickers 60 mm, roll of 500",
+      "quantity": "1",
+      "unit_price": "45.37"
+    }
+  ],
+  "inv-0092": [
+    {
+      "amount": "198.30",
+      "description": "Glass beakers 250 ml, pack of 12",
+      "quantity": "6",
+      "unit_price": "33.05"
+    },
+    {
+      "amount": "68.40",
+      "description": "Centrifuge tubes 50 ml, sterile, bag of 25",
+      "quantity": "5",
+      "unit_price": "13.68"
+    },
+    {
+      "amount": "134.55",
+      "description": "Microscope slides, frosted end, box of 72",
+      "quantity": "9",
+      "unit_price": "14.95"
+    }
+  ],
+  "inv-0093": [
+    {
+      "amount": "171.09",
+      "description": "Glass beakers 250 ml, pack of 12",
+      "quantity": "5",
+      "unit_price": "38.02"
+    },
+    {
+      "amount": "110.98",
+      "description": "Anti fog safety goggles",
+      "quantity": "11",
+      "unit_price": "11.21"
+    },
+    {
+      "amount": "83.65",
+      "description": "Microscope slides, frosted end, box of 72",
+      "quantity": "7",
+      "unit_price": "11.95"
+    },
+    {
+      "amount": "166.14",
+      "description": "Centrifuge tubes 50 ml, sterile, bag of 25",
+      "quantity": "9",
+      "unit_price": "18.46"
+    },
+    {
+      "amount": "55.89",
+      "description": "Distilled water, 5 litre container",
+      "quantity": "9",
+      "unit_price": "6.21"
+    },
+    {
+      "amount": "122.84",
+      "description": "Cotton lab coats, size large",
+      "quantity": "4",
+      "unit_price": "30.71"
+    },
+    {
+      "amount": "331.17",
+      "description": "Pipette tips 200 ul, rack of 96",
+      "quantity": "21",
+      "unit_price": "15.77"
+    }
+  ],
+  "inv-0094": [
+    {
+      "amount": "40.94",
+      "description": "Round vinyl stickers 60 mm, roll of 500",
+      "quantity": "1",
+      "unit_price": "48.16"
+    },
+    {
+      "amount": "236.20",
+      "description": "A5 flyers, double sided, 2000 copies",
+      "quantity": "3",
+      "unit_price": "87.48"
+    },
+    {
+      "amount": "257.64",
+      "description": "Presentation folders, box of 250",
+      "quantity": "1",
+      "unit_price": "257.64"
+    }
+  ],
+  "inv-0095": [
+    {
+      "amount": "22.08",
+      "description": "Hand soap refill, 5 litre",
+      "quantity": "2",
+      "unit_price": "11.04"
+    },
+    {
+      "amount": "35.48",
+      "description": "Stainless steel water jug, 1.5 litre",
+      "quantity": "2",
+      "unit_price": "17.74"
+    }
+  ],
+  "inv-0096": [
+    {
+      "amount": "245.54",
+      "description": "Presentation folders, box of 250",
+      "quantity": "1",
+      "unit_price": "245.54"
+    },
+    {
+      "amount": "138.94",
+      "description": "A5 flyers, double sided, 2000 copies",
+      "quantity": "1",
+      "unit_price": "138.94"
+    },
+    {
+      "amount": "110.87",
+      "description": "Roller banner 850 x 2000 mm with stand",
+      "quantity": "1",
+      "unit_price": "110.87"
+    },
+    {
+      "amount": "97.98",
+      "description": "Round vinyl stickers 60 mm, roll of 500",
+      "quantity": "2",
+      "unit_price": "48.99"
+    }
+  ],
+  "inv-0097": [
+    {
+      "amount": "63.36",
+      "description": "Napkins, two ply, white, pack of 500",
+      "quantity": "8",
+      "unit_price": "7.92"
+    },
+    {
+      "amount": "82.00",
+      "description": "Arabica coffee beans, 1 kg bag",
+      "quantity": "4",
+      "unit_price": "20.50"
+    },
+    {
+      "amount": "186.48",
+      "description": "Loose leaf breakfast tea, 500 g",
+      "quantity": "14",
+      "unit_price": "13.32"
+    },
+    {
+      "amount": "52.68",
+      "description": "Oat milk, barista edition, case of 6",
+      "quantity": "4",
+      "unit_price": "13.17"
+    },
+    {
+      "amount": "177.24",
+      "description": "Food storage containers with lids, set of 20",
+      "quantity": "6",
+      "unit_price": "29.54"
+    }
+  ],
+  "inv-0098": [
+    {
+      "amount": "84.92",
+      "description": "Spirit level 600 mm, aluminium",
+      "quantity": "5",
+      "unit_price": "18.87"
+    },
+    {
+      "amount": "32.30",
+      "description": "Metric hex key set, 9 piece",
+      "quantity": "3",
+      "unit_price": "13.46"
+    },
+    {
+      "amount": "50.10",
+      "description": "Adjustable spanner 250 mm",
+      "quantity": "3",
+      "unit_price": "16.70"
+    },
+    {
+      "amount": "11.19",
+      "description": "Tape measure 8 m, magnetic hook",
+      "quantity": "1",
+      "unit_price": "13.17"
+    },
+    {
+      "amount": "240.90",
+      "description": "HSS drill bit set, 19 piece",
+      "quantity": "10",
+      "unit_price": "24.09"
+    },
+    {
+      "amount": "392.40",
+      "description": "Safety boots, steel toe, size 42",
+      "quantity": "6",
+      "unit_price": "65.40"
+    }
+  ],
+  "inv-0099": [
+    {
+      "amount": "58.86",
+      "description": "pH indicator strips, pack of 100",
+      "quantity": "6",
+      "unit_price": "9.81"
+    },
+    {
+      "amount": "319.01",
+      "description": "Pipette tips 200 ul, rack of 96",
+      "quantity": "19",
+      "unit_price": "16.79"
+    },
+    {
+      "amount": "193.65",
+      "description": "Anti fog safety goggles",
+      "quantity": "19",
+      "unit_price": "12.74"
+    },
+    {
+      "amount": "71.10",
+      "description": "Centrifuge tubes 50 ml, sterile, bag of 25",
+      "quantity": "3",
+      "unit_price": "23.70"
+    }
+  ],
+  "inv-0100": [
+    {
+      "amount": "382.67",
+      "description": "Winter gritting service, per callout",
+      "quantity": "4",
+      "unit_price": "112.55"
+    },
+    {
+      "amount": "478.07",
+      "description": "Tree survey and written report",
+      "quantity": "1",
+      "unit_price": "478.07"
+    },
+    {
+      "amount": "247.65",
+      "description": "Bark mulch, bulk bag of 1 cubic metre",
+      "quantity": "3",
+      "unit_price": "82.55"
+    },
+    {
+      "amount": "296.44",
+      "description": "Lawn mowing and edging, per visit",
+      "quantity": "5",
+      "unit_price": "69.75"
+    },
+    {
+      "amount": "134.90",
+      "description": "Weed control treatment, per visit",
+      "quantity": "2",
+      "unit_price": "84.31"
+    },
+    {
+      "amount": "413.10",
+      "description": "Planter refresh with seasonal bulbs",
+      "quantity": "10",
+      "unit_price": "48.60"
+    },
+    {
+      "amount": "86.16",
+      "description": "Leaf clearance, per hour",
+      "quantity": "3",
+      "unit_price": "28.72"
+    }
+  ]
+}

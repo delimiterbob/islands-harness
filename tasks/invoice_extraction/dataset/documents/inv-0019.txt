@@ -1,0 +1,30 @@
+Invoice
+
+Invoice no.: 7197056
+Vendor: Mossbeck Lab Supplies Ltd
+        63 Lantern Road, Glassmere Vale 85943
+Note: our earlier invoice 7196822 dated December 20, 2025 was paid in full, thank you.
+Invoice dated: February 1, 2026
+Invoice to: Cindervale Veterinary Clinic
+            26 Wicket Row, Lindenharrow 21313
+Invoice currency: GBP
+
+Description                         Qty  Unit price  Disc.
+----------------------------------------------------------
+Nitrile gloves, medium, box of 100   24        8.67     5%
+Pipette tips 200 ul, rack of 96      18       16.60       
+Centrifuge tubes 50 ml, sterile,      6       22.68       
+  bag of 25
+Cotton lab coats, size large          9       19.96       
+Distilled water, 5 litre container   18        7.01       
+----------------------------------------------------------
+Delivery: £7.64
+Each line amount is the quantity times the unit price, less the line's discount,
+rounded half up to the cent.
+VAT at 5% is charged on the sum of the line amounts, rounded
+half up to the cent; delivery is not taxed.
+Total: the sum of the line amounts, plus delivery, plus VAT.
+
+Previous balance: £2,418.98 received on December 9, 2025, thank you.
+Payment terms: 45 days.
+Thank you for your business.

@@ -1,0 +1,205 @@
+# Snapshot 1: the public experiment definition. What to run, never how to decide.
+# The decision rules live in configs/preregistration/r4.yaml.
+#
+# Validated by islands_harness.config.SnapshotConfig with extra="forbid":
+# an unknown key is an error, not a silent no-op. `islands freeze` hashes the
+# canonical form of this file (UTF-8, LF, sorted keys) into snapshot-1.lock.json,
+# and every run command after freeze refuses a changed hash.
+#
+# Values marked CALIBRATE are placeholders until `islands calibrate` has run
+# (ARCHITECTURE.md Section 10). Nothing here is frozen yet.
+
+schema_version: 1
+
+snapshot:
+  id: s1
+  root_seed: 20261006
+  preregistration: configs/preregistration/r4.yaml
+  harness_tag: v1.0.0
+  outputs: results/s1
+
+task:
+  dir: tasks/invoice_extraction
+  system_prompt: system_prompt.md
+  dataset: dataset
+  grader: grader.py
+  required_tools: [fetch_document, submit_record]
+  mixes:
+    A: [fetch_document, submit_record, search_web, calculator, read_spreadsheet, send_email]
+    B: [fetch_document, submit_record, read_spreadsheet, search_web, calculator, send_email]
+  rung1: [fetch_document]
+
+agent:
+  max_turns: 20
+  max_tool_calls: 40
+  token_limit: 60000
+  time_limit_s: 600
+  parallel_tool_calls: allow        # executed sequentially in emitted order
+  tool_choice: auto
+  strict_schemas: false
+  on_stop_without_submit: end
+  on_malformed_arguments: catalog_error
+
+sweep:
+  tools_axis: [1, 2, 3, 4, 5, 6]
+  in_scope_tools: [2, 3, 4, 5, 6]
+  fault_axis: [0.0, 0.1, 0.2, 0.3, 0.4, 0.5]
+  mixes_to_run: [A, B]              # confirmed 2026-09-26: mix B runs, descriptive; verdicts use mix A (r4 scope)
+  order: round_robin
+  rung1_runs_per_cell: 20
+
+faults:
+  kinds: [timeout, garbled_payload, error_response, empty_result]
+  weights: [1, 1, 1, 1]
+  applies_to: all_tools
+  nested_across_rates: true
+  simulate_delay_s: 0
+  garble: {char_fraction: 0.2, truncate: true}
+
+probe:
+  runs_per_point: 20
+  tools_points: [2, 3, 4, 5, 6]
+  fault_points: [0.0, 0.1, 0.2, 0.3, 0.4, 0.5]
+
+calibration:
+  anchor_cell: {tools: 2, fault: 0.0}
+  target_band: [0.15, 0.95]         # confirmed 2026-09-26: mirrors r4 success.band (anchor study, method note 6)
+  pilot_runs: 30
+  difficulty_levels: [1, 2, 3, 4]
+  tau_candidates: [0.8, 0.9, 0.7]
+  max_malformed_call_rate: 0.20
+
+noise_floor:
+  local:
+    cell: {tools: 3, fault: 0.2}
+    fixed_seed_reruns: 50          # confirmed 2026-09-26: a check on a single-slot stack, not a measurement
+    fixed_seed_documents: 20       # 1,000 runs instead of 20,000; the varied-seed floor carries the measurement
+    varied_seed_reruns: 50
+  hosted:
+    cells: [{tools: 2, fault: 0.0}, {tools: 4, fault: 0.2}, {tools: 6, fault: 0.4}]
+    reruns: 50
+    documents_per_rerun: 10
+
+determinism_gate:
+  specs: 20
+  replays_per_regime: 5
+  filler_requests: 200
+
+models:
+  # Local models run on llama.cpp's llama-server, one at a time (the GPU holds one), each on
+  # its own port so a request can never reach the wrong model. server/llamacpp/serve.ps1
+  # starts them with the exact flags below; doctor checks /props and the weights hash.
+  #
+  # Sampling: llama.cpp's default sampler chain (top_k 40, min_p 0.05, dry, typ_p, xtc) would
+  # apply silently unless every request overrides it, so each field is sent explicitly and
+  # `samplers` fixes the chain. Values are each vendor's published recommendation.
+  # Confirmed 2026-09-26: sampling values, reasoning effort and thinking mode per model.
+
+  - id: gpt-oss-20b-local
+    provider: openai_compat
+    base_url: http://127.0.0.1:8081/v1
+    allowed_hosts: ["127.0.0.1:8081"]
+    model: gpt-oss-20b
+    lock: models/gpt-oss-20b.lock.json
+    documents: 100
+    epochs: 1
+    concurrency: 1                  # one server slot; requests queue (D12)
+    sampling: {temperature: 1.0, top_p: 1.0, max_tokens: 4096, seed: per_run}
+    extra_body:
+      samplers: [top_k, top_p, min_p, temperature]
+      top_k: 0                      # disabled
+      min_p: 0.0                    # disabled
+      reasoning_effort: medium      # matches the hosted model's effort
+      cache_prompt: false
+      parallel_tool_calls: true     # llama.cpp disables multiple calls unless asked; config says allow
+    expect:
+      server: llama.cpp
+      build: b11191
+      build_commit: 4b1a27fa0eb875bbca4f6cfe936e3d65adc685c0
+      weights_file: gpt-oss-20b-MXFP4.gguf
+      weights_sha256: 27cd6c432c7672cb812a92f611cf3ba7bbc35928262bb1e1253ff4ee6ae35901
+      quantization: MXFP4           # the format OpenAI released the weights in, not a conversion
+      ctx_size: 16384
+      parallel_slots: 1
+      cache_prompt: false
+      flash_attn: "on"
+      kv_cache_type: f16
+      batch_size: 2048
+      ubatch_size: 512
+      chat_format: GPT-OSS          # per request; /props reports only the no-tools default ("Content-only"), so doctor checks the template's harmony markers
+      deterministic: verify_with_gate
+
+  - id: qwen3-14b-local
+    provider: openai_compat
+    base_url: http://127.0.0.1:8082/v1
+    allowed_hosts: ["127.0.0.1:8082"]
+    model: qwen3-14b
+    lock: models/qwen3-14b.lock.json
+    documents: 100
+    epochs: 1
+    concurrency: 1
+    sampling: {temperature: 0.7, top_p: 0.8, max_tokens: 2048, seed: per_run}
+    extra_body:
+      samplers: [top_k, top_p, min_p, temperature]
+      top_k: 20
+      min_p: 0.0
+      chat_template_kwargs: {enable_thinking: false}   # Qwen's non-thinking mode
+      cache_prompt: false
+      parallel_tool_calls: true
+    expect:
+      server: llama.cpp
+      build: b11191
+      build_commit: 4b1a27fa0eb875bbca4f6cfe936e3d65adc685c0
+      weights_file: Qwen3-14B-Q5_K_M.gguf
+      weights_sha256: e7c9aba1129ca2936be9eca01419d9f86af40e08caa01230d5574b34d08e3e31
+      quantization: Q5_K_M          # Qwen's official GGUF; Q6_K fits only if doctor finds the VRAM
+      ctx_size: 16384
+      parallel_slots: 1
+      cache_prompt: false
+      flash_attn: "on"
+      kv_cache_type: f16
+      batch_size: 2048
+      ubatch_size: 512
+      chat_format: Hermes 2 Pro     # per request; confirmed 2026-09-26: the template carries <tool_call> markers, which doctor checks
+      deterministic: verify_with_gate
+
+  - id: qwen3-4b-local
+    # Added 2026-09-26 as a third replicate: the same family and quantization as the 14B
+    # model, so the pair differs in size only. Calibration found both larger models at the
+    # task's ceiling on levels 1 to 3.
+    provider: openai_compat
+    base_url: http://127.0.0.1:8083/v1
+    allowed_hosts: ["127.0.0.1:8083"]
+    model: qwen3-4b
+    lock: models/qwen3-4b.lock.json
+    documents: 100
+    epochs: 1
+    concurrency: 1
+    sampling: {temperature: 0.7, top_p: 0.8, max_tokens: 2048, seed: per_run}
+    extra_body:
+      samplers: [top_k, top_p, min_p, temperature]
+      top_k: 20
+      min_p: 0.0
+      chat_template_kwargs: {enable_thinking: false}   # Qwen's non-thinking mode, as for the 14B model
+      cache_prompt: false
+      parallel_tool_calls: true
+    expect:
+      server: llama.cpp
+      build: b11191
+      build_commit: 4b1a27fa0eb875bbca4f6cfe936e3d65adc685c0
+      weights_file: Qwen3-4B-Q5_K_M.gguf
+      weights_sha256: aca596860e8cb40af6539e3f2ea40df305f42515deac56d49c08d39a02e6533f
+      quantization: Q5_K_M
+      ctx_size: 16384
+      parallel_slots: 1
+      cache_prompt: false
+      flash_attn: "on"
+      kv_cache_type: f16
+      batch_size: 2048
+      ubatch_size: 512
+      chat_format: Hermes 2 Pro     # the Qwen3 template's <tool_call> markers, which doctor checks
+      deterministic: verify_with_gate
+
+  # Snapshot 1 runs the three local models only (author's decision, 2026-09-26): no cost,
+  # fully reproducible, each calibrated and gated. The hosted model's definition is kept in
+  # configs/hosted-models.yaml for a later snapshot.

@@ -1,0 +1,33 @@
+TAX INVOICE
+
+Note: our earlier invoice MAR-2026-9265 dated 18/06/2026 was paid in full, thank you.
+PO number: MAR-2026-4959
+From: Marrowdell Print Studio S.A.
+      42 Larkspur Lane, Brambleketh 67726
+Currency: EUR
+Invoice ID: MAR-2026-9382
+Bill to: Ivywhistle Architects
+         60 Orchard Row, Starling Hythe 91750
+Issue date: 19/09/2026
+
+Description                        Qty  Unit price  Disc.
+---------------------------------------------------------
+Wall calendars, spiral bound, 100    2      294,61    20%
+  copies
+Letterheads 100 gsm, box of 1000     1       65,81       
+Roller banner 850 x 2000 mm with     1      101,63       
+  stand
+Round vinyl stickers 60 mm, roll     1       39,24     5%
+  of 500
+Saddle stitched booklets A5, 250     2      219,10     5%
+  copies
+---------------------------------------------------------
+Shipping and handling: 7,56 €
+Each line amount is the quantity times the unit price, less the line's discount,
+rounded half up to the cent.
+VAT at 7% is charged on the sum of the line amounts, rounded
+half up to the cent; shipping and handling is not taxed.
+Amount due: the sum of the line amounts, plus shipping and handling, plus VAT.
+
+Payment terms: 45 days.
+Thank you for your business.

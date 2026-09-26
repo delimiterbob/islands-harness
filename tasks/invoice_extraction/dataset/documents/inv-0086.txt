@@ -1,0 +1,29 @@
+INVOICE
+
+From: Saltreed Packaging & Co. Ltd
+      211 Saltmarsh Street, Starling Hythe 41920
+Invoice currency: GBP
+Invoice to: Juniperholt Bakery
+            217 Pennyroyal Street, Harrowvane 30614
+Invoice #: SA563139
+Note: our earlier invoice SA562626 dated 2026-05-24 was paid in full, thank you.
+Your order no.: SA346513
+Invoice date: 2026-08-28
+
+Description                        Qty  Unit price  Disc.
+---------------------------------------------------------
+Pallet corner protectors, pack of    4       54.32       
+  200
+Tamper evident seals, roll of 500   10       14.69       
+Kraft mailer boxes, medium, pack     5       28.54       
+  of 25
+---------------------------------------------------------
+Delivery: £5.15
+Each line amount is the quantity times the unit price, less the line's discount,
+rounded half up to the cent.
+VAT at 20% is charged on the sum of the line amounts, rounded
+half up to the cent; delivery is not taxed.
+Total due: the sum of the line amounts, plus delivery, plus VAT.
+
+Payment terms: 30 days.
+Thank you for your business.

@@ -1,0 +1,36 @@
+INVOICE
+
+Supplier: Duskwater Packaging LLC
+          205 Juniper Street, Brambleketh 38290
+Invoice number: DU565389
+Your order no.: DU884917
+Invoice dated: 2025-02-09
+Note: our earlier invoice DU564893 dated 2024-12-09 was paid in full, thank you.
+Billing currency: USD
+Customer: Dewhollow Cycle Works
+          22 Juniper Street, Starling Hythe 10249
+
+Description                         Qty  Unit price  Disc.
+----------------------------------------------------------
+Stretch film 500 mm, cast, 6 rolls    4       39.63     5%
+Void fill paper roll, 5 kg           12       30.41       
+Corrugated sheets 1200 x 800 mm,      3       68.49       
+  pack of 50
+Pallet corner protectors, pack of     5       30.98       
+  200
+Fragile labels, roll of 1000          2        8.74       
+Tamper evident seals, roll of 500     7       14.81       
+Poly mailing bags, large, pack of     4       33.12       
+  500
+Kraft mailer boxes, medium, pack      9       26.20       
+  of 25
+----------------------------------------------------------
+Freight: $48.11
+Each line amount is the quantity times the unit price, less the line's discount,
+rounded half up to the cent.
+Sales tax at 6.5% is charged on the sum of the line amounts, rounded
+half up to the cent; freight is not taxed.
+Total: the sum of the line amounts, plus freight, plus Sales tax.
+
+Payment terms: 14 days.
+Thank you for your business.

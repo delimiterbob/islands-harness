@@ -1,0 +1,31 @@
+INVOICE
+
+Invoice to: Foxglade Cycle Works
+            70 Pennyroyal Street, Fernhollow 55867
+Supplier: Wintercress Office Supplies Inc.
+          74 Kettle Road, Mossmarrow 15902
+Invoice currency: USD
+Invoice date: 2026-06-12
+Invoice ID: WIN-2026-9130
+Note: our earlier invoice WIN-2026-8624 dated 2026-03-20 was paid in full, thank you.
+
+Description                         Qty  Unit price  Disc.
+----------------------------------------------------------
+Heavy duty stapler, full strip        3       25.21       
+Whiteboard markers, set of 8         22        8.47       
+Laminating pouches A4, pack of 100    2       15.44     5%
+Desk organiser, recycled plastic      7       14.98       
+Archive storage boxes, flat           2       18.68       
+  packed, pack of 10
+Self seal envelopes C5, box of 500    3       16.26    15%
+----------------------------------------------------------
+Freight: $23.24
+Each line amount is the quantity times the unit price, less the line's discount,
+rounded half up to the cent.
+Sales tax at 8% is charged on the sum of the line amounts, rounded
+half up to the cent; freight is not taxed.
+Invoice total: the sum of the line amounts, plus freight, plus Sales tax.
+
+Previous balance: $182.53 received on 2026-03-25, thank you.
+Payment terms: 45 days.
+Thank you for your business.

@@ -1,0 +1,31 @@
+INVOICE
+
+Invoice currency: EUR
+Issue date: 2026-12-20
+Note: our earlier invoice LA542304 dated 2026-09-14 was paid in full, thank you.
+Supplier: Larkvane Lab Supplies S.A.
+          16 Cobble Road, Duskmere 78021
+Invoice #: LA543227
+Customer: Ivywhistle Community Library
+          174 Heron Lane, Quillinby 12146
+
+Description                        Qty  Unit price  Disc.
+---------------------------------------------------------
+pH indicator strips, pack of 100     3       13,56       
+Sample vials 2 ml with caps, pack    4       18,57       
+  of 100
+Anti fog safety goggles             14        9,07     5%
+Pipette tips 200 ul, rack of 96     13       13,72       
+Microscope slides, frosted end,     10       12,81       
+  box of 72
+---------------------------------------------------------
+Shipping and handling: 28,69 €
+Each line amount is the quantity times the unit price, less the line's discount,
+rounded half up to the cent.
+VAT at 21% is charged on the sum of the line amounts, rounded
+half up to the cent; shipping and handling is not taxed.
+Amount due: the sum of the line amounts, plus shipping and handling, plus VAT.
+
+Previous balance: 1.097,55 € received on 2026-11-06, thank you.
+Payment terms: 45 days.
+Thank you for your business.

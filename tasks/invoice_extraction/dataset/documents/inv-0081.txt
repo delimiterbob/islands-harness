@@ -1,0 +1,27 @@
+Invoice
+
+Invoice currency: EUR
+Supplier: Tinderwick Print Studio S.A.
+          128 Marigold Road, Harrowvane 59438
+Note: our earlier invoice 8983456 dated 18/12/2025 was paid in full, thank you.
+Invoice no.: 8984291
+Purchase order: 8587915
+Customer: Ivywhistle Bakery
+          216 Cobble Court, Duskmere 43946
+Date of issue: 28/03/2026
+
+Description                        Qty  Unit price  Disc.
+---------------------------------------------------------
+Wall calendars, spiral bound, 100    1      302,62       
+  copies
+Presentation folders, box of 250     2      235,94       
+---------------------------------------------------------
+Delivery: 42,21 €
+Each line amount is the quantity times the unit price, less the line's discount,
+rounded half up to the cent.
+VAT at 19% is charged on the sum of the line amounts, rounded
+half up to the cent; delivery is not taxed.
+Amount due: the sum of the line amounts, plus delivery, plus VAT.
+
+Payment terms: 14 days.
+Thank you for your business.

@@ -1,0 +1,153 @@
+# Pre-registration r4: every decision rule as data.
+#
+# This file is the only input the analysis reads besides runs.jsonl. `islands freeze`
+# hashes its canonical form; `islands analyze` refuses to run if the hash differs
+# from the lock; the deposit carries the same hash beside the DOI. Prose lives in
+# PREREGISTRATION.md and r3.md and decides nothing.
+#
+# Loaded by islands_harness.config.PreRegistration with extra="forbid".
+#
+# Lines carrying the confirmation marker are values the author must confirm or set after
+# calibration (ARCHITECTURE.md Section 10); `islands freeze` refuses while any remains.
+# After the freeze no rule in this file changes for snapshot 1. frozen_on and deposit_doi
+# are deposit metadata: the pre-registration hash leaves them out (config.prereg_hash), so
+# they are filled in at the deposit without breaking the lock.
+
+version: r4
+supersedes: r3
+frozen_on: null                    # deposit metadata, not hashed: the lock's frozen_on date
+deposit_doi: null                  # deposit metadata, not hashed: the DOI the Zenodo draft reserves
+alpha: 0.05
+
+success:
+  rule: score_ge_tau               # success = grader score >= tau
+  tau: 0.8                         # confirmed 2026-09-26: calibration 2026-09-26 puts all three local models in band at 0.8
+  chosen_by: calibration           # never by fiat; see calibration in the snapshot config
+  band: [0.15, 0.95]               # confirmed 2026-09-26: widened from [0.70, 0.90] on the anchor study (method note 6): verdicts hold for anchors 0.12 to 0.97 and fail at 0.998
+  difficulty: 4                    # confirmed 2026-09-26: level 4 (computed amounts), the only level below the ceiling for all three models
+  max_malformed_call_rate: 0.20    # a model above this at the anchor is not a replicate in snapshot 1
+
+intervals:
+  cell: wilson                     # statsmodels proportion_confint(method="wilson")
+  difference: newcombe             # Newcombe 1998 method 10, hybrid score, from the two Wilson limits
+  level: 0.95
+  display_rule: wilson_non_overlap # what the chart draws; stricter than the Newcombe criterion
+
+p1:
+  proposition: >
+    An upper tool edge exists: success is a concave function of tool count with an
+    interior peak, and the drop from the peak to six tools exceeds sampling error.
+  model: "logit P(success) = b0 + b1*tc + b2*tc2 + b3*f"
+  covariates:
+    tc: "tools - 4"
+    tc2: "tc^2"
+    f: "fault rate in [0, 0.5]"
+  family: binomial
+  link: logit
+  unit: run
+  scope:
+    mix: A
+    tools: [2, 3, 4, 5, 6]         # in-scope tool counts; rung 1 is excluded by construction
+    faults: all
+    outcomes_excluded: [aborted_transport]
+  covariance: cluster_by_document
+  ladder: [mle_cluster, firth_bootstrap, not_estimable]
+  separation_rule:
+    nonconvergence: true           # MLE fails to converge -> next rung of the ladder
+    max_abs_coefficient: 15        # any |b_j| > 15 -> next rung of the ladder
+    saturated_column_alone: false  # a 0 or 100 percent column does not by itself trigger the ladder
+  precedence: [not_estimable, blocked, survives, restricted, below_resolution]  # confirmed 2026-09-26: the first category whose rule holds; survives wins over a drop entirely below the SESOI
+  curvature: interval_excludes_zero_and_b2_negative   # C1
+  peak:
+    formula: "4 - b1 / (2*b2), defined only when b2 < 0"
+    range: [2, 6]                  # C2: bootstrap interval for t* must lie inside this range
+  drop:
+    row: 0.0                       # C3: the zero-fault row
+    comparison: peak_column_vs_six_tools
+    peak_column: "t* rounded half up, clipped to [2, 6]; 2 when b2 >= 0 (no peak)"  # confirmed 2026-09-26: the no-peak case completes r3; a column of 6 leaves the drop undefined
+    interval: newcombe
+    sesoi_points: 15               # confirmed 2026-09-26: smallest effect size of interest, percentage points
+  fault_cap_check:
+    rule: b3_le_zero_or_interval_includes_zero
+    on_failure: blocked            # verdict blocked, harness anomaly reported
+  bootstrap:
+    draws: 2000
+    unit: document
+    interval: percentile
+    scope: boot                    # rng scope; resample indices written to bootstrap/resamples.json
+    keep_nonnegative_b2_resamples: true
+    refit: ladder_per_resample                   # confirmed 2026-09-26: each resample is refitted MLE first, Firth when the MLE fails the separation rule
+    no_peak_resamples: signed_infinity_by_slope  # confirmed 2026-09-26: a resample with b2 >= 0 enters the t* percentiles as -inf when b1 <= 0 and +inf when b1 > 0
+    failed_resamples: counted_as_no_peak         # confirmed 2026-09-26: a resample whose Firth refit also fails is treated the same way, and counted
+
+p2:
+  proposition: >
+    Recovery after an injected fault costs measurable time against unperturbed controls.
+  population: faulted_recovered_runs_in_scope_mix_A
+  control: same_document_epoch_tools_at_fault_zero
+  unit: turns
+  statistic: mean_turns_faulted_minus_control
+  rule: lower_bootstrap_bound_above_zero
+  sesoi_turns: 1.0                 # confirmed 2026-09-26: restricted when the lower bound is not above 0 and the upper is below 1 turn (an interval entirely below 0 included)
+  secondary: extra_turns_minus_fault_count   # reported; moves nothing in snapshot 1
+  seconds: descriptive
+  bootstrap:
+    draws: 2000
+    unit: document
+    interval: percentile
+    scope: boot
+  pairing_note: exact_on_verified_invariant_stack_in_expectation_on_hosted
+  no_pairs: not_estimable          # confirmed 2026-09-26: no recovered faulted run with a control
+
+below_resolution:
+  rule: sesoi_equivalence
+  p1: "b2 interval includes 0 and the drop interval includes both 0 and sesoi_points"
+  p2: "R interval includes 0 and its upper bound is at or above sesoi_turns"
+  instrument: "anchor rate outside band by more than its Wilson half-width -> instrument_out_of_calibration"
+  residual: below_resolution       # confirmed 2026-09-26: a P1 case matching no named branch; its frequency under flat truths is in the method note
+
+rung1:
+  tools: 1
+  excluded_from_all_statistics: true
+  runs_per_cell: 20
+  reports: submission_attempted_in_free_text
+
+noise_floor:
+  local:
+    cell: {tools: 3, fault: 0.2}
+    fixed_seed_reruns: 50          # confirmed 2026-09-26 (departure 7): a check once the gate passes
+    fixed_seed_documents: 20
+    varied_seed_reruns: 50
+    regime: sweep_regime_round_robin   # the sweep's own regime: one llama.cpp slot, requests queued
+    reports: [identity_rate, flip_rate_with_wilson, jitter_sd, phi]
+  hosted:
+    cells: [{tools: 2, fault: 0.0}, {tools: 4, fault: 0.2}, {tools: 6, fault: 0.4}]
+    reruns: 50
+    block_documents: 10            # inert in snapshot 1 (no hosted model): the block reading of r3
+    reading: block                 # the literal r3 reading (full cell) costs four sweeps
+  reported_beside_intervals_never_inside: true
+
+descriptive:                       # every number here carries descriptive: true in snapshot.json
+  - viable_fraction
+  - viable_fraction_lower_bound
+  - boundary_width
+  - fault_axis_shape
+  - recovery_seconds
+  - recovery_by_fault_kind
+  - recovery_by_row
+  - net_of_retries
+  - fractional_logit_on_score
+  - sensitivity_tau_plus_minus_0_1
+  - faults_per_run_per_cell
+  - malformed_call_rate
+
+departures_from_r3:                # each becomes a named field above; listed for the deposit
+  - hosted_noise_floor_block_reading
+  - tau_by_calibration_not_fiat
+  - sampling_above_zero_with_derived_seeds
+  - faults_apply_to_submit_record
+  - rung1_excluded_by_construction
+  - fit_ladder_with_not_estimable_category
+  - calibration_band_widened_on_simulation_evidence
+  - difficulty_level_4_computed_amounts
+  - third_local_replicate_qwen3_4b

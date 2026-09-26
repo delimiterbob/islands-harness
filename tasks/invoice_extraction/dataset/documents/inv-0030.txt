@@ -1,0 +1,30 @@
+INVOICE
+
+Purchase order: HAR-2026-7614
+Billing currency: EUR
+Invoice number: HAR-2026-2148
+Customer: Ashquill Bakery
+          93 Saltmarsh Lane, Brambleketh 15320
+Note: our earlier invoice HAR-2026-1590 dated 11 April 2026 was paid in full, thank you.
+Date of issue: 11 May 2026
+Vendor: Harrowfinch Catering Supplies S.A.
+        2 Wicket Court, Brambleketh 80227
+
+Description                         Qty  Unit price  Disc.
+----------------------------------------------------------
+Napkins, two ply, white, pack of     22        8,24       
+  500
+Oat milk, barista edition, case of   16       10,15       
+  6
+Hand soap refill, 5 litre            10       16,29       
+Paper cups 8 oz, sleeve of 1000      10       29,86       
+----------------------------------------------------------
+Delivery: 29,76 €
+Each line amount is the quantity times the unit price, less the line's discount,
+rounded half up to the cent.
+VAT at 7% is charged on the sum of the line amounts, rounded
+half up to the cent; delivery is not taxed.
+Total due: the sum of the line amounts, plus delivery, plus VAT.
+
+Payment terms: 30 days.
+Thank you for your business.

@@ -1,0 +1,34 @@
+INVOICE
+
+Invoice to: Elderwick Theatre Company
+            69 Juniper Row, Brambleketh 27576
+Supplier: Duskwater Catering Supplies Ltd
+          31 Larkspur Road, Ottersnook 72658
+Note: our earlier invoice DU226721 dated 2025-11-15 was paid in full, thank you.
+Invoice dated: 2026-01-26
+Invoice currency: GBP
+Invoice ID: DU227163
+
+Description                         Qty  Unit price  Disc.
+----------------------------------------------------------
+Arabica coffee beans, 1 kg bag       17       21.60       
+Stainless steel water jug, 1.5        1       14.26       
+  litre
+Sugar sticks, box of 1000             3       11.10       
+Food storage containers with lids,    6       19.49       
+  set of 20
+Paper cups 8 oz, sleeve of 1000      10       32.33       
+Napkins, two ply, white, pack of      4        7.91    15%
+  500
+Loose leaf breakfast tea, 500 g      11        9.88     5%
+----------------------------------------------------------
+Shipping and handling: £7.08
+Each line amount is the quantity times the unit price, less the line's discount,
+rounded half up to the cent.
+VAT at 20% is charged on the sum of the line amounts, rounded
+half up to the cent; shipping and handling is not taxed.
+Invoice total: the sum of the line amounts, plus shipping and handling, plus VAT.
+
+Previous balance: £2,513.77 received on 2025-10-21, thank you.
+Payment terms: 14 days.
+Thank you for your business.

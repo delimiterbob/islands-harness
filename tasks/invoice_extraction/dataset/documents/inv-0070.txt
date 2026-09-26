@@ -1,0 +1,33 @@
+TAX INVOICE
+
+Customer: Lindenquist Bakery
+          35 Orchard Way, Harrowvane 95947
+Note: our earlier invoice MOS-2025-7703 dated 28 November 2025 was paid in full, thank you.
+Invoice date: 15 December 2025
+Supplier: Mossbeck IT Services Ltd
+          32 Orchard Way, Fernhollow 37580
+Currency: GBP
+Invoice ID: MOS-2025-7993
+PO number: MOS-2025-1752
+
+Description                         Qty  Unit price  Disc.
+----------------------------------------------------------
+Firewall configuration review         2      411.13       
+Password manager licence, per user   24       25.83       
+  per year
+Help desk retainer, monthly, up to    1      480.12       
+  20 tickets
+On-site support, per hour             7       75.98       
+Network cabling survey, half day      1      301.50    20%
+  visit
+Wireless access point installation    3      188.61     5%
+----------------------------------------------------------
+Delivery: £36.75
+Each line amount is the quantity times the unit price, less the line's discount,
+rounded half up to the cent.
+VAT at 5% is charged on the sum of the line amounts, rounded
+half up to the cent; delivery is not taxed.
+Amount due: the sum of the line amounts, plus delivery, plus VAT.
+
+Payment terms: 14 days.
+Thank you for your business.
