@@ -112,6 +112,12 @@ def build_parser() -> argparse.ArgumentParser:
                 default=0,
                 help="which run index (and so which document and seed) to use; default %(default)s",
             )
+        if name == "noise-floor":
+            p.add_argument(
+                "--analyze-only",
+                action="store_true",
+                help="recompute jitter.json from the stored floor runs without executing any",
+            )
         if name == "verify-determinism":
             p.add_argument(
                 "--variant",
@@ -442,6 +448,77 @@ def _cmd_verify_determinism(args: argparse.Namespace) -> int:
             f"  {d['run_id']}: {d['distinct_transcripts']} distinct transcripts, first differing message {d['first_divergent_message']}"
         )
     return EXIT_OK if result.passed else EXIT_ERROR
+
+
+def _cmd_noise_floor(args: argparse.Namespace) -> int:
+    """The noise floor against the running server, which must match the config exactly, as
+    for the gate; resumable run by run. ``--analyze-only`` recomputes jitter.json from the
+    stored runs without contacting a server."""
+    from islands_harness import localstack
+    from islands_harness.provenance import FloorIncomplete, floor_protocols, noise_floor
+
+    cfg, root = _config(args), _repo_root(args)
+    model = cfg.model_by_id(args.model)
+    _require_frozen(args, cfg, root)
+    out = _results_dir(args, cfg, root, model.id, "sweep")
+    evidence: dict = {}
+    gpu = None
+    if not args.analyze_only and model.expect is not None:
+        running, diffs, evidence = localstack.server_differences(model)
+        if not running:
+            print(
+                f"{model.id} is not running; start it with `islands serve start {model.model}`",
+                file=sys.stderr,
+            )
+            return EXIT_USAGE
+        if diffs:
+            print("the running server differs from the config:", file=sys.stderr)
+            for line in diffs:
+                print(f"  {line}", file=sys.stderr)
+            return EXIT_DOCTOR
+        gpu = localstack.gpu_memory()
+    floor = cfg.noise_floor
+    if "fixed" in floor_protocols(model):
+        block = floor.local.fixed_seed_documents or model.documents * model.epochs
+        plan = (
+            f"cell ({floor.local.cell.tools} tools, {floor.local.cell.fault:.0%} faults): "
+            f"fixed seed {floor.local.fixed_seed_reruns} x {block} runs, varied seed "
+            f"{floor.local.varied_seed_reruns} x {model.documents * model.epochs} runs"
+        )
+    else:
+        plan = (
+            f"hosted block: {len(floor.hosted.cells)} cells x {floor.hosted.reruns} reruns x "
+            f"{floor.hosted.documents_per_rerun} documents"
+        )
+    verb = "analysing" if args.analyze_only else "running"
+    print(f"noise floor: {verb} {model.id}, {plan} -> {out / 'floor'}", flush=True)
+    try:
+        results = noise_floor(
+            cfg,
+            model,
+            repo_root=root,
+            out_dir=out,
+            execute=not args.analyze_only,
+            server=evidence,
+            gpu=gpu,
+            progress=_every(50),
+        )
+    except FloorIncomplete as exc:
+        print(str(exc), file=sys.stderr)
+        return EXIT_ERROR
+    for r in results:
+        parts = [f"mean rate {r.mean_rate:.3f}", f"SD(p_r) {r.jitter_sd:.4f}"]
+        if r.identity_rate is not None:
+            parts.insert(0, f"identity {r.identity_rate:.0%}")
+        if r.flip_rate is not None:
+            parts.append(f"flips {r.flipped_documents}/{r.n_per_rerun}")
+        if r.phi is not None:
+            parts.append(f"binomial SD {r.binomial_sd:.4f}, phi {r.phi:.2f}")
+        if r.aborted:
+            parts.append(f"{r.aborted} aborted")
+        print(f"  {r.protocol} ({r.reruns} reruns x {r.n_per_rerun}): " + ", ".join(parts))
+    print(f"jitter: {out / 'jitter.json'}")
+    return EXIT_OK
 
 
 def _cmd_dataset(args: argparse.Namespace) -> int:
@@ -1047,7 +1124,7 @@ DISPATCH = {
     "verify-determinism": _cmd_verify_determinism,
     "probe": _cmd_probe,
     "estimate": _cmd_estimate,
-    "noise-floor": _not_wired("TODO(M7): provenance.noise_floor"),
+    "noise-floor": _cmd_noise_floor,
     "sweep": _cmd_sweep,
     "analyze": _cmd_analyze,
     "report": _cmd_report,

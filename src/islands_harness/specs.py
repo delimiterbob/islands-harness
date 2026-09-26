@@ -50,16 +50,26 @@ class RunSpec:
     tool_list: tuple[str, ...]
     phase: str = "sweep"  # sweep | rung1 | probe | gate | floor_fixed | floor_varied | floor_hosted | calibrate | smoke
     seed_offset: int | None = None  # varied-seed floor reruns; None otherwise
+    rerun: int | None = None  # noise-floor rerun index; None outside the floor
 
 
-def run_id(model_id: str, cell: Cell, index: int, phase: str, seed_offset: int | None) -> str:
+def run_id(
+    model_id: str,
+    cell: Cell,
+    index: int,
+    phase: str,
+    seed_offset: int | None,
+    rerun: int | None = None,
+) -> str:
     """Stable id: the first 16 hex chars of sha256 over the spec's identity fields.
 
     The id never includes the document id or seed directly because those are functions of
     (model_id, index) already; two specs with the same id are the same run and resume skips
-    the second.
+    the second. ``rerun`` enters the identity only when set: the noise floor repeats
+    identical specs, and without it resume would take rerun 2 for rerun 1. Every other id is
+    unchanged by it.
     """
-    ident = {
+    ident: dict[str, object] = {
         "model_id": model_id,
         "mix": cell.mix,
         "tools": cell.tools,
@@ -68,6 +78,8 @@ def run_id(model_id: str, cell: Cell, index: int, phase: str, seed_offset: int |
         "phase": phase,
         "seed_offset": seed_offset,
     }
+    if rerun is not None:
+        ident["rerun"] = rerun
     payload = json.dumps(ident, separators=(",", ":"), sort_keys=True).encode("utf-8")
     return hashlib.sha256(payload).hexdigest()[:16]
 
@@ -204,12 +216,55 @@ def noise_floor_specs(
 ) -> dict[str, list[list[RunSpec]]]:
     """Specs for the noise floor protocols, keyed by protocol, one inner list per rerun.
 
-    ``fixed``: the local floor cell's full spec list repeated ``fixed_seed_reruns`` times
-    (identical specs; the stack, not the harness, is what may vary).
-    ``varied``: the same cell ``varied_seed_reruns`` times with ``seed_offset = rerun index``.
+    ``fixed``: the first ``fixed_seed_documents`` indices of the local floor cell (the whole
+    cell when unset), repeated ``fixed_seed_reruns`` times as identical specs. Document,
+    seed, epoch and fault draws (keyed on document and epoch) are the same in every rerun,
+    so only the stack can make reruns differ; the run ids carry the rerun index.
+    ``varied``: the whole cell ``varied_seed_reruns`` times with ``seed_offset = rerun``, so
+    only the sampling seeds change between reruns.
     ``hosted``: each hosted cell, ``reruns`` times, restricted to the first
-    ``documents_per_rerun`` indices (the block reading recorded in r4).
-
-    TODO(M7): implement on top of run_specs.
+    ``documents_per_rerun`` indices (the block reading recorded in r4); one rerun holds
+    every cell's block.
     """
-    raise NotImplementedError("TODO(M7): noise floor specs")
+    from dataclasses import replace
+
+    local = config.noise_floor.local
+    cell = Cell(local.cell.tools, local.cell.fault, mix)
+    block = run_specs(
+        config, model, cell, doc_ids, phase="floor_fixed", n_runs=local.fixed_seed_documents
+    )
+    fixed = [
+        [
+            replace(s, run_id=run_id(model.id, cell, s.index, s.phase, None, rerun=r), rerun=r)
+            for s in block
+        ]
+        for r in range(local.fixed_seed_reruns)
+    ]
+    varied = [
+        [
+            replace(s, rerun=r)
+            for s in run_specs(config, model, cell, doc_ids, phase="floor_varied", seed_offset=r)
+        ]
+        for r in range(local.varied_seed_reruns)
+    ]
+    hosted_floor = config.noise_floor.hosted
+    blocks = [
+        run_specs(
+            config,
+            model,
+            Cell(c.tools, c.fault, mix),
+            doc_ids,
+            phase="floor_hosted",
+            n_runs=hosted_floor.documents_per_rerun,
+        )
+        for c in hosted_floor.cells
+    ]
+    hosted = [
+        [
+            replace(s, run_id=run_id(model.id, s.cell, s.index, s.phase, None, rerun=r), rerun=r)
+            for b in blocks
+            for s in b
+        ]
+        for r in range(hosted_floor.reruns)
+    ]
+    return {"fixed": fixed, "varied": varied, "hosted": hosted}

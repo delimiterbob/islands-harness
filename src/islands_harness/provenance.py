@@ -385,35 +385,374 @@ def verify_determinism(
 @dataclass(frozen=True)
 class JitterResult:
     protocol: str  # "fixed_seed" | "varied_seed" | "hosted_block"
-    cell: dict[str, float]
+    cell: dict[str, Any]  # mix, tools, fault
     reruns: int
     n_per_rerun: int
     regime: str
-    identity_rate: float | None  # share of reruns whose hashes equal rerun 1 (fixed_seed)
-    flip_rate: float | None  # share of documents whose outcome is not constant across reruns
+    identity_rate: float | None  # share of reruns 2..R whose hashes all equal rerun 1's
+    flip_rate: float | None  # share of documents whose success is not constant across reruns
     flip_lo: float | None
     flip_hi: float | None
-    jitter_sd: float  # SD of p_r over reruns
+    jitter_sd: float  # SD of p_r over reruns (n - 1 denominator)
     binomial_sd: float | None  # sqrt(p (1 - p) / n) at the mean rate (varied_seed, hosted)
     phi: float | None  # jitter_sd / binomial_sd
-    rates: list[float] = field(default_factory=list)
+    rates: list[float] = field(default_factory=list)  # p_r, rerun by rerun
+    mean_rate: float | None = None
+    flipped_documents: int = 0
+    aborted: int = 0  # runs that ended aborted_transport twice, outside every rate
+
+
+FLOOR_DIR = "floor"  # under the model's results directory, apart from the sweep's runs
+FLOOR_SCHEMA = "jitter.v1"
+_FLOOR_PROTOCOLS = {"fixed": "fixed_seed", "varied": "varied_seed", "hosted": "hosted_block"}
+_FLOOR_DEFINITIONS = {
+    "identity_rate": "share of fixed-seed reruns 2..R whose canonical transcript hashes all "
+    "equal rerun 1's, document by document",
+    "flip_rate": "share of block documents whose success is not the same in every fixed-seed "
+    "rerun; flip_lo and flip_hi are its Wilson interval",
+    "jitter_sd": "standard deviation (n - 1) of the fixed-seed rerun success rates p_r",
+    "phi": "varied-seed SD(p_r) divided by sqrt(p (1 - p) / n) at the mean rate p, n runs "
+    "per rerun; documents are fixed, so phi above 1 points at the harness, not at sampling",
+}
+
+
+class FloorIncomplete(RuntimeError):
+    """Planned floor runs are missing from runs.jsonl; resume the floor before analysing it."""
+
+
+def floor_protocols(model: ModelConfig) -> tuple[str, ...]:
+    """The fixed- and varied-seed protocols for a model served on this machine (or the
+    selftest's synthetic agent); the three-cell block for a hosted one."""
+    return ("hosted",) if is_hosted(model) else ("fixed", "varied")
 
 
 def noise_floor(
-    config: SnapshotConfig, model: ModelConfig, provider: ChatProvider
+    config: SnapshotConfig,
+    model: ModelConfig,
+    provider: ChatProvider | None = None,
+    *,
+    repo_root: Path | None = None,
+    out_dir: Path | None = None,
+    execute: bool = True,
+    server: dict[str, Any] | None = None,
+    gpu: dict[str, Any] | None = None,
+    progress: Any = None,
 ) -> list[JitterResult]:
     """The fixed-seed and varied-seed protocols locally, the three-cell block hosted.
 
-    Fixed seed: the local floor cell's specs executed ``fixed_seed_reruns`` times at the
-    sweep's concurrency in round-robin order, never serially. Per rerun r: p_r, transcript
-    hashes. Report identity rate, flip rate with its Wilson interval, jitter SD = SD(p_r).
-    Varied seed: ``varied_seed_reruns`` reruns with seed_offset = r; report SD(p_r) beside
-    sqrt(p (1 - p) / n) and phi. Hosted: each pre-registered cell, ``reruns`` times, on the
-    first ``documents_per_rerun`` indices (the block reading). Writes jitter.json.
+    The runs go through runner.run_specs in the sweep's own regime (the model's concurrency,
+    so one request at a time on the single local slot, in round-robin order) into
+    ``out_dir/floor/``, with their own runs.jsonl and transcripts so they never mix with the
+    sweep's; resume skips every run already there. Fixed seed: the block of the floor cell,
+    identical in every rerun; per rerun r, p_r and each run's canonical transcript hash;
+    reported as the identity rate, the flip rate with its Wilson interval and the jitter SD
+    (definitions in jitter.json). Varied seed: the whole cell with seed_offset = r; SD(p_r)
+    beside the binomial SD sqrt(p (1 - p) / n) and their ratio phi. Hosted: each
+    pre-registered cell's block, analysed like the fixed-seed protocol plus phi.
 
-    TODO(M7): implement on top of specs.noise_floor_specs and runner.run_specs.
+    ``execute=False`` re-analyses the stored runs only. Every executing call appends its
+    session (UTC times, counts, server evidence) to ``floor/sessions.jsonl``. Writes
+    ``out_dir/jitter.json`` and refuses (FloorIncomplete) while planned runs are missing.
     """
-    raise NotImplementedError("TODO(M7): noise floor")
+    from islands_harness.runner import load_task
+    from islands_harness.specs import noise_floor_specs
+
+    repo_root = Path(repo_root or Path.cwd())
+    out_dir = (
+        Path(out_dir) if out_dir is not None else repo_root / config.snapshot.outputs / model.id
+    )
+    prereg = load_prereg(repo_root / config.snapshot.preregistration)
+    task = load_task(config, repo_root)
+    every = noise_floor_specs(config, model, sorted(task.documents), config.sweep.mixes_to_run[0])
+    plan = {p: every[p] for p in floor_protocols(model)}
+    floor_dir = out_dir / FLOOR_DIR
+    if execute:
+        asyncio.run(
+            _floor_async(
+                config,
+                model,
+                provider,
+                task,
+                plan,
+                floor_dir,
+                repo_root=repo_root,
+                tau=prereg.success.tau,
+                server=server,
+                gpu=gpu,
+                progress=progress,
+            )
+        )
+    regime = prereg.noise_floor.local.regime if "fixed" in plan else "hosted_block"
+    results = analyze_floor(floor_dir, plan, regime=regime, alpha=prereg.alpha)
+    write_jitter(out_dir, results, model=model, config=config)
+    return results
+
+
+def _tree_state(repo_root: Path) -> dict[str, Any]:
+    """The commit the floor runs from and whether the checkout differs from it, so every
+    session can be tied to the exact harness code."""
+    import subprocess
+
+    from islands_harness.report import git_commit
+
+    try:
+        status = subprocess.run(
+            ["git", "status", "--porcelain", "--untracked-files=no"],
+            cwd=repo_root,
+            capture_output=True,
+            text=True,
+            timeout=10,
+            check=True,
+        ).stdout
+    except (OSError, subprocess.SubprocessError):
+        return {"commit": git_commit(repo_root), "dirty": None}
+    return {"commit": git_commit(repo_root), "dirty": bool(status.strip())}
+
+
+def _utc_now() -> str:
+    import datetime
+
+    return datetime.datetime.now(datetime.UTC).isoformat(timespec="seconds")
+
+
+async def _floor_async(
+    config: SnapshotConfig,
+    model: ModelConfig,
+    provider: ChatProvider | None,
+    task: Any,
+    plan: dict[str, list[list[Any]]],
+    floor_dir: Path,
+    *,
+    repo_root: Path,
+    tau: float,
+    server: dict[str, Any] | None,
+    gpu: dict[str, Any] | None,
+    progress: Any,
+) -> None:
+    from islands_harness.providers.factory import build_provider
+    from islands_harness.runner import SpendLedger, Storage, load_prices, run_specs
+
+    own = provider is None
+    provider = provider or build_provider(model, config.agent)
+    storage = Storage(floor_dir)
+    ledger = (
+        SpendLedger(
+            prices=load_prices(repo_root / model.prices, model.model), cap_usd=model.spend_cap_usd
+        )
+        if model.prices
+        else None
+    )
+    session: dict[str, Any] = {
+        "started": _utc_now(),
+        "harness": _tree_state(repo_root),
+        "protocols": {},
+        "server": server or {},
+        "gpu": gpu,
+    }
+    try:
+        for protocol, reruns in plan.items():
+            specs = [s for rerun in reruns for s in rerun]
+            summary = await run_specs(
+                specs,
+                provider,
+                task,
+                storage,
+                ledger,
+                config=config,
+                model=model,
+                tau=tau,
+                progress=progress,
+            )
+            session["protocols"][protocol] = {
+                "planned": len(specs),
+                "executed": summary.executed,
+                "skipped_existing": summary.skipped_existing,
+                "reexecuted": summary.reexecuted,
+                "aborted_transport": summary.aborted_transport,
+            }
+            if summary.stopped_at_cap:
+                session["stopped_at_cap"] = True
+                break
+    finally:
+        if own:
+            close = getattr(provider, "aclose", None)
+            if close is not None:
+                await close()
+        session["finished"] = _utc_now()
+        with (Path(floor_dir) / "sessions.jsonl").open("a", encoding="utf-8", newline="\n") as f:
+            f.write(json.dumps(session, sort_keys=True) + "\n")
+
+
+def _read_rows(runs_path: Path) -> dict[str, dict[str, Any]]:
+    rows: dict[str, dict[str, Any]] = {}
+    if runs_path.is_file():
+        with runs_path.open(encoding="utf-8") as f:
+            for line in f:
+                if line.strip():
+                    row = json.loads(line)
+                    rows[row["run_id"]] = row
+    return rows
+
+
+def analyze_floor(
+    floor_dir: Path,
+    plan: dict[str, list[list[Any]]],
+    *,
+    regime: str,
+    alpha: float = 0.05,
+) -> list[JitterResult]:
+    """The floor's statistics from the stored runs and transcripts, one result per protocol
+    (per cell for the hosted block). Refuses while a planned run is missing."""
+    floor_dir = Path(floor_dir)
+    rows = _read_rows(floor_dir / "runs.jsonl")
+    planned = [s.run_id for reruns in plan.values() for rerun in reruns for s in rerun]
+    missing = [r for r in planned if r not in rows]
+    if missing:
+        raise FloorIncomplete(
+            f"{len(missing)} of {len(planned)} planned floor runs are not in "
+            f"{floor_dir / 'runs.jsonl'}; resume with `islands noise-floor` first"
+        )
+    results: list[JitterResult] = []
+    for protocol, reruns in plan.items():
+        if protocol == "hosted":
+            cells = list(dict.fromkeys(s.cell for s in reruns[0]))
+            for cell in cells:
+                block = [[s for s in rerun if s.cell == cell] for rerun in reruns]
+                results.append(
+                    _floor_statistics(
+                        "hosted_block", block, rows, floor_dir, regime, alpha, True, True
+                    )
+                )
+        else:
+            results.append(
+                _floor_statistics(
+                    _FLOOR_PROTOCOLS[protocol],
+                    reruns,
+                    rows,
+                    floor_dir,
+                    regime,
+                    alpha,
+                    protocol == "fixed",
+                    protocol == "varied",
+                )
+            )
+    return results
+
+
+def _floor_statistics(
+    name: str,
+    reruns: list[list[Any]],
+    rows: dict[str, dict[str, Any]],
+    floor_dir: Path,
+    regime: str,
+    alpha: float,
+    hashes: bool,
+    binomial: bool,
+) -> JitterResult:
+    import math
+    from statistics import fmean, stdev
+
+    from islands_harness.runner import read_transcript
+    from islands_harness.stats.fit import wilson
+
+    success = [[rows[s.run_id]["success"] for s in rerun] for rerun in reruns]
+    aborted = sum(1 for rerun in success for v in rerun if v is None)
+    rates: list[float] = []
+    for r, rerun in enumerate(success):
+        graded = [bool(v) for v in rerun if v is not None]
+        if not graded:
+            raise ValueError(f"{name} rerun {r}: every run aborted, no rate to report")
+        rates.append(sum(graded) / len(graded))
+    documents = len(reruns[0])
+    flipped = sum(
+        1
+        for i in range(documents)
+        if len({rerun[i] for rerun in success if rerun[i] is not None}) > 1
+    )
+    flip_lo, flip_hi = wilson(flipped, documents, alpha)
+    jitter_sd = stdev(rates) if len(rates) > 1 else 0.0
+    mean_rate = fmean(rates)
+    identity = None
+    if hashes:
+        digests = [
+            [
+                canonical_transcript_hash(
+                    read_transcript(floor_dir / rows[s.run_id]["transcript_path"])
+                )
+                for s in rerun
+            ]
+            for rerun in reruns
+        ]
+        others = digests[1:]
+        identity = sum(1 for d in others if d == digests[0]) / len(others) if others else 1.0
+    binomial_sd = phi = None
+    if binomial:
+        binomial_sd = math.sqrt(mean_rate * (1.0 - mean_rate) / documents)
+        phi = jitter_sd / binomial_sd if binomial_sd > 0 else None
+    cell = reruns[0][0].cell
+    return JitterResult(
+        protocol=name,
+        cell={"mix": cell.mix, "tools": cell.tools, "fault": cell.fault_rate},
+        reruns=len(reruns),
+        n_per_rerun=documents,
+        regime=regime,
+        identity_rate=identity,
+        flip_rate=flipped / documents,
+        flip_lo=flip_lo,
+        flip_hi=flip_hi,
+        jitter_sd=jitter_sd,
+        binomial_sd=binomial_sd,
+        phi=phi,
+        rates=rates,
+        mean_rate=mean_rate,
+        flipped_documents=flipped,
+        aborted=aborted,
+    )
+
+
+def write_jitter(
+    out_dir: Path, results: list[JitterResult], *, model: ModelConfig, config: SnapshotConfig
+) -> dict[str, Any]:
+    """``out_dir/jitter.json``: the site's jitter block at the top level (identity rate, flip
+    rate and jitter SD from the fixed-seed protocol, phi from the varied-seed one; null for a
+    hosted model, whose cells are in ``protocols``), every protocol's full result, the stack
+    label from determinism.json, the definitions, and the floor's sessions."""
+    from islands_harness.config import canonical_bytes, sha256_bytes
+
+    out_dir = Path(out_dir)
+    by_name = {r.protocol: r for r in results}
+    fixed, varied = by_name.get("fixed_seed"), by_name.get("varied_seed")
+    sessions_path = out_dir / FLOOR_DIR / "sessions.jsonl"
+    sessions = (
+        [json.loads(x) for x in sessions_path.read_text(encoding="utf-8").splitlines() if x.strip()]
+        if sessions_path.is_file()
+        else []
+    )
+    gate = out_dir / "determinism.json"
+    label = json.loads(gate.read_text(encoding="utf-8")).get("label") if gate.is_file() else None
+    payload = {
+        "schema": FLOOR_SCHEMA,
+        "model_id": model.id,
+        "regime": results[0].regime if results else "not_measured",
+        "identity_rate": fixed.identity_rate if fixed else None,
+        "flip_rate": fixed.flip_rate if fixed else None,
+        "flip_lo": fixed.flip_lo if fixed else None,
+        "flip_hi": fixed.flip_hi if fixed else None,
+        "jitter_sd": fixed.jitter_sd if fixed else None,
+        "phi": varied.phi if varied else None,
+        "stack_label": label,
+        "runs": sum(r.reruns * r.n_per_rerun for r in results),
+        "aborted": sum(r.aborted for r in results),
+        "config_hash": sha256_bytes(canonical_bytes(config)),
+        "definitions": _FLOOR_DEFINITIONS,
+        "reported_beside_intervals_never_inside": True,
+        "protocols": [asdict(r) for r in results],
+        "sessions": sessions,
+    }
+    (out_dir / "jitter.json").write_text(
+        json.dumps(payload, indent=2, sort_keys=True) + "\n", encoding="utf-8", newline="\n"
+    )
+    return payload
 
 
 # --------------------------------------------------------------------------------------
@@ -1302,6 +1641,25 @@ class ReplayDiff:
     detail: str
 
 
+def _floor_rerun_spec(
+    spec: Any, row: dict[str, Any], config: SnapshotConfig, model: ModelConfig
+) -> Any:
+    """A fixed-seed or hosted floor run's id carries its rerun index, which runs.jsonl does
+    not store: find the index whose id reproduces the row's. None matching leaves the spec
+    as it was, and rebuild_spec's check refuses it."""
+    from dataclasses import replace
+
+    from islands_harness.specs import run_id
+
+    floor = config.noise_floor
+    reruns = floor.local.fixed_seed_reruns if row["phase"] == "floor_fixed" else floor.hosted.reruns
+    for r in range(reruns):
+        rid = run_id(model.id, spec.cell, spec.index, spec.phase, None, rerun=r)
+        if rid == row["run_id"]:
+            return replace(spec, run_id=rid, rerun=r)
+    return spec
+
+
 def rebuild_spec(
     row: dict[str, Any], config: SnapshotConfig, model: ModelConfig, doc_ids: list[str]
 ) -> Any:
@@ -1321,6 +1679,12 @@ def rebuild_spec(
     )
     index = int(row["index"])
     spec = specs[index] if index < len(specs) else None
+    if spec is not None and row["phase"] in ("floor_fixed", "floor_hosted"):
+        spec = _floor_rerun_spec(spec, row, config, model)
+    elif spec is not None and row["phase"] == "floor_varied":
+        from dataclasses import replace
+
+        spec = replace(spec, rerun=row.get("seed_offset"))
     if (
         spec is None
         or spec.run_id != row["run_id"]
