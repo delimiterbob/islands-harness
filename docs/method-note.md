@@ -195,7 +195,7 @@ does not accept a perfect anchor. Reproduce the table with
 
 ## 7. Calibration, jitter and results
 
-*Pending:* the noise floor and the snapshot results.
+*Pending:* the noise floor results and the snapshot results.
 
 ### Calibration, 2026-09-26
 
@@ -261,3 +261,40 @@ model's `determinism.json`. The gate's runs are short: anchor-cell runs of two o
 turns without faults. Longer transcripts, with more tools, injected faults and more turns,
 are checked at scale by the fixed-seed noise floor, which reruns a 20-document block of the
 3-tool, 20 percent cell 50 times in the sweep's own regime.
+
+### The noise floor
+
+`islands noise-floor` runs the two local protocols of r4 on the floor cell (3 tools, 20
+percent faults, mix A) in the sweep's own regime: one request at a time on the single
+llama.cpp slot, in round-robin order, through the same runner, loop, fault injector and
+grader as the sweep. Its runs are stored under `results/s1/<model>/floor/`, apart from the
+sweep's, and it resumes run by run.
+
+- Fixed seed. The first 20 indices of the cell (20 documents, each with its sampling seed
+  and its fault draws) are executed 50 times as identical specs. On a stack the gate
+  verified, nothing but the stack can make two reruns differ.
+- Varied seed. The whole cell, 100 documents, is executed 50 times with the sampling
+  seed's scope offset by the rerun index. Documents and fault draws stay fixed, so only
+  sampling varies between reruns.
+
+Conventions, committed before the first floor run (commit ccbcd68):
+
+- The identity rate is the share of reruns 2 to 50 whose 20 canonical transcript hashes
+  all equal rerun 1's, document by document. Rerun 1 is the reference and is not counted.
+- The flip rate is the share of the 20 block documents whose success (score at least tau)
+  is not the same in all 50 reruns, with its Wilson 95 percent interval.
+- The jitter SD is the standard deviation, with the n - 1 denominator, of the 50
+  fixed-seed rerun success rates p_r.
+- For the varied-seed protocol, SD(p_r) is reported beside the binomial SD
+  sqrt(p (1 - p) / n) at the mean rate p, with n = 100 runs per rerun, and phi is their
+  ratio. Because the documents are fixed, phi above 1 points at the harness, not at
+  sampling.
+- A run that ends aborted_transport twice is counted and left out of every rate.
+
+On a verified stack the fixed-seed statistics are 100 percent, 0 and 0. Each invocation
+appends a session (UTC start and end, harness commit, server evidence, GPU) to
+`floor/sessions.jsonl`, and `jitter.json` repeats them, so the record shows that the floor
+ran after the deposit (published 2026-09-26 20:24 UTC) and on which code.
+`scripts/noise_floor_all.py` runs the three models one after another, fastest first.
+
+*Results pending:* the floor started on 2026-09-26 at 21:00 UTC.
