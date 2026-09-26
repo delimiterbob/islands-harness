@@ -182,5 +182,8 @@ Jitter is reported beside the intervals, never inside them.
 - [x] `islands freeze` run on a clean tree; lock committed; tag v1.0.0 (local)
 - [x] `islands probe` and `estimate`: not needed, local runs cost nothing
 - [ ] repository public (after the deposit; the lock ties the code to the deposit)
-- [x] Zenodo deposit of `deposit/bundle.zip` (`islands deposit`), published 2026-09-26; DOI recorded above
+- [x] Zenodo deposit of `deposit/bundle.zip` (`islands deposit`), published 2026-09-26 20:24 UTC; DOI
+  recorded above. The bundle was replaced at 20:45 UTC the same day, before any snapshot run, to
+  shorten local paths in the three gate records (md5 19fea04e5af779d371760aa582209033); the rules,
+  the config and the lock are byte-identical to the first upload (`REDACTIONS.txt`)
 - [ ] deposit date is earlier than the first snapshot run (noise floor included)
