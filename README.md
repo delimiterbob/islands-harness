@@ -155,8 +155,10 @@ The determinism gate runs before the freeze, because a failed gate can change a 
 2 to 6 seconds each (smoke on 2026-09-25, both models, 0 and 50 percent faults), one model's
 snapshot (about 10,000 runs with the noise floor) is roughly 6 to 17 hours of unattended GPU
 time; high fault rates add turns, so plan for the upper end. `sweep` is safe to kill and resumes by run id; it stops at 95 percent of
-the spend cap and never prints a verdict. The deposit (r4.yaml, the lock, the forecast) is
-dated before any full cell runs.
+the spend cap and never prints a verdict. The deposit (`islands deposit`: the rules, the
+config and its lock, the method note, and the calibration and gate records) is dated before
+any snapshot run. Its copies shorten absolute paths on this machine (the repository root to
+`.`, the home directory to `~`) and list the files changed in `REDACTIONS.txt`.
 
 ## The hosted model
 

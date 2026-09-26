@@ -1006,13 +1006,15 @@ def _cmd_freeze(args: argparse.Namespace) -> int:
 
 
 def _cmd_deposit(args: argparse.Namespace) -> int:
-    from islands_harness.report import deposit_files, prepare_deposit
+    from islands_harness.report import REDACTIONS_NAME, deposit_files, prepare_deposit
 
     cfg, root = _config(args), _repo_root(args)
     config_path = Path(args.config).resolve()
     result = prepare_deposit(cfg, root, config_path, args.out)
     for f in deposit_files(cfg, root, config_path):
         print(f"  {f.resolve().relative_to(root.resolve()).as_posix()}")
+    if (Path(args.out) / REDACTIONS_NAME).is_file():
+        print(f"  {REDACTIONS_NAME} (local paths shortened in the copies it lists)")
     print(f"deposit: {result.path} ({result.members} members); upload it to Zenodo yourself")
     return EXIT_OK
 

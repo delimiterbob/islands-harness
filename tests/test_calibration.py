@@ -173,6 +173,62 @@ def test_deposit_gathers_the_frozen_rules_and_records(cfg, tmp_path: Path) -> No
     assert result.members == 7 and check_sums(tmp_path / "deposit")["mismatched"] == []
 
 
+def test_deposit_shortens_local_paths(cfg, tmp_path: Path) -> None:  # noqa: ANN001
+    """The gate records name the server binary and the weights by absolute path. The deposit
+    copies carry them from "." (the repository root) or "~" (the home directory), stay valid
+    JSON, and are refused while a path still names the user, here as a Windows short name."""
+    import json
+    import shutil
+
+    from islands_harness.report import REDACTIONS_NAME, check_sums, prepare_deposit
+
+    base = tmp_path.resolve()
+    home = base / "robertsmith"
+    root = home / "work" / "harness"
+    for rel in ("configs/preregistration/r4.yaml", "configs/snapshot-1.yaml"):
+        (root / rel).parent.mkdir(parents=True, exist_ok=True)
+        shutil.copyfile(REPO / rel, root / rel)
+    config_path = root / "configs" / "snapshot-1.yaml"
+    (root / "configs" / "snapshot-1.lock.json").write_text('{"stand": "in"}\n', encoding="utf-8")
+    exe = home / "AppData" / "Local" / "islands" / "llama-server.exe"
+    weights = root / "models" / "weights" / "m.gguf"
+    gate = root / "results" / "s1" / "gpt-oss-20b-local" / "determinism.json"
+    gate.parent.mkdir(parents=True)
+    server = {"command_line": [str(exe), "-m", str(weights).upper()], "model_path": str(weights)}
+    gate.write_text(json.dumps({"server": server}, indent=2) + "\n", encoding="utf-8")
+    note = root / "docs" / "method-note.md"
+    note.parent.mkdir()
+    note.write_text(f"Weights at {weights.as_posix()}; root '{root}'.\n", encoding="utf-8")
+
+    out = base / "deposit"
+    prepare_deposit(cfg, root, config_path, out, home=home)
+    copied = json.loads((out / "results/s1/gpt-oss-20b-local/determinism.json").read_text("utf-8"))
+    assert copied["server"] == {
+        "command_line": [
+            str(exe).replace(str(home), "~", 1),
+            "-m",
+            str(weights).upper().replace(str(root).upper(), ".", 1),
+        ],
+        "model_path": str(weights).replace(str(root), ".", 1),
+    }
+    prose = (out / "docs" / "method-note.md").read_text(encoding="utf-8")
+    assert prose == f"Weights at {weights.as_posix().replace(root.as_posix(), '.', 1)}; root '.'.\n"
+    listed = (out / REDACTIONS_NAME).read_text(encoding="utf-8")
+    assert listed.endswith(
+        "  docs/method-note.md\n  results/s1/gpt-oss-20b-local/determinism.json\n"
+    )
+    assert check_sums(out)["mismatched"] == []
+    for f in out.rglob("*"):
+        if f.is_file() and f.suffix != ".zip":
+            assert "robertsmith" not in f.read_text(encoding="utf-8").lower(), f
+
+    temp = base / "ROBERT~1" / "AppData" / "Local" / "Temp" / "run.log"
+    gate.write_text(json.dumps({"server": {"log": str(temp)}}) + "\n", encoding="utf-8")
+    with pytest.raises(ValueError, match="names the local user"):
+        prepare_deposit(cfg, root, config_path, base / "deposit2", home=home)
+    assert not (base / "deposit2").exists()
+
+
 def test_recommendation_uses_the_current_band_not_the_stored_flags(cfg) -> None:  # noqa: ANN001
     """A pilot judged under an older band keeps its rates; the recommendation re-judges them."""
     rates = {(d, t): 1.0 for d in (1, 2, 3, 4) for t in cfg.calibration.tau_candidates}

@@ -26,6 +26,7 @@ import hashlib
 import json
 import math
 import platform
+import re
 import subprocess
 import zipfile
 from collections import Counter
@@ -1074,6 +1075,62 @@ def write_heatmap_png(grid: dict[str, Any], png_path: Path) -> Path:
 # --------------------------------------------------------------------------------------
 
 
+REDACTIONS_NAME = "REDACTIONS.txt"
+
+# How a path separator appears in text. Inside a JSON string a backslash is always escaped,
+# so there a lone backslash starts an escape such as \n and is never a separator.
+_SEP_JSON = r"(?:\\\\|/)"
+_SEP_TEXT = r"(?:\\\\|\\|/)"
+
+
+def _path_regex(path: Path, sep: str) -> str:
+    """``path`` as a regex: the drive, if any, then each part, joined by ``sep``."""
+    return re.escape(path.drive) + sep + sep.join(re.escape(part) for part in path.parts[1:])
+
+
+def _name_ends(sep: str) -> str:
+    """Lookahead for the end of a path name: a separator, a quote, whitespace, a closing
+    bracket, a comma or semicolon, or the end of the text."""
+    return rf"(?={sep}|[\"'\s)\],;]|$)"
+
+
+def shorten_local_paths(text: str, repo_root: Path, home: Path, *, json_text: bool) -> str:
+    """``text`` with this machine's absolute paths shortened: the repository root becomes
+    "." (a path inside it keeps its separators after the dot), and any other path under the
+    home directory starts with "~". Case-insensitive, as Windows paths are, in either
+    separator spelling; a JSON text stays valid JSON."""
+    sep = _SEP_JSON if json_text else _SEP_TEXT
+    root = _path_regex(Path(repo_root).resolve(), sep)
+    user = _path_regex(Path(home).resolve(), sep)
+    text = re.sub(root + _name_ends(sep), ".", text, flags=re.IGNORECASE)
+    return re.sub(user + _name_ends(sep), "~", text, flags=re.IGNORECASE)
+
+
+def _names_local_user(text: str, home: Path) -> str | None:
+    """The first path in ``text`` that names the home directory's user, in full or as a
+    Windows short name (JOHNSM~1 for johnsmith), in any separator spelling."""
+    name = Path(home).resolve().name
+    if not name:
+        return None
+    forms = [re.escape(name) + _name_ends(_SEP_TEXT)]
+    stem = re.sub(r"\W", "", name)[:6]
+    if stem and stem != name:
+        forms.append(re.escape(stem) + r"~\d")
+    found = re.search(_SEP_TEXT + "(?:" + "|".join(forms) + ")", text, flags=re.IGNORECASE)
+    return None if found is None else found.group(0)
+
+
+def _redactions_note(files: list[str]) -> str:
+    listed = "".join(f"  {f}\n" for f in sorted(files))
+    return (
+        "Local paths shortened in this deposit\n\n"
+        "The files below are copies of the harness repository's files with one change:\n"
+        "absolute paths on the author's machine were shortened. The repository root is\n"
+        "written as . and any other path under the author's home directory begins with ~.\n"
+        "Nothing else differs; SHA256SUMS hashes the copies as deposited.\n\n" + listed
+    )
+
+
 def deposit_files(config: SnapshotConfig, repo_root: Path, config_path: Path) -> list[Path]:
     """What the dated pre-registration deposit holds, dated before any full cell runs: the
     rules (r4.yaml and its prose mirror), the snapshot config and its freeze lock, the method
@@ -1100,11 +1157,21 @@ def deposit_files(config: SnapshotConfig, repo_root: Path, config_path: Path) ->
 
 
 def prepare_deposit(
-    config: SnapshotConfig, repo_root: Path, config_path: Path, out_dir: Path
+    config: SnapshotConfig,
+    repo_root: Path,
+    config_path: Path,
+    out_dir: Path,
+    *,
+    home: Path | None = None,
 ) -> BundleResult:
     """Copy the deposit files under ``out_dir`` at their repository paths and bundle them
     (SHA256SUMS plus bundle.zip). Refuses without the freeze lock: the deposit exists to
-    date the frozen rules. Nothing is uploaded; the Zenodo upload is the author's step."""
+    date the frozen rules. Nothing is uploaded; the Zenodo upload is the author's step.
+
+    The copies shorten this machine's absolute paths, which the gate records hold for the
+    server binary and the weights (``shorten_local_paths``; ``home`` defaults to the user's
+    home directory). REDACTIONS.txt lists the files that changed, and nothing is written
+    while any copy still names the local user in a path."""
     import shutil
 
     lock = config_path.parent / f"{config_path.stem}.lock.json"
@@ -1112,11 +1179,32 @@ def prepare_deposit(
         raise FileNotFoundError(
             f"no freeze lock at {lock}; the deposit comes after `islands freeze`"
         )
+    root = Path(repo_root).resolve()
+    home = Path.home() if home is None else Path(home)
+    copies: dict[str, str] = {}
+    shortened: list[str] = []
+    for src in deposit_files(config, repo_root, config_path):
+        rel = Path(src).resolve().relative_to(root).as_posix()
+        text = Path(src).read_bytes().decode("utf-8")
+        is_json = Path(src).suffix == ".json"
+        copy = shorten_local_paths(text, root, home, json_text=is_json)
+        if is_json:
+            json.loads(copy)  # still valid JSON
+        mention = _names_local_user(copy, home)
+        if mention is not None:
+            raise ValueError(f"{rel} still names the local user in a path ({mention})")
+        if copy != text:
+            shortened.append(rel)
+        copies[rel] = copy
     out = Path(out_dir)
     if out.exists():
         shutil.rmtree(out)
-    for src in deposit_files(config, repo_root, config_path):
-        dst = out / Path(src).resolve().relative_to(Path(repo_root).resolve())
+    for rel, copy in copies.items():
+        dst = out / rel
         dst.parent.mkdir(parents=True, exist_ok=True)
-        shutil.copyfile(src, dst)
+        dst.write_bytes(copy.encode("utf-8"))
+    if shortened:
+        (out / REDACTIONS_NAME).write_text(
+            _redactions_note(shortened), encoding="utf-8", newline="\n"
+        )
     return bundle(out)
