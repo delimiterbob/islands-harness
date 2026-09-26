@@ -16,7 +16,7 @@
 version: r4
 supersedes: r3
 frozen_on: "2026-09-26"             # deposit metadata, not hashed: the lock's frozen_on date
-deposit_doi: null                  # deposit metadata, not hashed: the DOI the Zenodo draft reserves
+deposit_doi: "10.5281/zenodo.22982434"  # deposit metadata, not hashed: the DOI the Zenodo draft reserves
 alpha: 0.05
 
 success:

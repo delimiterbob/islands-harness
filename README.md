@@ -24,8 +24,8 @@ and Qwen3-4B joined as a third replicate. Difficulty 4 at tau 0.8 makes all thre
 replicates, and the snapshot dataset is now level 4 (`docs/method-note.md` Sections 6 and
 7). The author confirmed the pre-registration decision by decision, snapshot 1 runs the
 three local models only, on mixes A and B, and the harness was frozen on
-2026-09-26 (`configs/snapshot-1.lock.json`, tag v1.0.0, local). The Zenodo deposit
-of `islands deposit` comes before any snapshot run; the public repository follows it. `islands selftest` now runs a whole synthetic
+2026-09-26 (`configs/snapshot-1.lock.json`, tag v1.0.0, local). The pre-registration
+was deposited on Zenodo on 2026-09-26 (DOI 10.5281/zenodo.22982434), before any snapshot run; the public repository follows it. `islands selftest` now runs a whole synthetic
 snapshot through the real pipeline and the reviewer's checks, and the mock site's Map page
 renders the snapshot.json it produces. On gpt-oss-20b through llama.cpp, an exploratory
 300-run sweep was killed after 14 runs and resumed to exactly the 300 planned runs, with no

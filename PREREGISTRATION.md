@@ -11,7 +11,7 @@ disagree the YAML is what was run and the disagreement is an error in the method
 | --- | --- |
 | Version | r4 (supersedes r3, the prose on the site) |
 | Frozen on | 2026-09-26 (lock at commit 79b627f97627) |
-| Deposit DOI | pending: the Zenodo deposit, dated before any snapshot run |
+| Deposit DOI | [10.5281/zenodo.22982434](https://doi.org/10.5281/zenodo.22982434) (Zenodo, published 2026-09-26, before any snapshot run; the deposited copy of this file predates the DOI and reads "pending") |
 | Hash of `r4.yaml` | d52f100b9a77f4c9edf29b3147e2edcb8b63845723377159c79c837c56bbdb12 (rules only; `frozen_on` and `deposit_doi` excluded) |
 | Harness tag | v1.0.0 (local; the public repository follows the deposit, and the lock ties the code to it) |
 | Config hash | 6471cd3a4bb2924a02d877c09bb26305e326dc78230fc7345183ecd562f6924c (`configs/snapshot-1.lock.json`) |
@@ -182,5 +182,5 @@ Jitter is reported beside the intervals, never inside them.
 - [x] `islands freeze` run on a clean tree; lock committed; tag v1.0.0 (local)
 - [x] `islands probe` and `estimate`: not needed, local runs cost nothing
 - [ ] repository public (after the deposit; the lock ties the code to the deposit)
-- [ ] Zenodo deposit of `deposit/bundle.zip` (`islands deposit`); DOI recorded above
+- [x] Zenodo deposit of `deposit/bundle.zip` (`islands deposit`), published 2026-09-26; DOI recorded above
 - [ ] deposit date is earlier than the first snapshot run (noise floor included)
