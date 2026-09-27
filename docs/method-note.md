@@ -1,8 +1,9 @@
 # Method note, snapshot 1 (draft)
 
-Status, 2026-09-26: the statistics are built and verified against simulated truths. Nothing
-has been frozen or measured on a real model. Sections marked *pending* fill in at
-calibration (M5) and after the sweep.
+Status, 2026-09-27: the statistics are built and verified against simulated truths; the
+rules were frozen and deposited on 2026-09-26 (DOI 10.5281/zenodo.22982434); calibration,
+the determinism gate and the noise floor are measured (Section 7); the sweep (M8) is
+running. Sections marked *pending* fill in after the sweep.
 
 This note explains how the harness turns runs into numbers and verdicts, and how well that
 machinery performs when the right answer is known. The rules themselves live in
@@ -365,3 +366,49 @@ run (commit 294833f and this note):
 - Both tool mixes run; only mix A moves the verdicts, and mix B is reported as
   descriptive (decided 2026-09-26). `scripts/sweep_all.py` runs the three models one
   after another, fastest first, mix A before mix B.
+
+### Descriptive addendum, 2026-09-27, before any sweep result was looked at
+
+After an independent review of the project against its founding essay
+(`feedback3/north-star-review-2026-09-27.md` in the workspace), the author decided on
+2026-09-27, while the sweep was running and before any of its results had been analysed or
+looked at, that the snapshot also reports the following. All of it is descriptive: no item
+changes a verdict, and the verdicts remain those of r4.
+
+1. What success means. A run succeeds when its weighted field score is at least 0.8. The
+   weights are invoice number 2, date 1, vendor 1, currency 1, total 2 and line items 3,
+   summing to 10, so a run whose only error is the total scores exactly 0.8 and counts as a
+   success. The report says so in plain words beside the rates, and gives for every cell
+   the rate at 0.9 (registered as descriptive in r4, `sensitivity_tau_plus_minus_0_1`) and
+   a total-correct rate: the share of graded runs whose submitted total matches the gold
+   total.
+2. Tool count against tool identity. The tools arrive in one fixed order per mix, and at
+   level 4 the calculator (tool 4 in mix A) and the spreadsheet (tool 5 in mix A, tool 3
+   in mix B) can do arithmetic the task requires. For each model and mix the report gives
+   the effect of each added tool, the rate at k tools minus the rate at k - 1 tools, per
+   fault rate and pooled over fault rates, with a Newcombe interval (conservative for the
+   paired design), mix A and mix B side by side. An effect of one tool is then not read as
+   an effect of tool count, and a steady decline from 2 tools, which P1 as registered
+   cannot credit, is visible.
+3. The size of the P1 drop. Beside every P1 verdict, the drop from the peak to 6 tools
+   with its interval, against the 15-point margin, so that a survival with a small drop
+   reads as small.
+4. P2 in full. Beside every P2 verdict, the recovery cost net of plain retries (already
+   computed as descriptive) and, per cell, the share of faulted runs that never recovered
+   (ended without an accepted submission).
+5. Aborts, as decided earlier on 2026-09-27: abort causes per cell, and every result with
+   the unparseable-model-output aborts counted as failures.
+
+Errata, 2026-09-27:
+
+- `ARCHITECTURE.md` gave the reason for trying tau 0.8 first as "every high-weight field is
+  right and at most one low-weight field is wrong". At the cut-off that is false: one
+  weight-2 field, the total for example, can be wrong. The sentence is corrected there;
+  the threshold itself is frozen and unchanged.
+- The task's tools module and the site's Map page call the calculator and the spreadsheet
+  distractors. At level 4 they are not (Section 7, calibration). `tools.py` is part of the
+  frozen lock and stays as it is; this note is the correction.
+- The system prompt asks for `submit_record` to be called exactly once. When a fault hits
+  `submit_record`, recovering requires a second call, so the fault axis partly measures
+  whether a model breaks that instruction in order to retry. The prompt is frozen; the
+  report says so where P2 is discussed.

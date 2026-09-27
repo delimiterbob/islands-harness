@@ -11,13 +11,13 @@ every decision with its rejected alternative. `PREREGISTRATION.md` mirrors the d
 rules; `configs/preregistration/r4.yaml` is the machine-readable copy the analysis reads.
 `docs/` holds the method note, the client-mode guide and the reproducibility recipe.
 
-Status, 2026-09-26: M0 (loop, faults, adapter, freeze, selftest, smoke), M1 (dataset,
+Status, 2026-09-27: M0 (loop, faults, adapter, freeze, selftest, smoke), M1 (dataset,
 grader, tools), M2 (runner, spend ledger, probe, estimate, Anthropic adapter), M3
 (statistics, verdicts, `islands analyze`), M4 (report, bundle, `verify`, `replay`,
 `analyze --check`, schemas) and M5 (doctor, `serve`, `models verify`, the determinism gate)
 are built. All three local stacks passed the three-regime determinism gate on 2026-09-26:
 gpt-oss-20b, Qwen3-14B and Qwen3-4B each reproduced all 20 gate runs byte for byte across
-15 executions. M6 is under way: `calibrate`, `freeze --dry-run` and `deposit` are built. The
+15 executions. M6 is done: `calibrate`, `freeze` and `deposit` are built and were used. The
 pilot found every model at the task's ceiling on levels 1 to 3, so the task gained level 4
 (amounts must be computed), an anchor study widened the calibration band to [0.15, 0.95],
 and Qwen3-4B joined as a third replicate. Difficulty 4 at tau 0.8 makes all three
@@ -31,9 +31,10 @@ renders the snapshot.json it produces. On gpt-oss-20b through llama.cpp, an expl
 300-run sweep was killed after 14 runs and resumed to exactly the 300 planned runs, with no
 duplicate and no gap. The statistics meet their coverage and false-survival bars on 3,000
 simulated snapshots (`docs/method-note.md`). One M2 criterion is open: the 20-run hosted
-dry run under a 5 dollar cap, which needs the owner's API key and go-ahead. M6 to M9
-remain; each `TODO(M6)` to `TODO(M9)` marker follows the build plan in `ARCHITECTURE.md`
-Section 16. Nothing has been frozen or measured.
+dry run under a 5 dollar cap, which needs the owner's API key and go-ahead; snapshot 1 has
+no hosted model. M8, the snapshot's sweeps, started on 2026-09-27 at 22:38 UTC; before its
+results were looked at, a descriptive addendum and errata were committed
+(`docs/method-note.md` Section 7). M9 remains.
 
 ## Install on Windows 11 (the author's workstation)
 
