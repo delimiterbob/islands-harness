@@ -488,7 +488,7 @@ def noise_floor(
     return results
 
 
-def _tree_state(repo_root: Path) -> dict[str, Any]:
+def tree_state(repo_root: Path) -> dict[str, Any]:
     """The commit the floor runs from and whether the checkout differs from it, so every
     session can be tied to the exact harness code."""
     import subprocess
@@ -509,7 +509,7 @@ def _tree_state(repo_root: Path) -> dict[str, Any]:
     return {"commit": git_commit(repo_root), "dirty": bool(status.strip())}
 
 
-def _utc_now() -> str:
+def utc_now() -> str:
     import datetime
 
     return datetime.datetime.now(datetime.UTC).isoformat(timespec="seconds")
@@ -549,8 +549,8 @@ async def _floor_async(
         else None
     )
     session: dict[str, Any] = {
-        "started": _utc_now(),
-        "harness": _tree_state(repo_root),
+        "started": utc_now(),
+        "harness": tree_state(repo_root),
         "protocols": {},
         "server": server or {},
         "gpu": gpu,
@@ -587,7 +587,7 @@ async def _floor_async(
             close = getattr(provider, "aclose", None)
             if close is not None:
                 await close()
-        session["finished"] = _utc_now()
+        session["finished"] = utc_now()
         with (Path(floor_dir) / "sessions.jsonl").open("a", encoding="utf-8", newline="\n") as f:
             f.write(json.dumps(session, sort_keys=True) + "\n")
 

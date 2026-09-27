@@ -779,6 +779,48 @@ async def test_an_isolated_double_abort_is_still_recorded(tmp_path: Path) -> Non
     assert all(r["success"] is None for r in rows if r["index"] in (1, 4))
 
 
+class _RejectingServer(_Responder):
+    """Every call for ``doc`` raises TransportExhausted with ``message``, as the provider does
+    after its retries; the rest are served."""
+
+    def __init__(self, doc: str, message: str) -> None:
+        super().__init__()
+        self.doc, self.message = doc, message
+
+    async def complete(self, messages, tools, sampling):  # noqa: ANN001, ANN201
+        from islands_harness.providers.netguard import TransportExhausted
+
+        if messages[1].content.split(": ", 1)[1] == self.doc:
+            raise TransportExhausted(self.message)
+        return await super().complete(messages, tools, sampling)
+
+
+@pytest.mark.parametrize(
+    ("message", "cause"),
+    [
+        (
+            'gave up after 6 attempts: HTTP 500: {"error":{"code":500,"message":"The model '
+            'produced output that does not match the expected peg-native format"}}',
+            "unparseable_model_output",
+        ),
+        ("gave up after 6 attempts: ConnectError: connection refused", "transport"),
+    ],
+)
+async def test_an_aborted_run_records_why(tmp_path: Path, message: str, cause: str) -> None:
+    from islands_harness.runner import abort_cause
+    from islands_harness.runner import run_specs as drive
+
+    task, specs, common = _five_run_task(tmp_path)
+    storage = Storage(tmp_path / "out")
+    await drive(specs, _RejectingServer(specs[2].doc_id, message), task, storage, None, **common)
+    rows = {r["index"]: r for r in _rows(storage)}
+    assert rows[2]["outcome"] == "aborted_transport"
+    events = [e for e in rows[2]["events"] if e["kind"] == "abort_cause"]
+    assert len(events) == 1 and events[0]["data"]["cause"] == cause == abort_cause(message)
+    assert events[0]["data"]["error"] == message and events[0]["turn"] == 0
+    assert all(e["kind"] != "abort_cause" for i in (0, 1, 3, 4) for e in rows[i]["events"])
+
+
 async def test_reexecuted_abort_bills_both_attempts(tmp_path: Path) -> None:
     from islands_harness.dataset import GoldRecord
     from islands_harness.runner import SpendLedger, TaskBundle

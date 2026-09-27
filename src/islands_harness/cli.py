@@ -22,6 +22,7 @@ snapshot. Without it, after ``freeze`` every run command refuses a changed hash.
 from __future__ import annotations
 
 import argparse
+import json
 import sys
 from pathlib import Path
 
@@ -295,6 +296,28 @@ def _cmd_serve(args: argparse.Namespace) -> int:
     return EXIT_OK
 
 
+def _local_server(model) -> tuple[int | None, dict, dict | None]:  # noqa: ANN001
+    """(exit code or None, server evidence, GPU memory) for a local model's running server,
+    which must match the config exactly; (None, {}, None) for a hosted model."""
+    from islands_harness import localstack
+
+    if model.expect is None:
+        return None, {}, None
+    running, diffs, evidence = localstack.server_differences(model)
+    if not running:
+        print(
+            f"{model.id} is not running; start it with `islands serve start {model.model}`",
+            file=sys.stderr,
+        )
+        return EXIT_USAGE, {}, None
+    if diffs:
+        print("the running server differs from the config:", file=sys.stderr)
+        for line in diffs:
+            print(f"  {line}", file=sys.stderr)
+        return EXIT_DOCTOR, {}, None
+    return None, evidence, localstack.gpu_memory()
+
+
 def _check_local_server(model) -> int | None:  # noqa: ANN001
     """EXIT code when a local model's server is down or differs from the config; None when
     it matches (or the model is hosted)."""
@@ -454,7 +477,6 @@ def _cmd_noise_floor(args: argparse.Namespace) -> int:
     """The noise floor against the running server, which must match the config exactly, as
     for the gate; resumable run by run. ``--analyze-only`` recomputes jitter.json from the
     stored runs without contacting a server."""
-    from islands_harness import localstack
     from islands_harness.provenance import FloorIncomplete, floor_protocols, noise_floor
 
     cfg, root = _config(args), _repo_root(args)
@@ -463,20 +485,10 @@ def _cmd_noise_floor(args: argparse.Namespace) -> int:
     out = _results_dir(args, cfg, root, model.id, "sweep")
     evidence: dict = {}
     gpu = None
-    if not args.analyze_only and model.expect is not None:
-        running, diffs, evidence = localstack.server_differences(model)
-        if not running:
-            print(
-                f"{model.id} is not running; start it with `islands serve start {model.model}`",
-                file=sys.stderr,
-            )
-            return EXIT_USAGE
-        if diffs:
-            print("the running server differs from the config:", file=sys.stderr)
-            for line in diffs:
-                print(f"  {line}", file=sys.stderr)
-            return EXIT_DOCTOR
-        gpu = localstack.gpu_memory()
+    if not args.analyze_only:
+        code, evidence, gpu = _local_server(model)
+        if code is not None:
+            return code
     floor = cfg.noise_floor
     if "fixed" in floor_protocols(model):
         block = floor.local.fixed_seed_documents or model.documents * model.epochs
@@ -634,6 +646,9 @@ def _cmd_sweep(args: argparse.Namespace) -> int:
     ]
     specs = [s for c in cells for s in specs_for_cell(cfg, model, c, sorted(task.documents))]
     out = _results_dir(args, cfg, root, model.id, "sweep")
+    code, evidence, gpu = _local_server(model)
+    if code is not None:
+        return code
     ledger = (
         SpendLedger(
             prices=load_prices(root / model.prices, model.model), cap_usd=model.spend_cap_usd
@@ -666,7 +681,35 @@ def _cmd_sweep(args: argparse.Namespace) -> int:
             if close is not None:
                 await close()
 
-    summary = asyncio.run(go())
+    from islands_harness.provenance import tree_state, utc_now
+    from islands_harness.runner import TransportHalt
+
+    session: dict = {
+        "started": utc_now(),
+        "harness": tree_state(root),
+        "mix": args.mix,
+        "cells": args.cells or "all",
+        "planned": len(specs),
+        "server": evidence,
+        "gpu": gpu,
+    }
+    try:
+        summary = asyncio.run(go())
+        session.update(
+            executed=summary.executed,
+            skipped_existing=summary.skipped_existing,
+            reexecuted=summary.reexecuted,
+            aborted_transport=summary.aborted_transport,
+            stopped_at_cap=summary.stopped_at_cap,
+        )
+    except TransportHalt as exc:
+        session["halted"] = str(exc)
+        raise
+    finally:
+        session["finished"] = utc_now()
+        out.mkdir(parents=True, exist_ok=True)
+        with (out / "sessions.jsonl").open("a", encoding="utf-8", newline="\n") as f:
+            f.write(json.dumps(session, sort_keys=True) + "\n")
     print(
         f"sweep done: {summary.executed} executed, {summary.skipped_existing} already present, "
         f"{summary.reexecuted} re-executed after a transport abort, {summary.aborted_transport} aborted twice"

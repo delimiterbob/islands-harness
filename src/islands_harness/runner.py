@@ -41,6 +41,42 @@ from islands_harness.providers.base import ChatProvider, Message, Usage
 from islands_harness.specs import RunSpec
 from islands_harness.tools import Registry
 
+# llama.cpp's reply when the model's own output fails the chat format's grammar, for
+# example "The model produced output that does not match the expected peg-native format".
+UNPARSEABLE_MARKERS = ("does not match the expected",)
+
+
+def abort_cause(error: str) -> str:
+    """``unparseable_model_output`` when the server rejected the model's own reply,
+    ``transport`` otherwise. The first is a model failure that the transport layer reports as
+    an abort: the verdicts keep the frozen rule (every aborted run leaves the denominators),
+    and the snapshot also reports every result with these runs counted as failures (method
+    note Section 7, decided before the first sweep run)."""
+    return (
+        "unparseable_model_output" if any(m in error for m in UNPARSEABLE_MARKERS) else "transport"
+    )
+
+
+class _AbortRecorder:
+    """Forwards to the provider and keeps the text of the last TransportExhausted, so an
+    aborted run can record why. The loop sees exactly what the provider returns or raises."""
+
+    def __init__(self, provider: ChatProvider) -> None:
+        self._provider = provider
+        self.last_error: str | None = None
+
+    async def complete(self, messages: Any, tools: Any, sampling: Any) -> Any:
+        from islands_harness.providers.netguard import TransportExhausted
+
+        try:
+            return await self._provider.complete(messages, tools, sampling)
+        except TransportExhausted as exc:
+            self.last_error = str(exc)
+            raise
+
+    def __getattr__(self, name: str) -> Any:
+        return getattr(self._provider, name)
+
 
 class TransportHalt(RuntimeError):
     """Two runs in a row ended aborted_transport after their re-execution: the server or the
@@ -393,8 +429,10 @@ async def execute_spec(
 ) -> tuple[RunRecord, list[Message]]:
     """Execute one spec exactly as the sweep does: the same run context, fault injector and
     per-run sampling. The sweep, ``replay`` and ``verify --reexecute`` all call this, so a
-    replayed run cannot differ from the original through the way it was started."""
-    from islands_harness.loop import run_one
+    replayed run cannot differ from the original through the way it was started. A run that
+    ends ``aborted_transport`` gains an ``abort_cause`` event with the provider's last error
+    and its cause (``abort_cause``); nothing else about any run changes."""
+    from islands_harness.loop import Event, Outcome, run_one
     from islands_harness.providers.factory import sampling_for
     from islands_harness.tools import RunContext
 
@@ -404,9 +442,10 @@ async def execute_spec(
         dataset_dir=task.dataset_dir,
         tools={},
     )
-    return await run_one(
+    recorder = _AbortRecorder(provider)
+    record, transcript = await run_one(
         spec,
-        provider,
+        recorder,  # type: ignore[arg-type]
         task.registry,
         injector or FaultInjector(config.faults, spec, config.snapshot.root_seed),
         agent or config.agent,
@@ -414,6 +453,12 @@ async def execute_spec(
         ctx=ctx,
         sampling=sampling_for(model, spec.sample_seed),
     )
+    if record.outcome == Outcome.aborted_transport and recorder.last_error is not None:
+        error = recorder.last_error
+        record.events.append(
+            Event("abort_cause", record.turns, {"cause": abort_cause(error), "error": error[:600]})
+        )
+    return record, transcript
 
 
 async def run_specs(
