@@ -343,3 +343,25 @@ Two incidents, both on record:
   leave the rates (0.1 percent of the protocol's runs). Neither Qwen server logged an error.
   The same can happen in the sweep, where the frozen rule would drop a model failure from
   the denominator; how the sweep records and reports these runs is settled before M8.
+
+### Decided before the first sweep run, 2026-09-27
+
+The author decided the following on 2026-09-27, after the noise floor and before any sweep
+run (commit 294833f and this note):
+
+- Every run that ends aborted_transport records why, as an `abort_cause` event in
+  runs.jsonl: `unparseable_model_output` when the server answered that the model's own
+  reply did not match its chat format (llama.cpp: "does not match the expected ...
+  format"), `transport` otherwise. Nothing else about any run changes.
+- The verdicts keep the frozen rule of r4: every aborted_transport run leaves every
+  denominator.
+- Beside the verdicts, labelled descriptive, the snapshot reports the number of each kind
+  of abort per cell, and every cell rate and the P1 and P2 statistics recomputed with the
+  `unparseable_model_output` runs counted as failures (score 0). Where a verdict would
+  read differently under that count, the report says so next to the verdict.
+- `islands sweep` refuses a local server that differs from the config, as the gate and
+  the floor do, and appends each session (UTC times, harness commit, server evidence,
+  GPU) to `sessions.jsonl` beside runs.jsonl.
+- Both tool mixes run; only mix A moves the verdicts, and mix B is reported as
+  descriptive (decided 2026-09-26). `scripts/sweep_all.py` runs the three models one
+  after another, fastest first, mix A before mix B.
