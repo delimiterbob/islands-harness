@@ -530,7 +530,13 @@ async def _floor_async(
     progress: Any,
 ) -> None:
     from islands_harness.providers.factory import build_provider
-    from islands_harness.runner import SpendLedger, Storage, load_prices, run_specs
+    from islands_harness.runner import (
+        SpendLedger,
+        Storage,
+        TransportHalt,
+        load_prices,
+        run_specs,
+    )
 
     own = provider is None
     provider = provider or build_provider(model, config.agent)
@@ -573,6 +579,9 @@ async def _floor_async(
             if summary.stopped_at_cap:
                 session["stopped_at_cap"] = True
                 break
+    except TransportHalt as exc:
+        session["halted"] = str(exc)
+        raise
     finally:
         if own:
             close = getattr(provider, "aclose", None)

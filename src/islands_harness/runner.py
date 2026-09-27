@@ -14,7 +14,12 @@ file only if its line was fully written and fsynced, so a kill mid-run leaves no
 re-executed on resume. Kill-and-resume therefore leaves no duplicate and no gap
 (tests/test_harness.py). Runs that ended ``aborted_transport`` are re-executed once on the
 same pass; if they abort again they stay in the file with that outcome, are counted in the
-manifest and excluded from every denominator.
+manifest and excluded from every denominator. Such a run is written once the next run
+completes. When the next run also aborts twice, the stack itself is down (a crashed server,
+or one left hung by a hibernation), so the pass stops with ``TransportHalt``, records
+neither run, and resume re-executes both once the server is back; without this a dead
+server would turn every remaining spec into an excluded row (added 2026-09-27, after a
+hibernation stalled the noise floor).
 """
 
 from __future__ import annotations
@@ -35,6 +40,11 @@ from islands_harness.loop import Prompts, RunRecord
 from islands_harness.providers.base import ChatProvider, Message, Usage
 from islands_harness.specs import RunSpec
 from islands_harness.tools import Registry
+
+
+class TransportHalt(RuntimeError):
+    """Two runs in a row ended aborted_transport after their re-execution: the server or the
+    API is down, not the runs. Neither is recorded; resume re-executes both."""
 
 
 @dataclass
@@ -431,8 +441,9 @@ async def run_specs(
     to. Spend: before each run starts, the ledger is asked whether the running mean cost per
     run would cross 95 percent of the cap; if so no further run starts and ``stopped_at_cap``
     is set. A run that ends ``aborted_transport`` is re-executed once; a second abort is kept
-    with that outcome. Both attempts are billed to the ledger; the row keeps only the second
-    attempt's cost. Progress lines report counts and spend, never a rate or a verdict.
+    with that outcome, written when the next run completes (or at the end of the pass). Two
+    such runs in a row raise ``TransportHalt`` and neither is written. Both attempts are
+    billed to the ledger; the row keeps only the second attempt's cost. Progress lines report counts and spend, never a rate or a verdict.
     Any other exception is a harness bug and stops the sweep; resume picks up afterwards.
     """
     from islands_harness.loop import Outcome
@@ -457,6 +468,7 @@ async def run_specs(
     ordered = round_robin(todo) if order == "round_robin" else list(todo)
     semaphore = asyncio.Semaphore(concurrency)
     stop = asyncio.Event()
+    held: list[tuple[RunSpec, RunRecord, list[Message]]] = []  # an abort awaiting the next run
 
     async def execute(spec: RunSpec) -> tuple[RunRecord, list[Message]]:
         return await execute_spec(
@@ -484,27 +496,40 @@ async def run_specs(
                 summary.reexecuted += 1
                 discarded = record.usage
                 record, transcript = await execute(spec)
-                if record.outcome == Outcome.aborted_transport:
-                    summary.aborted_transport += 1
             if ledger is not None:
                 if discarded is not None:
                     ledger.add(discarded)
                 record.cost_usd = ledger.add(record.usage)
                 summary.spend_usd = ledger.spent_usd
-            record.transcript_path = (
-                storage.write_transcript(spec.run_id, transcript)
-                .relative_to(storage.dir)
-                .as_posix()
-            )
-            grade_run(record, task.grader, task.gold[spec.doc_id], tau)
-            storage.append_run(record)
-            summary.executed += 1
-            summary.by_outcome[record.outcome.value] = (
-                summary.by_outcome.get(record.outcome.value, 0) + 1
-            )
-            if progress is not None:
-                spend = f", spend ${summary.spend_usd:.2f}" if ledger is not None else ""
-                progress(f"{summary.executed + summary.skipped_existing}/{len(specs)} runs{spend}")
+            if record.outcome == Outcome.aborted_transport:
+                if held:
+                    stop.set()
+                    raise TransportHalt(
+                        f"runs {held[0][0].run_id} and {spec.run_id} both ended aborted_transport "
+                        "twice in a row; the server looks down. Neither was recorded, and resume "
+                        "re-executes them"
+                    )
+                held.append((spec, record, transcript))
+                return
+            while held:
+                record_run(*held.pop())
+            record_run(spec, record, transcript)
+
+    def record_run(spec: RunSpec, record: RunRecord, transcript: list[Message]) -> None:
+        if record.outcome == Outcome.aborted_transport:
+            summary.aborted_transport += 1
+        record.transcript_path = (
+            storage.write_transcript(spec.run_id, transcript).relative_to(storage.dir).as_posix()
+        )
+        grade_run(record, task.grader, task.gold[spec.doc_id], tau)
+        storage.append_run(record)
+        summary.executed += 1
+        summary.by_outcome[record.outcome.value] = (
+            summary.by_outcome.get(record.outcome.value, 0) + 1
+        )
+        if progress is not None:
+            spend = f", spend ${summary.spend_usd:.2f}" if ledger is not None else ""
+            progress(f"{summary.executed + summary.skipped_existing}/{len(specs)} runs{spend}")
 
     tasks = [asyncio.create_task(worker(s)) for s in ordered]
     try:
@@ -517,4 +542,6 @@ async def run_specs(
             t.cancel()
         await asyncio.gather(*tasks, return_exceptions=True)
         raise
+    while held:  # an abort at the end of the pass, with no later run to wait for
+        record_run(*held.pop())
     return summary

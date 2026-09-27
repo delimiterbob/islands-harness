@@ -691,6 +691,94 @@ class _FlakyResponder(_Responder):
         return await super().complete(messages, tools, sampling)
 
 
+class _DeadServer(_Responder):
+    """Like _Responder until ``down_after`` runs have submitted; then every call raises
+    TransportExhausted, like a llama-server that died or hung mid-sweep."""
+
+    def __init__(self, down_after: int) -> None:
+        super().__init__()
+        self.down_after = down_after
+
+    async def complete(self, messages, tools, sampling):  # noqa: ANN001, ANN201
+        from islands_harness.providers.netguard import TransportExhausted
+
+        if self.submits >= self.down_after:
+            raise TransportExhausted("simulated dead server")
+        return await super().complete(messages, tools, sampling)
+
+
+class _DeadDocs(_Responder):
+    """Every call for the named documents raises TransportExhausted; the rest are served."""
+
+    def __init__(self, dead: set[str]) -> None:
+        super().__init__()
+        self.dead = dead
+
+    async def complete(self, messages, tools, sampling):  # noqa: ANN001, ANN201
+        from islands_harness.providers.netguard import TransportExhausted
+
+        if messages[1].content.split(": ", 1)[1] in self.dead:
+            raise TransportExhausted("simulated transport failure")
+        return await super().complete(messages, tools, sampling)
+
+
+def _five_run_task(tmp_path: Path):  # noqa: ANN202
+    from islands_harness.dataset import GoldRecord
+    from islands_harness.runner import TaskBundle
+
+    cfg = load_config(CONFIG)
+    model = cfg.model_by_id("gpt-oss-20b-local")
+    docs = [f"inv-{i:04d}" for i in range(1, 6)]
+    task = TaskBundle(
+        registry=_mini_registry(),
+        grader=_Grader,
+        prompts=Prompts("SYSTEM PROMPT"),
+        documents={d: f"INVOICE {d}" for d in docs},
+        gold={d: GoldRecord(d, {"invoice_number": d}) for d in docs},
+        dataset_dir=tmp_path,
+    )
+    specs = run_specs(cfg, model, Cell(2, 0.0, "A"), docs, n_runs=5)
+    common = {"config": cfg, "model": model, "tau": 0.8, "concurrency": 1}
+    return task, specs, common
+
+
+def _rows(storage: Storage) -> list[dict]:
+    return [json.loads(x) for x in storage.runs_path.read_text(encoding="utf-8").splitlines()]
+
+
+async def test_a_dead_server_halts_the_pass_and_records_none_of_its_runs(tmp_path: Path) -> None:
+    from islands_harness.runner import TransportHalt
+    from islands_harness.runner import run_specs as drive
+
+    task, specs, common = _five_run_task(tmp_path)
+    storage = Storage(tmp_path / "out")
+    with pytest.raises(TransportHalt, match="twice in a row"):
+        await drive(specs, _DeadServer(down_after=2), task, storage, None, **common)
+    rows = _rows(storage)
+    assert [r["index"] for r in rows] == [0, 1]  # the two runs before the server died
+    assert all(r["outcome"] != "aborted_transport" for r in rows)
+
+    summary = await drive(specs, _Responder(), task, storage, None, **common)  # server back
+    rows = _rows(storage)
+    assert sorted(r["index"] for r in rows) == [0, 1, 2, 3, 4]
+    assert all(r["outcome"] != "aborted_transport" for r in rows)
+    assert (summary.skipped_existing, summary.executed) == (2, 3)
+
+
+async def test_an_isolated_double_abort_is_still_recorded(tmp_path: Path) -> None:
+    from islands_harness.runner import run_specs as drive
+
+    task, specs, common = _five_run_task(tmp_path)
+    storage = Storage(tmp_path / "out")
+    dead = {specs[1].doc_id, specs[4].doc_id}  # one mid-pass, one at the very end
+    summary = await drive(specs, _DeadDocs(dead), task, storage, None, **common)
+    rows = _rows(storage)
+    assert [r["index"] for r in rows] == [0, 1, 2, 3, 4]
+    aborted = [r["index"] for r in rows if r["outcome"] == "aborted_transport"]
+    assert aborted == [1, 4] and summary.aborted_transport == 2
+    assert all(r["success"] is None for r in rows if r["index"] in (1, 4))
+
+
 async def test_reexecuted_abort_bills_both_attempts(tmp_path: Path) -> None:
     from islands_harness.dataset import GoldRecord
     from islands_harness.runner import SpendLedger, TaskBundle
