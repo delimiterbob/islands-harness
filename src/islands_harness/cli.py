@@ -693,6 +693,16 @@ def _cmd_sweep(args: argparse.Namespace) -> int:
         "server": evidence,
         "gpu": gpu,
     }
+    sessions = out / "sessions.jsonl"
+
+    def append_session(record: dict) -> None:
+        out.mkdir(parents=True, exist_ok=True)
+        with sessions.open("a", encoding="utf-8", newline="\n") as f:
+            f.write(json.dumps(record, sort_keys=True) + "\n")
+
+    # One line when the sweep starts and one when it ends, joined by "started": a sweep
+    # killed by the driver's watchdog still leaves its start, commit and server on record.
+    append_session({**session, "event": "started"})
     try:
         summary = asyncio.run(go())
         session.update(
@@ -707,9 +717,7 @@ def _cmd_sweep(args: argparse.Namespace) -> int:
         raise
     finally:
         session["finished"] = utc_now()
-        out.mkdir(parents=True, exist_ok=True)
-        with (out / "sessions.jsonl").open("a", encoding="utf-8", newline="\n") as f:
-            f.write(json.dumps(session, sort_keys=True) + "\n")
+        append_session({**session, "event": "finished"})
     print(
         f"sweep done: {summary.executed} executed, {summary.skipped_existing} already present, "
         f"{summary.reexecuted} re-executed after a transport abort, {summary.aborted_transport} aborted twice"
