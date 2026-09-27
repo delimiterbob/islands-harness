@@ -195,7 +195,7 @@ does not accept a perfect anchor. Reproduce the table with
 
 ## 7. Calibration, jitter and results
 
-*Pending:* the noise floor results and the snapshot results.
+*Pending:* the snapshot results.
 
 ### Calibration, 2026-09-26
 
@@ -297,4 +297,49 @@ appends a session (UTC start and end, harness commit, server evidence, GPU) to
 ran after the deposit (published 2026-09-26 20:24 UTC) and on which code.
 `scripts/noise_floor_all.py` runs the three models one after another, fastest first.
 
-*Results pending:* the floor started on 2026-09-26 at 21:00 UTC.
+*Results.* All 18,000 floor runs ran after the deposit: the first at 2026-09-26 21:00:50 UTC,
+the last at 2026-09-27 21:54:41 UTC, on harness commits recorded per session.
+
+Fixed seed, 50 reruns of a 20-document block:
+
+| Model | Identity rate | Documents that flip (Wilson 95%) | Jitter SD | Block rate, every rerun |
+|---|---|---|---|---|
+| Qwen3-4B | 100% | 0 of 20 (0 to 0.16) | 0 | 0.40 |
+| Qwen3-14B | 100% | 0 of 20 (0 to 0.16) | 0 | 0.20 |
+| gpt-oss-20b | 100% | 0 of 20 (0 to 0.16) | 0 | 0.80 |
+
+Every fixed-seed run of every model reproduced its rerun-1 transcript byte for byte, on
+runs with three tools and injected faults. Qwen3-14B's block spanned three server launches
+and a hibernation (below), so the claim also covers a restarted server.
+
+Varied seed, 50 reruns of the whole cell, 100 documents each:
+
+| Model | Mean rate | Range of p_r | SD(p_r) | Binomial SD | phi | Documents that flip | Aborted |
+|---|---|---|---|---|---|---|---|
+| Qwen3-4B | 0.240 | 0.23 to 0.27 | 0.0084 | 0.0427 | 0.20 | 4 of 100 | 0 |
+| Qwen3-14B | 0.311 | 0.30 to 0.33 | 0.0074 | 0.0463 | 0.16 | 7 of 100 | 0 |
+| gpt-oss-20b | 0.782 | 0.71 to 0.84 | 0.0286 | 0.0413 | 0.69 | 70 of 100 | 5 |
+
+Reading. phi is below 1 for every model: a cell's Wilson interval is wider than the spread
+that new seeds produce on these documents, so the intervals are conservative for this
+estimand (Section 1), and nothing in the harness adds variance. The two Qwen models are
+close to deterministic per document at their vendor sampling (4 and 7 of 100 documents
+change outcome under another seed); gpt-oss-20b at temperature 1.0 is not (70 of 100),
+which is why its phi is the highest. None of these numbers enters an interval or a verdict.
+
+Two incidents, both on record:
+
+- Hibernation. On 2026-09-27 at 00:49 UTC Windows hibernated, chosen from the Start menu,
+  while Qwen3-14B's fixed-seed block was running (714 runs done), and woke at 02:06. The
+  request in flight hung, so the floor was stopped at 02:11 and resumed on a restarted
+  server, then stopped once more at 02:15 to switch to the driver with a stall watchdog
+  (commit 57f1845). The two killed sessions appear in `floor/sessions.jsonl` as entries
+  reconstructed from the driver log. No run was lost or duplicated.
+- Server parse failures. 5 of gpt-oss-20b's 5,000 varied-seed runs ended aborted_transport.
+  The server log gives the cause: with those seeds the model's first reply did not match
+  llama.cpp's gpt-oss output grammar, and the server answered HTTP 500 ("The model produced
+  output that does not match the expected peg-native format") on all 12 attempts. They are
+  model failures that the transport layer reports as aborts; under the frozen rule they
+  leave the rates (0.1 percent of the protocol's runs). Neither Qwen server logged an error.
+  The same can happen in the sweep, where the frozen rule would drop a model failure from
+  the denominator; how the sweep records and reports these runs is settled before M8.

@@ -25,7 +25,7 @@ replicates, and the snapshot dataset is now level 4 (`docs/method-note.md` Secti
 7). The author confirmed the pre-registration decision by decision, snapshot 1 runs the
 three local models only, on mixes A and B, and the harness was frozen on
 2026-09-26 (`configs/snapshot-1.lock.json`, tag v1.0.0, local). The pre-registration
-was deposited on Zenodo on 2026-09-26 (DOI 10.5281/zenodo.22982434), before any snapshot run; the public repository follows it. `islands selftest` now runs a whole synthetic
+was deposited on Zenodo on 2026-09-26 (DOI 10.5281/zenodo.22982434), before any snapshot run; the public repository follows it. M7 is done: the noise floor ran for all three models after the deposit (18,000 runs), every fixed-seed rerun reproduced its transcript byte for byte, and phi is 0.20, 0.16 and 0.69 (`docs/method-note.md` Section 7). `islands selftest` now runs a whole synthetic
 snapshot through the real pipeline and the reviewer's checks, and the mock site's Map page
 renders the snapshot.json it produces. On gpt-oss-20b through llama.cpp, an exploratory
 300-run sweep was killed after 14 runs and resumed to exactly the 300 planned runs, with no
