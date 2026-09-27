@@ -375,6 +375,11 @@ After an independent review of the project against its founding essay
 looked at, that the snapshot also reports the following. All of it is descriptive: no item
 changes a verdict, and the verdicts remain those of r4.
 
+The only look at sweep data before this addendum was an operational check, when the sweep
+started, of its first 41 runs (Qwen3-4B, mix A): their phases, cells, document and seed
+pairing, and outcome counts, to confirm the sweep was running as designed. No cell rate or
+statistic was computed.
+
 1. What success means. A run succeeds when its weighted field score is at least 0.8. The
    weights are invoice number 2, date 1, vendor 1, currency 1, total 2 and line items 3,
    summing to 10, so a run whose only error is the total scores exactly 0.8 and counts as a
