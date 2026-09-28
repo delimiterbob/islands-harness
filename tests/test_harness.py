@@ -821,6 +821,37 @@ async def test_an_aborted_run_records_why(tmp_path: Path, message: str, cause: s
     assert all(e["kind"] != "abort_cause" for i in (0, 1, 3, 4) for e in rows[i]["events"])
 
 
+async def test_unparseable_outputs_in_a_row_are_recorded_and_never_halt(tmp_path: Path) -> None:
+    """Deterministic parse failures on consecutive runs (the same document and seed across
+    fault rates) are the model's failures on a live server: all recorded, no halt."""
+    from islands_harness.runner import run_specs as drive
+
+    task, specs, common = _five_run_task(tmp_path)
+    message = (
+        'gave up after 6 attempts: HTTP 500: {"error":{"code":500,"message":"The model '
+        'produced output that does not match the expected peg-native format"}}'
+    )
+
+    class _Unparseable(_Responder):
+        async def complete(self, messages, tools, sampling):  # noqa: ANN001, ANN201
+            from islands_harness.providers.netguard import TransportExhausted
+
+            if messages[1].content.split(": ", 1)[1] in {
+                specs[1].doc_id,
+                specs[2].doc_id,
+                specs[3].doc_id,
+            }:
+                raise TransportExhausted(message)
+            return await super().complete(messages, tools, sampling)
+
+    storage = Storage(tmp_path / "out")
+    summary = await drive(specs, _Unparseable(), task, storage, None, **common)
+    rows = {r["index"]: r for r in _rows(storage)}
+    assert sorted(rows) == [0, 1, 2, 3, 4]
+    assert [i for i in rows if rows[i]["outcome"] == "aborted_transport"] == [1, 2, 3]
+    assert summary.aborted_transport == 3
+
+
 async def test_reexecuted_abort_bills_both_attempts(tmp_path: Path) -> None:
     from islands_harness.dataset import GoldRecord
     from islands_harness.runner import SpendLedger, TaskBundle

@@ -19,7 +19,10 @@ completes. When the next run also aborts twice, the stack itself is down (a cras
 or one left hung by a hibernation), so the pass stops with ``TransportHalt``, records
 neither run, and resume re-executes both once the server is back; without this a dead
 server would turn every remaining spec into an excluded row (added 2026-09-27, after a
-hibernation stalled the noise floor).
+hibernation stalled the noise floor). Only transport aborts count toward the halt: a run
+the server rejected as unparseable model output (``abort_cause``) proves the server is
+alive, so it is recorded at once and never halts a pass (added 2026-09-28, after
+gpt-oss-20b's deterministic parse failures halted the sweep on the same two runs).
 """
 
 from __future__ import annotations
@@ -76,6 +79,15 @@ class _AbortRecorder:
 
     def __getattr__(self, name: str) -> Any:
         return getattr(self._provider, name)
+
+
+def _server_answered(record: Any) -> bool:
+    """True when an aborted run's cause is the model's unparseable output: the server
+    answered, so it is alive, and the abort is the model's failure, not the stack's."""
+    return any(
+        e.kind == "abort_cause" and e.data.get("cause") == "unparseable_model_output"
+        for e in record.events
+    )
 
 
 class TransportHalt(RuntimeError):
@@ -546,7 +558,7 @@ async def run_specs(
                     ledger.add(discarded)
                 record.cost_usd = ledger.add(record.usage)
                 summary.spend_usd = ledger.spent_usd
-            if record.outcome == Outcome.aborted_transport:
+            if record.outcome == Outcome.aborted_transport and not _server_answered(record):
                 if held:
                     stop.set()
                     raise TransportHalt(
