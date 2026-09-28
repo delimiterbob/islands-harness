@@ -89,8 +89,10 @@ models:
   # EXPLORATORY ONLY, 2026-09-28: not part of snapshot 1 and never read by a snapshot-1
   # command. Every other section is copied unchanged from configs/snapshot-1.yaml, so the
   # task, dataset, tools, faults and grader are the frozen ones. Each model is pinned to one
-  # OpenRouter host with fallbacks off; require_parameters makes the request fail rather than
-  # silently drop a field the host does not support. The key is read from OPENROUTER_API_KEY.
+  # OpenRouter host with fallbacks off. require_parameters is off because every pinned host
+  # omits parallel_tool_calls, which the harness always sends; each other field sent was
+  # checked against the pinned host's supported parameters on 2026-09-28, and allowing
+  # parallel calls is the hosts' default anyway. The key is read from OPENROUTER_API_KEY.
 
   - id: gpt-oss-120b-or
     provider: openai_compat
@@ -104,7 +106,7 @@ models:
     sampling: {temperature: 1.0, top_p: 1.0, max_tokens: 8192, seed: per_run}
     extra_body:
       reasoning: {effort: medium}   # as the local gpt-oss-20b
-      provider: {order: ["deepinfra/bf16"], allow_fallbacks: false, require_parameters: true}
+      provider: {order: ["deepinfra/bf16"], allow_fallbacks: false, require_parameters: false}
     prices: configs/prices-openrouter.json
     spend_cap_usd: 5
 
@@ -120,7 +122,7 @@ models:
     sampling: {temperature: 0.7, top_p: 0.8, max_tokens: 4096, seed: per_run}
     extra_body:
       top_k: 20                     # Qwen's published recommendation, as the local Qwen3 models
-      provider: {order: ["alibaba"], allow_fallbacks: false, require_parameters: true}
+      provider: {order: ["alibaba"], allow_fallbacks: false, require_parameters: false}
     prices: configs/prices-openrouter.json
     spend_cap_usd: 5
 
@@ -136,7 +138,7 @@ models:
     sampling: {temperature: 0.6, top_p: 0.95, max_tokens: 16384, seed: per_run}
     extra_body:
       top_k: 20                     # Qwen's published recommendation for thinking mode
-      provider: {order: ["alibaba"], allow_fallbacks: false, require_parameters: true}
+      provider: {order: ["alibaba"], allow_fallbacks: false, require_parameters: false}
     prices: configs/prices-openrouter.json
     spend_cap_usd: 5
 
@@ -152,7 +154,7 @@ models:
     sampling: {max_tokens: 16384, seed: per_run}   # provider default temperature
     extra_body:
       reasoning: {effort: medium}
-      provider: {order: ["openai"], allow_fallbacks: false, require_parameters: true}
+      provider: {order: ["openai"], allow_fallbacks: false, require_parameters: false}
     prices: configs/prices-openrouter.json
     spend_cap_usd: 5
 
@@ -168,6 +170,6 @@ models:
     sampling: {max_tokens: 16384}                  # DeepSeek's own host takes no seed
     extra_body:
       reasoning: {enabled: true}
-      provider: {order: ["deepseek"], allow_fallbacks: false, require_parameters: true}
+      provider: {order: ["deepseek"], allow_fallbacks: false, require_parameters: false}
     prices: configs/prices-openrouter.json
     spend_cap_usd: 5
