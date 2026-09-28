@@ -392,3 +392,44 @@ def test_selftest_builds_and_checks_a_whole_snapshot(tmp_path: Path) -> None:
     assert "P1: survives" in snap["statement"] and "P2: survives" in snap["statement"]
     data = json.loads(Path(snap["snapshot_json"]).read_text(encoding="utf-8"))
     assert SnapshotV1.model_validate(data).snapshot.kind == "selftest"
+
+
+def test_export_bundle_shortens_paths_and_keeps_the_analysis_inputs(tmp_path: Path) -> None:
+    """A deposit export of a results directory: the gate record and the session log lose the
+    machine's paths, runs.jsonl is copied byte for byte, the sums check, and a path that
+    still names the user (a Windows short name) stops the export before it writes."""
+    import json
+
+    from islands_harness.report import REDACTIONS_NAME, check_sums, export_bundle
+
+    base = tmp_path.resolve()
+    home = base / "robertsmith"
+    root = home / "work" / "harness"
+    results = root / "results" / "s1" / "m"
+    (results / "floor").mkdir(parents=True)
+    exe = home / "AppData" / "Local" / "islands" / "llama-server.exe"
+    gate = {"server": {"command_line": [str(exe), "-m", str(root / "models" / "m.gguf")]}}
+    (results / "determinism.json").write_text(json.dumps(gate, indent=2) + "\n", encoding="utf-8")
+    session = {"server": {"model_path": str(root / "models" / "m.gguf")}}
+    (results / "floor" / "sessions.jsonl").write_text(json.dumps(session) + "\n", encoding="utf-8")
+    runs = '{"run_id": "a", "doc_id": "inv-0001"}\n'
+    (results / "runs.jsonl").write_text(runs, encoding="utf-8")
+
+    out = base / "export"
+    result = export_bundle(results, out, repo_root=root, home=home)
+    assert json.loads((out / "determinism.json").read_text(encoding="utf-8"))["server"][
+        "command_line"
+    ][0] == str(exe).replace(str(home), "~", 1)
+    assert "robertsmith" not in (out / "floor" / "sessions.jsonl").read_text(encoding="utf-8")
+    assert (out / "runs.jsonl").read_bytes() == (results / "runs.jsonl").read_bytes()
+    listed = (out / REDACTIONS_NAME).read_text(encoding="utf-8")
+    assert listed.endswith("  determinism.json\n  floor/sessions.jsonl\n")
+    assert check_sums(out)["mismatched"] == [] and result.members == 5
+    assert "robertsmith" in (results / "determinism.json").read_text(
+        encoding="utf-8"
+    )  # source kept
+
+    (results / "notes.txt").write_text(str(base / "ROBERT~1" / "x") + "\n", encoding="utf-8")
+    with pytest.raises(ValueError, match="names the local user"):
+        export_bundle(results, base / "export2", repo_root=root, home=home)
+    assert not (base / "export2").exists()

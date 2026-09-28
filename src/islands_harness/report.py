@@ -1001,6 +1001,53 @@ def bundle(results_dir: Path) -> BundleResult:
     return BundleResult(out, sums, len(members), _sha256_file(out))
 
 
+# Text files an export rewrites; anything else is copied byte for byte.
+_TEXT_SUFFIXES = {".json", ".jsonl", ".csv", ".txt", ".md", ".svg", ".yaml", ".log"}
+
+
+def export_bundle(
+    results_dir: Path, out_dir: Path, *, repo_root: Path, home: Path | None = None
+) -> BundleResult:
+    """A copy of a results directory for deposit, then its bundle: every text file with this
+    machine's absolute paths shortened exactly as the pre-registration deposit does
+    (``shorten_local_paths``; the gate records and session logs hold the server's command
+    line and the weights' path), REDACTIONS.txt listing the files that changed, and
+    SHA256SUMS over the copies. Runs, transcripts and analysis files carry no local path, so a
+    reviewer's re-analysis of the export reproduces every number. Nothing is written while
+    any copy still names the local user in a path. The source directory is not touched."""
+    import shutil
+
+    src = Path(results_dir).resolve()
+    root = Path(repo_root).resolve()
+    home = Path.home() if home is None else Path(home)
+    copies: dict[str, bytes] = {}
+    shortened: list[str] = []
+    for rel in bundle_members(src):
+        data = (src / rel).read_bytes()
+        if Path(rel).suffix in _TEXT_SUFFIXES:
+            text = data.decode("utf-8")
+            is_json = Path(rel).suffix in (".json", ".jsonl")
+            copy = shorten_local_paths(text, root, home, json_text=is_json)
+            mention = _names_local_user(copy, home)
+            if mention is not None:
+                raise ValueError(f"{rel} still names the local user in a path ({mention})")
+            if copy != text:
+                shortened.append(rel)
+                data = copy.encode("utf-8")
+        copies[rel] = data
+    out = Path(out_dir)
+    if out.exists():
+        shutil.rmtree(out)
+    for rel, data in copies.items():
+        (out / rel).parent.mkdir(parents=True, exist_ok=True)
+        (out / rel).write_bytes(data)
+    if shortened:
+        (out / REDACTIONS_NAME).write_text(
+            _redactions_note(shortened), encoding="utf-8", newline="\n"
+        )
+    return bundle(out)
+
+
 def check_sums(results_dir: Path) -> dict[str, list[str]]:
     """Recompute every hash SHA256SUMS lists. Returns {"mismatched", "missing", "unlisted"}:
     the first two are failures; unlisted files (added after the bundle) are reported only."""

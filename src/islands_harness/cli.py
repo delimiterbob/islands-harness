@@ -202,6 +202,11 @@ def build_parser() -> argparse.ArgumentParser:
 
     b = sub.add_parser("bundle", help="Zenodo bundle with SHA256SUMS")
     b.add_argument("results", type=Path)
+    b.add_argument(
+        "--export",
+        type=Path,
+        help="write a deposit copy here with local paths shortened, and bundle that instead",
+    )
     _add_common(b)
 
     sc = sub.add_parser("schema", help="export the JSON Schemas (config.v1, runs.v1, snapshot.v1)")
@@ -907,9 +912,14 @@ def _cmd_report(args: argparse.Namespace) -> int:
 
 
 def _cmd_bundle(args: argparse.Namespace) -> int:
-    from islands_harness.report import bundle
+    from islands_harness.report import REDACTIONS_NAME, bundle, export_bundle
 
-    result = bundle(Path(args.results))
+    if args.export is not None:
+        result = export_bundle(Path(args.results), args.export, repo_root=_repo_root(args))
+        if (args.export / REDACTIONS_NAME).is_file():
+            print(f"{REDACTIONS_NAME}: local paths shortened in the copies it lists")
+    else:
+        result = bundle(Path(args.results))
     print(f"bundle: {result.path} ({result.members} members)")
     print(f"sums: {result.sums_path}")
     print(f"bundle sha256 {result.sha256} (informational; SHA256SUMS is the reference)")
