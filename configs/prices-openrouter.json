@@ -30,8 +30,8 @@
       "cache_write": 0.0
     },
     "deepseek/deepseek-v4.1-flash": {
-      "input": 1.5e-07,
-      "output": 6e-07,
+      "input": 1.4e-07,
+      "output": 4.2e-07,
       "cache_read": 0.0,
       "cache_write": 0.0
     }

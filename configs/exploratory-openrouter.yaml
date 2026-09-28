@@ -167,9 +167,11 @@ models:
     documents: 100
     epochs: 1
     concurrency: 4
-    sampling: {max_tokens: 16384}                  # DeepSeek's own host takes no seed
+    sampling: {max_tokens: 16384, seed: per_run}   # provider default temperature
     extra_body:
       reasoning: {enabled: true}
-      provider: {order: ["deepseek"], allow_fallbacks: false, require_parameters: false}
+      # DeepInfra, not DeepSeek's own host: the account's privacy setting (no training on paid
+      # requests) excludes DeepSeek's host. fp8 is the model's native precision.
+      provider: {order: ["deepinfra/fp8"], allow_fallbacks: false, require_parameters: false}
     prices: configs/prices-openrouter.json
     spend_cap_usd: 5
