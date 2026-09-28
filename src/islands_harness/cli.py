@@ -829,19 +829,23 @@ def _cmd_analyze(args: argparse.Namespace) -> int:
         return EXIT_USAGE
     model = cfg.model_by_id(ids[0])
     prereg = load_prereg(root / cfg.snapshot.preregistration)
+    from islands_harness.stats.addendum import write_addendum
+
     snapshot_id = cfg.snapshot.id + ("-exploratory" if args.exploratory else "")
-    payload = analyze(
-        runs,
-        prereg,
-        snapshot_id=snapshot_id,
-        model_id=model.id,
-        pairing="in_expectation_hosted" if is_hosted(model) else _gate_pairing(results),
-        prereg_hash=prereg_hash(prereg),
-        out_dir=results,
-        torn_lines=torn,
-    )
+    common = {
+        "snapshot_id": snapshot_id,
+        "model_id": model.id,
+        "pairing": "in_expectation_hosted" if is_hosted(model) else _gate_pairing(results),
+        "prereg_hash": prereg_hash(prereg),
+        "torn_lines": torn,
+    }
+    payload = analyze(runs, prereg, out_dir=results, **common)
     print(payload["statement"])
     print(f"results: {results / 'results.json'}")
+    addendum = write_addendum(runs, prereg, payload, out_dir=results, **common)
+    if addendum["mix_b"]:
+        print(addendum["mix_b"]["statement"])
+    print(f"descriptive addendum: {results / 'addendum.json'}")
     return EXIT_OK
 
 

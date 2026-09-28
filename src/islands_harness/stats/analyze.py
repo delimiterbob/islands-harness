@@ -125,10 +125,16 @@ def analyze(
     out_dir: Path,
     mix: str | None = None,
     torn_lines: int = 0,
+    reading: str | None = None,
 ) -> dict[str, Any]:
     """Run every P1 and P2 statistic for one model and one mix, then write the files listed
     above. Only sweep-phase rows of that model and mix enter. Returns the results.json
-    payload."""
+    payload.
+
+    ``reading`` labels a descriptive re-analysis (mix B, or a sensitivity reading of the
+    descriptive addendum): its statement starts "DESCRIPTIVE (<reading>)", and results.json and
+    verdict.json record the reading with ``moves`` false, so it cannot be taken for a verdict.
+    The registered analysis passes none and its files are unchanged."""
     out_dir = Path(out_dir)
     mix = mix or prereg.p1.scope.mix
     rows = sorted(
@@ -226,6 +232,10 @@ def analyze(
         p2=p2,
         prereg_hash=prereg_hash,
     )
+    if reading is not None:
+        line = f"DESCRIPTIVE ({reading}) | {line}"
+        marked = json.loads((out_dir / "verdict.json").read_text(encoding="utf-8"))
+        _write_json(out_dir / "verdict.json", {**marked, "reading": reading, "moves": False})
     (out_dir / "statement.txt").write_text(line + "\n", encoding="utf-8", newline="\n")
     payload: dict[str, Any] = {
         "schema_version": SCHEMA_VERSION,
@@ -248,5 +258,10 @@ def analyze(
         "statement": line,
         "descriptive": descriptive,
     }
+    if reading is not None:
+        payload["reading"] = reading
+        payload["propositions_move"] = False
+        for name in ("p1", "p2"):
+            payload["verdicts"][name]["moves"] = False
     _write_json(out_dir / "results.json", payload)
     return payload

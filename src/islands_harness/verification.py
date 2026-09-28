@@ -162,6 +162,12 @@ def check_analysis(results_dir: Path, *, config: SnapshotConfig, repo_root: Path
     """Recompute every analysis output of one model directory into a temporary directory,
     with the snapshot id, pairing label, mix and pre-registration hash that results.json
     records, and compare file by file."""
+    from islands_harness.stats.addendum import (
+        ADDENDUM_FILE,
+        MIX_B_DIR,
+        UNPARSEABLE_DIR,
+        write_addendum,
+    )
     from islands_harness.stats.analyze import analyze, read_runs
 
     results_dir = Path(results_dir)
@@ -171,18 +177,24 @@ def check_analysis(results_dir: Path, *, config: SnapshotConfig, repo_root: Path
     recorded_hash = str(published["preregistration"]["hash"])
     matches = prereg_hash(prereg) == recorded_hash
     with tempfile.TemporaryDirectory() as tmp:
-        analyze(
-            runs,
-            prereg,
-            snapshot_id=str(published["snapshot"]),
-            model_id=str(published["model"]),
-            pairing=str(published["recovery"]["pairing"]),
-            prereg_hash=recorded_hash,
-            out_dir=Path(tmp),
-            mix=str(published["mix"]),
-            torn_lines=torn,
-        )
-        files = [compare_file(n, results_dir / n, Path(tmp) / n) for n in ANALYSIS_FILES]
+        common = {
+            "snapshot_id": str(published["snapshot"]),
+            "model_id": str(published["model"]),
+            "pairing": str(published["recovery"]["pairing"]),
+            "prereg_hash": recorded_hash,
+            "torn_lines": torn,
+        }
+        payload = analyze(runs, prereg, out_dir=Path(tmp), mix=str(published["mix"]), **common)
+        names = list(ANALYSIS_FILES)
+        if (
+            results_dir / ADDENDUM_FILE
+        ).is_file():  # results analysed before the addendum have none
+            write_addendum(runs, prereg, payload, out_dir=Path(tmp), **common)
+            names.append(ADDENDUM_FILE)
+            for sub in (MIX_B_DIR, UNPARSEABLE_DIR):
+                if (results_dir / sub).is_dir():
+                    names += [f"{sub}/{n}" for n in ANALYSIS_FILES]
+        files = [compare_file(n, results_dir / n, Path(tmp) / n) for n in names]
     detail = "" if matches else "the pre-registration on disk is not the one the analysis recorded"
     return AnalysisCheck(files, matches, detail)
 
