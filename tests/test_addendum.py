@@ -154,6 +154,8 @@ def test_addendum_with_mix_b_and_the_unparseable_reading(tmp_path: Path) -> None
     assert add["mix_b"]["statement"].startswith("DESCRIPTIVE (mix B, descriptive by r4) | ")
     mix_b = json.loads((out / "mix-B" / "results.json").read_text(encoding="utf-8"))
     assert mix_b["mix"] == "B" and mix_b["propositions_move"] is False
+    assert mix_b["counts"]["in_scope_p1"] > 0  # the B reading sees mix B's runs
+    assert add["mix_b"]["p1"] != "not_estimable" and add["mix_b"]["p2"] != "not_estimable"
     assert (
         json.loads((out / "mix-B" / "verdict.json").read_text(encoding="utf-8"))["moves"] is False
     )

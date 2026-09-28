@@ -202,6 +202,13 @@ def _drop_reading(p1: dict[str, Any], sesoi: float) -> dict[str, Any]:
     }
 
 
+def scoped_to(prereg: PreRegistration, mix: str) -> PreRegistration:
+    """The same rules with the propositions' scope moved to ``mix``. Both P1 and P2 read
+    their mix from ``p1.scope``, so without this a mix-B reading would see no runs."""
+    scope = prereg.p1.scope.model_copy(update={"mix": mix})
+    return prereg.model_copy(update={"p1": prereg.p1.model_copy(update={"scope": scope})})
+
+
 def _summary(payload: dict[str, Any]) -> dict[str, Any]:
     return {
         "statement": payload["statement"],
@@ -266,7 +273,7 @@ def write_addendum(
             **_summary(
                 analyze(
                     runs,
-                    prereg,
+                    scoped_to(prereg, "B"),
                     out_dir=out_dir / MIX_B_DIR,
                     mix="B",
                     reading=MIX_B_READING,
