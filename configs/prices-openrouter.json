@@ -1,0 +1,39 @@
+{
+  "schema_version": 1,
+  "checked": "2026-09-28",
+  "source": "https://openrouter.ai/api/v1/models/{model}/endpoints, the pinned host's list price",
+  "note": "Exploratory OpenRouter runs only. Cache fields are zero: no prompt caching is requested.",
+  "unit": "usd_per_token",
+  "models": {
+    "openai/gpt-oss-120b": {
+      "input": 3.7e-08,
+      "output": 1.7e-07,
+      "cache_read": 0.0,
+      "cache_write": 0.0
+    },
+    "qwen/qwen3-235b-a22b-2507": {
+      "input": 1.5e-07,
+      "output": 5.98e-07,
+      "cache_read": 0.0,
+      "cache_write": 0.0
+    },
+    "qwen/qwen3-235b-a22b-thinking-2507": {
+      "input": 2.3e-07,
+      "output": 2.3e-06,
+      "cache_read": 0.0,
+      "cache_write": 0.0
+    },
+    "openai/gpt-5.6-luna": {
+      "input": 2e-07,
+      "output": 1.2e-06,
+      "cache_read": 0.0,
+      "cache_write": 0.0
+    },
+    "deepseek/deepseek-v4.1-flash": {
+      "input": 1.5e-07,
+      "output": 6e-07,
+      "cache_read": 0.0,
+      "cache_write": 0.0
+    }
+  }
+}

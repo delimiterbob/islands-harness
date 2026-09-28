@@ -1,0 +1,173 @@
+# Snapshot 1: the public experiment definition. What to run, never how to decide.
+# The decision rules live in configs/preregistration/r4.yaml.
+#
+# Validated by islands_harness.config.SnapshotConfig with extra="forbid":
+# an unknown key is an error, not a silent no-op. `islands freeze` hashes the
+# canonical form of this file (UTF-8, LF, sorted keys) into snapshot-1.lock.json,
+# and every run command after freeze refuses a changed hash.
+#
+# Values marked CALIBRATE are placeholders until `islands calibrate` has run
+# (ARCHITECTURE.md Section 10). Nothing here is frozen yet.
+
+schema_version: 1
+
+snapshot:
+  id: s1
+  root_seed: 20261006
+  preregistration: configs/preregistration/r4.yaml
+  harness_tag: v1.0.0
+  outputs: results/s1
+
+task:
+  dir: tasks/invoice_extraction
+  system_prompt: system_prompt.md
+  dataset: dataset
+  grader: grader.py
+  required_tools: [fetch_document, submit_record]
+  mixes:
+    A: [fetch_document, submit_record, search_web, calculator, read_spreadsheet, send_email]
+    B: [fetch_document, submit_record, read_spreadsheet, search_web, calculator, send_email]
+  rung1: [fetch_document]
+
+agent:
+  max_turns: 20
+  max_tool_calls: 40
+  token_limit: 60000
+  time_limit_s: 600
+  parallel_tool_calls: allow        # executed sequentially in emitted order
+  tool_choice: auto
+  strict_schemas: false
+  on_stop_without_submit: end
+  on_malformed_arguments: catalog_error
+
+sweep:
+  tools_axis: [1, 2, 3, 4, 5, 6]
+  in_scope_tools: [2, 3, 4, 5, 6]
+  fault_axis: [0.0, 0.1, 0.2, 0.3, 0.4, 0.5]
+  mixes_to_run: [A, B]              # confirmed 2026-09-26: mix B runs, descriptive; verdicts use mix A (r4 scope)
+  order: round_robin
+  rung1_runs_per_cell: 20
+
+faults:
+  kinds: [timeout, garbled_payload, error_response, empty_result]
+  weights: [1, 1, 1, 1]
+  applies_to: all_tools
+  nested_across_rates: true
+  simulate_delay_s: 0
+  garble: {char_fraction: 0.2, truncate: true}
+
+probe:
+  runs_per_point: 20
+  tools_points: [2, 3, 4, 5, 6]
+  fault_points: [0.0, 0.1, 0.2, 0.3, 0.4, 0.5]
+
+calibration:
+  anchor_cell: {tools: 2, fault: 0.0}
+  target_band: [0.15, 0.95]         # confirmed 2026-09-26: mirrors r4 success.band (anchor study, method note 6)
+  pilot_runs: 30
+  difficulty_levels: [1, 2, 3, 4]
+  tau_candidates: [0.8, 0.9, 0.7]
+  max_malformed_call_rate: 0.20
+
+noise_floor:
+  local:
+    cell: {tools: 3, fault: 0.2}
+    fixed_seed_reruns: 50          # confirmed 2026-09-26: a check on a single-slot stack, not a measurement
+    fixed_seed_documents: 20       # 1,000 runs instead of 20,000; the varied-seed floor carries the measurement
+    varied_seed_reruns: 50
+  hosted:
+    cells: [{tools: 2, fault: 0.0}, {tools: 4, fault: 0.2}, {tools: 6, fault: 0.4}]
+    reruns: 50
+    documents_per_rerun: 10
+
+determinism_gate:
+  specs: 20
+  replays_per_regime: 5
+  filler_requests: 200
+
+models:
+  # EXPLORATORY ONLY, 2026-09-28: not part of snapshot 1 and never read by a snapshot-1
+  # command. Every other section is copied unchanged from configs/snapshot-1.yaml, so the
+  # task, dataset, tools, faults and grader are the frozen ones. Each model is pinned to one
+  # OpenRouter host with fallbacks off; require_parameters makes the request fail rather than
+  # silently drop a field the host does not support. The key is read from OPENROUTER_API_KEY.
+
+  - id: gpt-oss-120b-or
+    provider: openai_compat
+    base_url: https://openrouter.ai/api/v1
+    api_key_env: OPENROUTER_API_KEY
+    allowed_hosts: ["openrouter.ai"]
+    model: openai/gpt-oss-120b
+    documents: 100
+    epochs: 1
+    concurrency: 4
+    sampling: {temperature: 1.0, top_p: 1.0, max_tokens: 8192, seed: per_run}
+    extra_body:
+      reasoning: {effort: medium}   # as the local gpt-oss-20b
+      provider: {order: ["deepinfra/bf16"], allow_fallbacks: false, require_parameters: true}
+    prices: configs/prices-openrouter.json
+    spend_cap_usd: 5
+
+  - id: qwen3-235b-instruct-or
+    provider: openai_compat
+    base_url: https://openrouter.ai/api/v1
+    api_key_env: OPENROUTER_API_KEY
+    allowed_hosts: ["openrouter.ai"]
+    model: qwen/qwen3-235b-a22b-2507
+    documents: 100
+    epochs: 1
+    concurrency: 4
+    sampling: {temperature: 0.7, top_p: 0.8, max_tokens: 4096, seed: per_run}
+    extra_body:
+      top_k: 20                     # Qwen's published recommendation, as the local Qwen3 models
+      provider: {order: ["alibaba"], allow_fallbacks: false, require_parameters: true}
+    prices: configs/prices-openrouter.json
+    spend_cap_usd: 5
+
+  - id: qwen3-235b-thinking-or
+    provider: openai_compat
+    base_url: https://openrouter.ai/api/v1
+    api_key_env: OPENROUTER_API_KEY
+    allowed_hosts: ["openrouter.ai"]
+    model: qwen/qwen3-235b-a22b-thinking-2507
+    documents: 100
+    epochs: 1
+    concurrency: 4
+    sampling: {temperature: 0.6, top_p: 0.95, max_tokens: 16384, seed: per_run}
+    extra_body:
+      top_k: 20                     # Qwen's published recommendation for thinking mode
+      provider: {order: ["alibaba"], allow_fallbacks: false, require_parameters: true}
+    prices: configs/prices-openrouter.json
+    spend_cap_usd: 5
+
+  - id: gpt-5.6-luna-or
+    provider: openai_compat
+    base_url: https://openrouter.ai/api/v1
+    api_key_env: OPENROUTER_API_KEY
+    allowed_hosts: ["openrouter.ai"]
+    model: openai/gpt-5.6-luna
+    documents: 100
+    epochs: 1
+    concurrency: 4
+    sampling: {max_tokens: 16384, seed: per_run}   # provider default temperature
+    extra_body:
+      reasoning: {effort: medium}
+      provider: {order: ["openai"], allow_fallbacks: false, require_parameters: true}
+    prices: configs/prices-openrouter.json
+    spend_cap_usd: 5
+
+  - id: deepseek-v4.1-flash-or
+    provider: openai_compat
+    base_url: https://openrouter.ai/api/v1
+    api_key_env: OPENROUTER_API_KEY
+    allowed_hosts: ["openrouter.ai"]
+    model: deepseek/deepseek-v4.1-flash
+    documents: 100
+    epochs: 1
+    concurrency: 4
+    sampling: {max_tokens: 16384}                  # DeepSeek's own host takes no seed
+    extra_body:
+      reasoning: {enabled: true}
+      provider: {order: ["deepseek"], allow_fallbacks: false, require_parameters: true}
+    prices: configs/prices-openrouter.json
+    spend_cap_usd: 5
