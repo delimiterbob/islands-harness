@@ -9,7 +9,7 @@ version: "1.0.0"
 date-released: "2026-09-26"
 license: Apache-2.0
 url: "https://islandsofstability.com"
-repository-code: "https://github.com/delimiterbob/islands-harness"
+repository-code: "https://github.com/delimiterbob/islandsharness"
 identifiers:
   - type: doi
     value: "10.5281/zenodo.22982434"
