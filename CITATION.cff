@@ -6,8 +6,17 @@ authors:
   - family-names: "Encarnação"
     given-names: "Robert"
 version: "1.0.0"
+date-released: "2026-09-26"
 license: Apache-2.0
 url: "https://islandsofstability.com"
+repository-code: "https://github.com/delimiterbob/islands-harness"
+identifiers:
+  - type: doi
+    value: "10.5281/zenodo.22982434"
+    description: "Pre-registration r4 for snapshot 1, with the freeze lock, deposited before any snapshot run"
+  - type: doi
+    value: "10.5281/zenodo.23066893"
+    description: "Snapshot 1 results bundle"
 abstract: >-
   One agent, one fixed task, a two-axis sweep of tool count against injected tool-fault
   rate, with sampling error and rerun jitter measured first and one pre-registered verdict

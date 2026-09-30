@@ -1,0 +1,80 @@
+name: Objection
+description: Object to a proposition, a test, a prior owner or a number on islandsofstability.com.
+title: "Objection: "
+labels: ["objection"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Objections are how the specification changes. An objection from outside the author's review rounds that changes a proposition's text is accepted, moves the minor version, and is credited in the changelog. Every objection gets a public answer here, and one that still stands is listed as open on the theory page.
+
+        Before filing, read the proposition, its falsifiers and the objections already on record: https://islandsofstability.com/theory#open-objections
+  - type: dropdown
+    id: target
+    attributes:
+      label: What does it bear on?
+      options:
+        - Proposition 1, sparsity
+        - Proposition 2, the evidence rule
+        - Proposition 3, exit statistics
+        - Proposition 4, cost
+        - Proposition 5, transit
+        - Proposition 6, the era ratio
+        - A test or its pre-registration
+        - The theory as a whole, or its method
+        - A page on one of the sciences
+    validations:
+      required: true
+  - type: input
+    id: version
+    attributes:
+      label: Version you read
+      description: The specification version shown at the top of the theory page.
+      placeholder: v0.2.3
+  - type: textarea
+    id: wording
+    attributes:
+      label: The wording or number you object to
+      description: Quote it, and link it if you can. Each proposition has a permanent anchor, for example https://islandsofstability.com/theory#v0.2-p3
+    validations:
+      required: true
+  - type: textarea
+    id: objection
+    attributes:
+      label: Your objection
+      description: What is wrong, and why.
+    validations:
+      required: true
+  - type: textarea
+    id: evidence
+    attributes:
+      label: Evidence
+      description: Data, a counterexample, a derivation, or published work, with DOIs where they exist.
+  - type: textarea
+    id: settle
+    attributes:
+      label: What would settle it
+      description: An observation or a test whose result would show the objection right or wrong.
+  - type: dropdown
+    id: kind
+    attributes:
+      label: Kind of objection
+      options:
+        - The wording is wrong
+        - The scope is wrong
+        - A prior owner is missing or miscredited
+        - A test or its pre-registration is flawed
+        - A number is wrong
+        - Something else
+  - type: input
+    id: credit
+    attributes:
+      label: Credit
+      description: How to credit you if the objection is listed on the site. Leave it blank to be credited by your GitHub name.
+  - type: checkboxes
+    id: public
+    attributes:
+      label: Public record
+      options:
+        - label: I understand that this objection, accepted or not, is public and may be quoted on the site with the credit above.
+          required: true

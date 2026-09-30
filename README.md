@@ -11,30 +11,28 @@ every decision with its rejected alternative. `PREREGISTRATION.md` mirrors the d
 rules; `configs/preregistration/r4.yaml` is the machine-readable copy the analysis reads.
 `docs/` holds the method note, the client-mode guide and the reproducibility recipe.
 
-Status, 2026-09-27: M0 (loop, faults, adapter, freeze, selftest, smoke), M1 (dataset,
-grader, tools), M2 (runner, spend ledger, probe, estimate, Anthropic adapter), M3
-(statistics, verdicts, `islands analyze`), M4 (report, bundle, `verify`, `replay`,
-`analyze --check`, schemas) and M5 (doctor, `serve`, `models verify`, the determinism gate)
-are built. All three local stacks passed the three-regime determinism gate on 2026-09-26:
-gpt-oss-20b, Qwen3-14B and Qwen3-4B each reproduced all 20 gate runs byte for byte across
-15 executions. M6 is done: `calibrate`, `freeze` and `deposit` are built and were used. The
-pilot found every model at the task's ceiling on levels 1 to 3, so the task gained level 4
-(amounts must be computed), an anchor study widened the calibration band to [0.15, 0.95],
-and Qwen3-4B joined as a third replicate. Difficulty 4 at tau 0.8 makes all three
-replicates, and the snapshot dataset is now level 4 (`docs/method-note.md` Sections 6 and
-7). The author confirmed the pre-registration decision by decision, snapshot 1 runs the
-three local models only, on mixes A and B, and the harness was frozen on
-2026-09-26 (`configs/snapshot-1.lock.json`, tag v1.0.0, local). The pre-registration
-was deposited on Zenodo on 2026-09-26 (DOI 10.5281/zenodo.22982434), before any snapshot run; the public repository follows it. M7 is done: the noise floor ran for all three models after the deposit (18,000 runs), every fixed-seed rerun reproduced its transcript byte for byte, and phi is 0.20, 0.16 and 0.69 (`docs/method-note.md` Section 7). `islands selftest` now runs a whole synthetic
-snapshot through the real pipeline and the reviewer's checks, and the mock site's Map page
-renders the snapshot.json it produces. On gpt-oss-20b through llama.cpp, an exploratory
-300-run sweep was killed after 14 runs and resumed to exactly the 300 planned runs, with no
-duplicate and no gap. The statistics meet their coverage and false-survival bars on 3,000
-simulated snapshots (`docs/method-note.md`). One M2 criterion is open: the 20-run hosted
-dry run under a 5 dollar cap, which needs the owner's API key and go-ahead; snapshot 1 has
-no hosted model. M8, the snapshot's sweeps, started on 2026-09-27 at 22:38 UTC; before its
-results were looked at, a descriptive addendum and errata were committed
-(`docs/method-note.md` Section 7). M9 remains.
+Status, 2026-09-30: snapshot 1 is measured and published. The harness was frozen on 2026-09-26
+(`configs/snapshot-1.lock.json`, tag v1.0.0), and the pre-registration was deposited on Zenodo the
+same day, before any snapshot run: [10.5281/zenodo.22982434](https://doi.org/10.5281/zenodo.22982434).
+The noise floor followed, 18,000 runs in which every fixed-seed rerun reproduced its transcript byte
+for byte (phi is 0.20, 0.16 and 0.69, `docs/method-note.md` Section 7). Then came the sweeps, 18,720
+runs on gpt-oss-20b, Qwen3-14B and Qwen3-4B over mixes A and B. Before any sweep result was looked
+at, a descriptive addendum and errata were committed. The results bundle is deposited as
+[10.5281/zenodo.23066893](https://doi.org/10.5281/zenodo.23066893), and the verdicts, with what they
+mean, are on the [Map page](https://islandsofstability.com/map). M0 to M8 are done and M9 remains.
+One M2 criterion is open: the 20-run hosted dry run under a 5 dollar cap, which needs the owner's API
+key and go-ahead. Snapshot 1 has no hosted model.
+
+This repository went public after snapshot 1, not before it as the site's launch conditions planned.
+The deposited lock records the confirmed commit (79b627f) and the hash of every frozen input: the
+config, the pre-registration, the dataset, the grader, the loop, the faults, the providers, the tools
+and their schemas, and the system prompt. `islands verify` checks the lock before it re-analyses
+anything. The commits after tag v1.0.0 add the deposit's DOI (a field the lock does not hash),
+resilience for unattended runs, a record of why a run aborted, the descriptive addendum and the
+results export, and the code at the head of `main` still matches the lock.
+
+Objections to the theory, its tests or any number on the site are filed here, as issues: see
+[OBJECTIONS.md](OBJECTIONS.md).
 
 ## Install on Windows 11 (the author's workstation)
 
@@ -117,11 +115,7 @@ snapshot to `results/selftest/snapshot/`: 1,320 runs of a deterministic syntheti
 manifest and bundle, followed by re-analysis, re-grading, four replays and the SHA256SUMS
 check. Everything it produces is labelled as a selftest, not a measurement.
 
-To see a snapshot on the mock site, copy its `snapshot.json` into `../mock/data/` and open
-the Map page with the file named in the address; without the parameter the page shows the
-empty grid:
-
-    Copy-Item results\selftest\snapshot\snapshot.json ..\mock\data\selftest-snapshot.json
+The site's Map page reads the same `snapshot.json` format (`schemas/`).
     node ..\mock\serve.js 5173
     # http://localhost:5173/map.html?snapshot=data/selftest-snapshot.json
 
@@ -182,7 +176,10 @@ the config.
 
 ## Verifying a published snapshot
 
-Three tiers, from minutes to hours (`ARCHITECTURE.md` Section 14):
+Three tiers, from minutes to hours (`ARCHITECTURE.md` Section 14): Snapshot 1's results are not in this
+repository. Download `bundle.zip` from [10.5281/zenodo.23066893](https://doi.org/10.5281/zenodo.23066893)
+and unzip it into `results/s1` first. Its `REDACTIONS.txt` lists the files whose local paths were
+shortened for the deposit.
 
 1. Re-analysis, minutes, any machine: `uv sync --locked` then
    `uv run islands verify results/s1`. Checks SHA256SUMS and the freeze lock, re-runs the
@@ -220,6 +217,12 @@ The same package pointed at a client's task, model and tools, run on their machi
 on-site; nothing is sent to the public program. `uv run islands client init DIR`,
 `uv run islands client run DIR`, `uv run islands distance --tools K --fault F`. See
 `docs/client-mode.md` and `ARCHITECTURE.md` Section 13.
+
+## Citing
+
+`CITATION.cff` gives the citation for this repository. Cite the pre-registration as
+[10.5281/zenodo.22982434](https://doi.org/10.5281/zenodo.22982434) and snapshot 1's results as
+[10.5281/zenodo.23066893](https://doi.org/10.5281/zenodo.23066893).
 
 ## License
 
