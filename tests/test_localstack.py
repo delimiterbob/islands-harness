@@ -10,7 +10,7 @@ from pathlib import Path
 
 import pytest
 
-from islands_harness import localstack
+from islands_harness import localstack, provenance
 from islands_harness.config import load_config
 from islands_harness.provenance import doctor, verify_determinism
 from islands_harness.providers.synthetic import SyntheticAgent
@@ -172,6 +172,15 @@ def test_doctor_blocks_on_a_mismatched_server_and_never_contacts_a_hosted_api(
         localstack, "verify_weights", lambda root, model, rehash=False: (True, "ok")
     )
     monkeypatch.setattr(localstack, "weights_path", lambda root, model: CONFIG)
+    # The llama.cpp install is a property of the machine, not of this test: stubbed like the GPU, so the test
+    # passes on a machine without it (a CI runner) as on the workstation.
+    monkeypatch.setattr(
+        provenance,
+        "_check_llama_build",
+        lambda config: provenance._check(
+            "llama.cpp build", True, "installed (stubbed for the test)"
+        ),
+    )
     state = {"gpt-oss-20b-local": (True, [], {}), "qwen3-14b-local": (False, ["down"], {})}
     monkeypatch.setattr(
         localstack,
