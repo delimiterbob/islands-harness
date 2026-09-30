@@ -26,7 +26,7 @@ import subprocess
 import sys
 import time
 from dataclasses import dataclass, field
-from pathlib import Path
+from pathlib import Path, PureWindowsPath
 from typing import Any
 from urllib.parse import urlsplit
 
@@ -162,7 +162,8 @@ def flag_differences(
         got = process.flags.get(flag)
         if got != want:
             out.append(f"{flag}: running {got!r}, expected {want!r}")
-    weights = Path(str(process.flags.get("-m", ""))).name
+    # The server reports Windows paths; PureWindowsPath splits them on any system.
+    weights = PureWindowsPath(str(process.flags.get("-m", ""))).name
     if model.expect is not None and weights != model.expect.weights_file:
         out.append(f"-m: running {weights!r}, expected {model.expect.weights_file!r}")
     return out
@@ -191,7 +192,7 @@ def props_differences(props: dict[str, Any], model: ModelConfig) -> list[str]:
     n_ctx = (props.get("default_generation_settings") or {}).get("n_ctx")
     if n_ctx != e.ctx_size:
         out.append(f"n_ctx {n_ctx}, expected {e.ctx_size}")
-    path = Path(str(props.get("model_path", ""))).name
+    path = PureWindowsPath(str(props.get("model_path", ""))).name
     if path != e.weights_file:
         out.append(f"model_path {path!r}, expected {e.weights_file!r}")
     ftype = str(props.get("model_ftype", ""))
